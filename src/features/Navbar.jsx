@@ -1,6 +1,13 @@
 import { Button, Heading, Stack, VStack } from "@hope-ui/solid";
+import useOpen from "../hooks/useOpen";
+import { createEffect, useContext } from "solid-js";
+import { CurrentPageContext } from "../providers/CurrentPageProvider";
 
 export default function Navbar() {
+
+    const { open } = useOpen();
+
+    const [ state ] = useContext(CurrentPageContext);
 
     return (
         <Stack h="$full" w={"250px"} bgColor={"$blackAlpha12"} direction={"column"} gap={"$2"}>
@@ -8,16 +15,36 @@ export default function Navbar() {
                 E-Lib
             </Heading>
             <VStack>
-                <Button fullWidth borderRadius={"0"} bgColor={"transparent"}>
+                <Button 
+                    fullWidth 
+                    borderRadius={"0"} 
+                    bgColor={ state.currentPage == "/" ? "$accent11" : "transparent" } 
+                    onClick={() => open("/")}
+                >
                     Dashboard
                 </Button>
-                <Button fullWidth borderRadius={"0"} bgColor={"transparent"}>
+                <Button 
+                    fullWidth 
+                    borderRadius={"0"} 
+                    bgColor={ state.currentPage == "/circulation" ? "$accent11" : "transparent" } 
+                    onClick={() => open("/circulation")}
+                >
                     Circulation
                 </Button>
-                <Button fullWidth borderRadius={"0"} bgColor={"transparent"}>
+                <Button 
+                    fullWidth 
+                    borderRadius={"0"} 
+                    bgColor={ state.currentPage == "/items" ? "$accent11" : "transparent" } 
+                    onClick={() => open("/items")}
+                >
                     Items
                 </Button>
-                <Button fullWidth borderRadius={"0"} bgColor={"transparent"}>
+                <Button 
+                    fullWidth 
+                    borderRadius={"0"} 
+                    bgColor={ state.currentPage == "/patrons" ? "$accent11" : "transparent" } 
+                    onClick={() => open("/patrons")}
+                >
                     Patrons
                 </Button>
             </VStack>
