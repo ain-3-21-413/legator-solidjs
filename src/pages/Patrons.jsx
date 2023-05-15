@@ -21,6 +21,78 @@ const data = {
             date: "01/01/2023",
             name: "Amir Asanov",
         },
+        {
+            date: "01/01/2023",
+            name: "Amir Asanov",
+        },
+        {
+            date: "01/01/2023",
+            name: "Amir Asanov",
+        },
+        {
+            date: "01/01/2023",
+            name: "Amir Asanov",
+        },
+        {
+            date: "01/01/2023",
+            name: "Amir Asanov",
+        },
+        {
+            date: "01/01/2023",
+            name: "Amir Asanov",
+        },
+        {
+            date: "01/01/2023",
+            name: "Amir Asanov",
+        },
+        {
+            date: "01/01/2023",
+            name: "Amir Asanov",
+        },
+        {
+            date: "01/01/2023",
+            name: "Amir Asanov",
+        },
+        {
+            date: "01/01/2023",
+            name: "Amir Asanov",
+        },
+        {
+            date: "01/01/2023",
+            name: "Amir Asanov",
+        },
+        {
+            date: "01/01/2023",
+            name: "Amir Asanov",
+        },
+        {
+            date: "01/01/2023",
+            name: "Amir Asanov",
+        },
+        {
+            date: "01/01/2023",
+            name: "Amir Asanov",
+        },
+        {
+            date: "01/01/2023",
+            name: "Amir Asanov",
+        },
+        {
+            date: "01/01/2023",
+            name: "Amir Asanov",
+        },
+        {
+            date: "01/01/2023",
+            name: "Amir Asanov",
+        },
+        {
+            date: "01/01/2023",
+            name: "Amir Asanov",
+        },
+        {
+            date: "01/01/2023",
+            name: "Amir Asanov",
+        },
     ]
 }
 
@@ -86,7 +158,7 @@ export default function Patrons() {
                                 { isASC() ? <AiOutlineSortAscending /> : <AiOutlineSortDescending /> }
                             </IconButton>
                         </HStack>
-                        <VStack w={"$full"} flexGrow={"1"} backgroundColor={"white"}>
+                        <VStack w={"$full"} flexGrow={"1"} backgroundColor={"white"} overflow={"auto"} h="727px">
                         <For each={data.results}>{(result) =>
                             <SearchResult result={result} />
                         }</For>
