@@ -6,6 +6,7 @@ import Patrons from "../pages/Patrons";
 import Personal from "../features/patrons/tabs/Personal";
 import Contact from "../features/patrons/tabs/Contact";
 import Access from "../features/patrons/tabs/Access";
+import Notes from "../features/patrons/tabs/Notes";
 
 export default function AppRouter() {
 
@@ -25,6 +26,7 @@ export default function AppRouter() {
                 <Route path="personal" element={<Personal />} />
                 <Route path="contact" element={<Contact />} />
                 <Route path="access" element={<Access />} />
+                <Route path="notes" element={<Notes />} />
             </Route>
         </Routes>
     )
