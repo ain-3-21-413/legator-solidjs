@@ -1,7 +1,7 @@
 import { Button, HStack, VStack } from "@hope-ui/solid";
 import { useContext } from "solid-js";
 import GeneralInfo from "./patronCard/GeneralInfo";
-import { Outlet, useNavigate } from "@solidjs/router";
+import { Outlet } from "@solidjs/router";
 import useOpen from "../../hooks/useOpen";
 import { CurrentPageContext } from "../../providers/CurrentPageProvider";
 
@@ -10,8 +10,6 @@ export default function PatronCard(props) {
     const [state] = useContext(CurrentPageContext);
 
     const { openPatronTab } = useOpen();
-
-    const navigate = useNavigate();
     
     return (
         <VStack w={"$full"} h={"$full"} gap={"$3"}>
