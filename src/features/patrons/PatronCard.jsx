@@ -3,6 +3,7 @@ import { useContext } from "solid-js";
 import { CurrentPatronContext } from "../../providers/CurrentPatron";
 import GeneralInfo from "./patronCard/GeneralInfo";
 import Personal from "./tabs/Personal";
+import { Outlet } from "@solidjs/router";
 
 export default function PatronCard(props) {
 
@@ -29,7 +30,7 @@ export default function PatronCard(props) {
                         Statistics
                     </Button>
                 </HStack>
-                <Personal />
+                <Outlet />
             </VStack>
         </VStack>
     )

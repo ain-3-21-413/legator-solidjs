@@ -3,6 +3,7 @@ import Dashboard from "../pages/Dashboard";
 import Circulation from "../pages/Circulation";
 import Items from "../pages/Items";
 import Patrons from "../pages/Patrons";
+import Personal from "../features/patrons/tabs/Personal";
 
 export default function AppRouter() {
 
@@ -17,8 +18,9 @@ export default function AppRouter() {
             <Route path="/items">
                 <Route path="" element={<Items />} />
             </Route>
-            <Route path="/patrons">
-                <Route path="" element={<Patrons />} />
+            <Route path="/patrons" element={<Patrons />}>
+                <Route path="" element={<Personal />} />
+                <Route path="personal" element={<Personal />} />
             </Route>
         </Routes>
     )
