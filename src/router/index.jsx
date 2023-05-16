@@ -4,6 +4,7 @@ import Circulation from "../pages/Circulation";
 import Items from "../pages/Items";
 import Patrons from "../pages/Patrons";
 import Personal from "../features/patrons/tabs/Personal";
+import Contact from "../features/patrons/tabs/Contact";
 
 export default function AppRouter() {
 
@@ -21,6 +22,7 @@ export default function AppRouter() {
             <Route path="/patrons" element={<Patrons />}>
                 <Route path="" element={<Personal />} />
                 <Route path="personal" element={<Personal />} />
+                <Route path="contact" element={<Contact />} />
             </Route>
         </Routes>
     )
