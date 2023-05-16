@@ -7,23 +7,28 @@ export default function CurrentPageProvider(props) {
 
     const currentRoute = window.location.pathname;
     const parts = currentRoute.split('/').filter(Boolean); // Split the pathname by '/' and remove empty elements
-    const desiredPart = (parts.length > 0) ? ('/' + parts[0]) : '/';
+    const currentPage = (parts.length > 0) ? ('/' + parts[0]) : '/';
+    const currentPatronTab = (parts.length > 1) ? ('/' + parts[1]) : 'personal';
 
     const [state, setState] = createStore({
-        currentPage: desiredPart,
+        currentPage: currentPage,
+        currentPatronTab: currentPatronTab, 
     });
 
-    const currentPage = [
+    const currentPageValue = [
         state, 
         {
             setCurrentPage(page) {
                 setState("currentPage", page);
-            }
+            },
+            setCurrentPatronTab(tab) {
+                setState("currentPatronTab", tab);
+            },
         }
     ]
 
     return (
-        <CurrentPageContext.Provider value={currentPage}>
+        <CurrentPageContext.Provider value={currentPageValue}>
             {props.children}
         </CurrentPageContext.Provider>
     )

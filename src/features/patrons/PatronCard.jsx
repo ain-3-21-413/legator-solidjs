@@ -1,32 +1,66 @@
 import { Button, HStack, VStack } from "@hope-ui/solid";
 import { useContext } from "solid-js";
-import { CurrentPatronContext } from "../../providers/CurrentPatron";
 import GeneralInfo from "./patronCard/GeneralInfo";
-import Personal from "./tabs/Personal";
-import { Outlet } from "@solidjs/router";
+import { Outlet, useNavigate } from "@solidjs/router";
+import useOpen from "../../hooks/useOpen";
+import { CurrentPageContext } from "../../providers/CurrentPageProvider";
 
 export default function PatronCard(props) {
 
-    const [state] = useContext(CurrentPatronContext);
+    const [state] = useContext(CurrentPageContext);
+
+    const { openPatronTab } = useOpen();
+
+    const navigate = useNavigate();
     
     return (
         <VStack w={"$full"} h={"$full"} gap={"$3"}>
             <GeneralInfo />
             <VStack w={"$full"} backgroundColor={"white"} flexGrow={"1"}>
                 <HStack justifyContent={"start"} w={"$full"}>
-                    <Button px={"$8"} py={"$2"} _hover={{backgroundColor: "$accent11", color: "white"}} borderRadius={"0"} backgroundColor={"transparent"} color={"$blackAlpha11"} >
+                    <Button
+                        onClick={() => openPatronTab("personal")} 
+                        px={"$8"} py={"$2"} _hover={{backgroundColor: "$accent11", color: "white"}} 
+                        borderRadius={"0"} 
+                        color={state.currentPatronTab == "personal" ? "white" : "$blackAlpha11"} 
+                        backgroundColor={state.currentPatronTab == "personal" ? "$accent11" : "transparent"}
+                    >
                         Personal
                     </Button>
-                    <Button px={"$8"} py={"$2"} _hover={{backgroundColor: "$accent11", color: "white"}} borderRadius={"0"} backgroundColor={"transparent"} color={"$blackAlpha11"} >
+                    <Button
+                        onClick={() => openPatronTab("contact")} 
+                        px={"$8"} py={"$2"} _hover={{backgroundColor: "$accent11", color: "white"}} 
+                        borderRadius={"0"} 
+                        color={state.currentPatronTab == "contact" ? "white" : "$blackAlpha11"} 
+                        backgroundColor={state.currentPatronTab == "contact" ? "$accent11" : "transparent"}
+                    >
                         Contact
                     </Button>
-                    <Button px={"$8"} py={"$2"} _hover={{backgroundColor: "$accent11", color: "white"}} borderRadius={"0"} backgroundColor={"transparent"} color={"$blackAlpha11"} >
+                    <Button
+                        onClick={() => openPatronTab("access")} 
+                        px={"$8"} py={"$2"} _hover={{backgroundColor: "$accent11", color: "white"}} 
+                        borderRadius={"0"} 
+                        color={state.currentPatronTab == "access" ? "white" : "$blackAlpha11"} 
+                        backgroundColor={state.currentPatronTab == "access" ? "$accent11" : "transparent"}
+                    >
                         Access
                     </Button>
-                    <Button px={"$8"} py={"$2"} _hover={{backgroundColor: "$accent11", color: "white"}} borderRadius={"0"} backgroundColor={"transparent"} color={"$blackAlpha11"} >
+                    <Button
+                        onClick={() => openPatronTab("notes")} 
+                        px={"$8"} py={"$2"} _hover={{backgroundColor: "$accent11", color: "white"}} 
+                        borderRadius={"0"} 
+                        color={state.currentPatronTab == "notes" ? "white" : "$blackAlpha11"} 
+                        backgroundColor={state.currentPatronTab == "notes" ? "$accent11" : "transparent"}
+                    >
                         Notes
                     </Button>
-                    <Button px={"$8"} py={"$2"} _hover={{backgroundColor: "$accent11", color: "white"}} borderRadius={"0"} backgroundColor={"transparent"} color={"$blackAlpha11"} >
+                    <Button
+                        onClick={() => openPatronTab("statistics")} 
+                        px={"$8"} py={"$2"} _hover={{backgroundColor: "$accent11", color: "white"}} 
+                        borderRadius={"0"} 
+                        color={state.currentPatronTab == "statistics" ? "white" : "$blackAlpha11"} 
+                        backgroundColor={state.currentPatronTab == "statistics" ? "$accent11" : "transparent"}
+                    >
                         Statistics
                     </Button>
                 </HStack>

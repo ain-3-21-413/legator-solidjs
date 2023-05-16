@@ -1,6 +1,6 @@
 import { Button, Heading, Stack, VStack } from "@hope-ui/solid";
 import useOpen from "../hooks/useOpen";
-import { createEffect, useContext } from "solid-js";
+import { useContext } from "solid-js";
 import { CurrentPageContext } from "../providers/CurrentPageProvider";
 
 export default function Navbar() {

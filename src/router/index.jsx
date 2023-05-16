@@ -7,6 +7,7 @@ import Personal from "../features/patrons/tabs/Personal";
 import Contact from "../features/patrons/tabs/Contact";
 import Access from "../features/patrons/tabs/Access";
 import Notes from "../features/patrons/tabs/Notes";
+import Statistics from "../features/patrons/tabs/Statistics";
 
 export default function AppRouter() {
 
@@ -27,6 +28,7 @@ export default function AppRouter() {
                 <Route path="contact" element={<Contact />} />
                 <Route path="access" element={<Access />} />
                 <Route path="notes" element={<Notes />} />
+                <Route path="statistics" element={<Statistics />} />
             </Route>
         </Routes>
     )
