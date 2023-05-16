@@ -6,7 +6,7 @@ export default function useOpen() {
 
     const navigate = useNavigate();
 
-    const [state, { setCurrentPage, setCurrentPatronTab } ] = useContext(CurrentPageContext);
+    const [state, { setCurrentPage, setCurrentPatronTab , setCurrentItemTab} ] = useContext(CurrentPageContext);
 
     const open = (path) => {
         navigate(path);
@@ -16,10 +16,14 @@ export default function useOpen() {
     const openPatronTab = (tab) => {
         navigate(tab);
         setCurrentPatronTab(tab);
-        console.log(state.currentPatronTab);
+    }
+
+    const openItemTab = (tab) => {
+        navigate(tab);
+        setCurrentItemTab(tab);
     }
 
     return (
-        { open, openPatronTab }
+        { open, openPatronTab, openItemTab }
     )
 }

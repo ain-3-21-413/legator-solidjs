@@ -1,17 +1,16 @@
 import { Button, HStack, Heading, IconButton } from "@hope-ui/solid";
-import { Match, useContext } from "solid-js";
-import { Switch } from "solid-js";
-import { PatronEditingContext } from "../../providers/PatronEditingProvider";
 import { FaSolidLock, FaSolidLockOpen, FaSolidPlus } from "solid-icons/fa";
+import { Match, Switch, useContext } from "solid-js";
+import { ItemEditingContext } from "../../providers/ItemEditingProvider";
 
 export default function Header() {
 
-    const [state] = useContext(PatronEditingContext);
+    const [state] = useContext(ItemEditingContext);
 
     return (
         <HStack justifyContent={"space-between"} w={"$full"}>
             <Heading size={"2xl"}>
-                Patrons Management
+                Items Management
             </Heading>
             <Switch>
                 <Match when={!state.isEditing}>
