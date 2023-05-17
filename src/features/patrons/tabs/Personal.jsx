@@ -57,7 +57,7 @@ export default function Personal() {
                 <HStack w={"$full"} justifyContent={"start"} gap={"$1"}>
                     <VStack alignItems={"start"} flexBasis={"calc(100%/3)"}>
                         <label>
-                            SSN
+                            Homeroom
                         </label>
                         <SimpleSelect placeholder="Select">
                             <SimpleOption value={"one"}>
@@ -77,7 +77,7 @@ export default function Personal() {
                     </VStack>
                     <VStack alignItems={"start"} flexBasis={"calc(100%/3)"}>
                         <label>
-                            Grade
+                            Group
                         </label>
                         <SimpleSelect placeholder="Select">
                             <SimpleOption value={"one"}>

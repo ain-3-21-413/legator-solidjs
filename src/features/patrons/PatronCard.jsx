@@ -12,7 +12,7 @@ export default function PatronCard(props) {
     const { openPatronTab } = useOpen();
     
     return (
-        <VStack w={"$full"} h={"$full"} gap={"$3"}>
+        <VStack w={"$full"} h={"calc(100vh - 32px - 40px - 0.75rem * 5)"} gap={"$3"}>
             <GeneralInfo />
             <VStack 
                 w={"$full"} 

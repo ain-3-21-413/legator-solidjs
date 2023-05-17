@@ -122,7 +122,7 @@ export default function Sidebar() {
                     flexGrow={"1"} 
                     backgroundColor={"white"} 
                     overflow={"auto"} 
-                    h="calc(100vh - 32px - 40px * 3 - 0.75rem * 4)"
+                    h="calc(100vh - 32px - 40px * 3 - 0.75rem * 6)"
                 >
                 <For each={data.results}>{(result) =>
                     <SearchResult result={result} />

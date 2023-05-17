@@ -7,9 +7,10 @@ export default function PatronEditingProvider(props) {
 
     const [state, setState] = createStore({
         isLocked: true,
-        isEditing: true,
+        isEditing: false,
         isReadyToSave: false,
         isASC: true, 
+        isPatronSelected: false, 
     });
 
     const patronEditing = [
@@ -26,7 +27,10 @@ export default function PatronEditingProvider(props) {
             },
             setASC(isASC) {
                 setState("isASC", isASC);
-            }
+            }, 
+            setPatronSelected(isPatronSelected) {
+                setState("isPatronSelected", isPatronSelected);
+            }, 
         }
     ]
 

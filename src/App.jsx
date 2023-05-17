@@ -5,19 +5,22 @@ import CurrentPageProvider from './providers/CurrentPageProvider';
 import PatronEditingProvider from './providers/PatronEditingProvider';
 import CurrentPatronProvider from './providers/CurrentPatron';
 import ItemEditingProvider from './providers/ItemEditingProvider';
+import ModalProvider from './providers/ModalProvider';
 
 function App() {
   return (
     <HopeProvider>
       <Router>
         <CurrentPageProvider>
-          <PatronEditingProvider>
+          <ModalProvider>
+            <PatronEditingProvider>
             <ItemEditingProvider>
               <CurrentPatronProvider>
                 <ELibApp />
               </CurrentPatronProvider>
             </ItemEditingProvider>
-          </PatronEditingProvider>
+            </PatronEditingProvider>
+          </ModalProvider>
         </CurrentPageProvider>
       </Router>
     </HopeProvider>

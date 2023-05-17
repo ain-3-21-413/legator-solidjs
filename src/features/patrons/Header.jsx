@@ -3,10 +3,13 @@ import { Match, useContext } from "solid-js";
 import { Switch } from "solid-js";
 import { PatronEditingContext } from "../../providers/PatronEditingProvider";
 import { FaSolidLock, FaSolidLockOpen, FaSolidPlus } from "solid-icons/fa";
+import useOpen from "../../hooks/useOpen";
 
 export default function Header() {
 
-    const [state] = useContext(PatronEditingContext);
+    const [state, { setLocked, setPatronSelected, setEditing }] = useContext(PatronEditingContext);
+
+    const { open, openPatronTab } = useOpen();
 
     return (
         <HStack justifyContent={"space-between"} w={"$full"}>
@@ -16,8 +19,12 @@ export default function Header() {
             <Switch>
                 <Match when={!state.isEditing}>
                     <HStack gap={"$3"}>
-                        <IconButton backgroundColor={"$accent11"} icon={ state.isLocked ?  <FaSolidLock /> : <FaSolidLockOpen /> } />
-                        <IconButton backgroundColor={"$accent11"} disabled={state.isLocked} icon={<FaSolidPlus />} />
+                        <IconButton onClick={() => setLocked(!state.isLocked)} backgroundColor={"$accent11"} icon={ state.isLocked ?  <FaSolidLock /> : <FaSolidLockOpen /> } />
+                        <IconButton 
+                            backgroundColor={"$accent11"} 
+                            disabled={state.isLocked} icon={<FaSolidPlus />} 
+                            onClick={() => {open("/patrons"); openPatronTab("personal"); setPatronSelected(true); setEditing(true)}}
+                        />
                         <Button backgroundColor={"$accent11"}>
                             Actions
                         </Button>

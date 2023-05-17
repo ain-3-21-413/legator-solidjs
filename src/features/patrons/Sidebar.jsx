@@ -1,101 +1,25 @@
-import { HStack, IconButton, Input, SimpleOption, SimpleSelect, VStack } from "@hope-ui/solid";
+import { HStack, IconButton, Input, SimpleOption, SimpleSelect, Text, VStack } from "@hope-ui/solid";
 import { AiOutlineSortAscending, AiOutlineSortDescending } from "solid-icons/ai";
 import SearchResult from "./SearchResult";
-import { useContext } from "solid-js";
+import { Show, useContext } from "solid-js";
 import { PatronEditingContext } from "../../providers/PatronEditingProvider";
+import { ModalContext } from "../../providers/ModalProvider";
+import PatronSearchModal from "./patronSearch/PatronSearchModal";
 
 const data = {
     results: [
-        {
-            date: "01/01/2023",
-            name: "Amir Asanov",
-        },
-        {
-            date: "01/01/2023",
-            name: "Amir Asanov",
-        },
-        {
-            date: "01/01/2023",
-            name: "Amir Asanov",
-        },
-        {
-            date: "01/01/2023",
-            name: "Amir Asanov",
-        },
-        {
-            date: "01/01/2023",
-            name: "Amir Asanov",
-        },
-        {
-            date: "01/01/2023",
-            name: "Amir Asanov",
-        },
-        {
-            date: "01/01/2023",
-            name: "Amir Asanov",
-        },
-        {
-            date: "01/01/2023",
-            name: "Amir Asanov",
-        },
-        {
-            date: "01/01/2023",
-            name: "Amir Asanov",
-        },
-        {
-            date: "01/01/2023",
-            name: "Amir Asanov",
-        },
-        {
-            date: "01/01/2023",
-            name: "Amir Asanov",
-        },
-        {
-            date: "01/01/2023",
-            name: "Amir Asanov",
-        },
-        {
-            date: "01/01/2023",
-            name: "Amir Asanov",
-        },
-        {
-            date: "01/01/2023",
-            name: "Amir Asanov",
-        },
-        {
-            date: "01/01/2023",
-            name: "Amir Asanov",
-        },
-        {
-            date: "01/01/2023",
-            name: "Amir Asanov",
-        },
-        {
-            date: "01/01/2023",
-            name: "Amir Asanov",
-        },
-        {
-            date: "01/01/2023",
-            name: "Amir Asanov",
-        },
-        {
-            date: "01/01/2023",
-            name: "Amir Asanov",
-        },
-        {
-            date: "01/01/2023",
-            name: "Amir Asanov",
-        },
-        {
-            date: "01/01/2023",
-            name: "Amir Asanov",
-        },
+        // {
+        //     date: "01/01/2023",
+        //     name: "Amir Asanov",
+        // },
     ]
 }
 
 export default function Sidebar() {
 
     const [state, { setASC }] = useContext(PatronEditingContext);
+
+    const [{ isOpen, onOpen, onClose }] = useContext(ModalContext);
 
     return (
         <VStack w="300px" h="$full" gap={"$3"}>
@@ -110,6 +34,10 @@ export default function Sidebar() {
                 </SimpleSelect>
                 <Input backgroundColor={"white"} fontSize={"14px"} flexBasis={"60%"} borderTopLeftRadius={"0"} borderBottomLeftRadius={"0"} />
             </HStack>
+            <Text color={"$accent11"} alignSelf={"end"} cursor={"pointer"} onClick={() => {onOpen()}}>
+                Advanced search
+            </Text>
+            <PatronSearchModal isOpen={isOpen} onClose={onClose}/>
             <VStack w={"$full"} flexGrow={"1"}>
                 <HStack w={"$full"} backgroundColor={"$accent11"}>
                     <SimpleSelect defaultValue={"modifiedDate"} border={"0"} color={"white"} borderRadius={"0"}>
@@ -126,8 +54,13 @@ export default function Sidebar() {
                     flexGrow={"1"} 
                     backgroundColor={"white"} 
                     overflow={"auto"} 
-                    h="calc(100vh - 32px - 40px - 40px - 40px - 0.75rem - 0.75rem - 0.75rem - 0.75rem)" // main header of the page - header of the page - searchbar - sortbar | gaps
+                    h="calc(100vh - 32px - 40px - 40px - 21px - 40px - 0.75rem * 8)"
                 >
+                <Show when={data.results.length == 0}>
+                    <Text w={"$full"} p={"$3"} color={"$blackAlpha10"}>
+                        No results.
+                    </Text>
+                </Show>
                 <For each={data.results}>{(result) =>
                     <SearchResult result={result} />
                 }</For>

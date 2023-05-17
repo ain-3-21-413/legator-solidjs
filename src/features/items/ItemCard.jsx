@@ -110,7 +110,7 @@ export default function ItemCard() {
                 w={"$full"} 
                 backgroundColor={"white"} 
                 overflow={"auto"}
-                h={"calc(100vh - 32px - 40px * 2 - 0.75rem * 4)"} 
+                h={"calc(100vh - 32px - 40px * 2 - 0.75rem * 6)"} 
             >
                 <Outlet />
             </VStack>

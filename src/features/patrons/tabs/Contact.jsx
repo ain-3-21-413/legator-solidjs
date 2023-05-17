@@ -42,7 +42,7 @@ export default function Contact() {
                     </VStack>
                     <VStack alignItems={"start"} flexBasis={"calc(100%/3)"}>
                         <label for="sms">
-                            SMS
+                            Messengers
                         </label>
                         <Input id="sms" />
                     </VStack>
@@ -70,7 +70,7 @@ export default function Contact() {
                     <VStack alignItems={"start"} flexBasis={"calc(100%/3)"}>
                         <VStack alignItems={"start"} w={"$full"}>
                             <label for="parentGuardian">
-                                Address
+                                Parent/Guardian
                             </label>
                             <Input id="parentGuardian" />
                         </VStack>

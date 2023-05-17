@@ -7,7 +7,7 @@ const data = {
 export default function Header() {
 
     return (
-        <HStack h={"$12"} w={"$full"} bgColor={"$accent11"} justifyContent={"end"} px={"$4"}>
+        <HStack h={"$12"} w={"$full"} bgColor={"$accent11"} justifyContent={"end"} p={"$3"}>
             <HStack gap={"$2"}>
                 <Text color={"$whiteAlpha12"} fontWeight={"$medium"}>
                     Hi, {data.name}
