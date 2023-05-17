@@ -8,6 +8,9 @@ export default function One() {
                 <Heading color={"$accent11"}>
                     Identifiers
                 </Heading>
+                <VStack>
+                    
+                </VStack>
             </VStack>
         </VStack>
     )
