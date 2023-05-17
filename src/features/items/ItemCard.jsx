@@ -106,7 +106,12 @@ export default function ItemCard() {
                     </Button>
                 </HStack>
             </VStack>
-            <VStack w={"$full"} h={"767px"} backgroundColor={"white"} overflow={"auto"}>
+            <VStack 
+                w={"$full"} 
+                backgroundColor={"white"} 
+                overflow={"auto"}
+                h={"calc(100vh - 32px - 40px * 2 - 0.75rem * 4)"} 
+            >
                 <Outlet />
             </VStack>
         </VStack>

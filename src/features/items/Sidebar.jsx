@@ -117,7 +117,13 @@ export default function Sidebar() {
                         { state.isASC ? <AiOutlineSortAscending /> : <AiOutlineSortDescending /> }
                     </IconButton>
                 </HStack>
-                <VStack w={"$full"} flexGrow={"1"} backgroundColor={"white"} overflow={"auto"} h="727px">
+                <VStack 
+                    w={"$full"} 
+                    flexGrow={"1"} 
+                    backgroundColor={"white"} 
+                    overflow={"auto"} 
+                    h="calc(100vh - 32px - 40px * 3 - 0.75rem * 4)"
+                >
                 <For each={data.results}>{(result) =>
                     <SearchResult result={result} />
                 }</For>
