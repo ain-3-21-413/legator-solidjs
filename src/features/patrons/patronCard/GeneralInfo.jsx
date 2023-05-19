@@ -65,40 +65,6 @@ export default function GeneralInfo() {
                     </VStack>
                 </HStack>
             </VStack>
-            <SimpleGrid columns={2} w={"300px"}>
-                <VStack p={"$1"} borderRightWidth={"1px"} borderBottomWidth={"1px"}>
-                    <Text textTransform={"uppercase"}>
-                        Out
-                    </Text>
-                    <Text>
-                        {state.currentPatron.stats.outs} 
-                    </Text>
-                </VStack>
-                <VStack p={"$1"} borderBottomWidth={"1px"}>
-                    <Text textTransform={"uppercase"}>
-                        Hold
-                    </Text>
-                    <Text>
-                        {state.currentPatron.stats.holds} 
-                    </Text>
-                </VStack>
-                <VStack p={"$1"} borderRightWidth={"1px"}>
-                    <Text textTransform={"uppercase"}>
-                        Suggestion
-                    </Text>
-                    <Text>
-                        {state.currentPatron.stats.suggestions} 
-                    </Text>
-                </VStack>
-                <VStack p={"$1"}>
-                    <Text textTransform={"uppercase"}>
-                        Last Use
-                    </Text>
-                    <Text>
-                        {state.currentPatron.stats.lastUse} 
-                    </Text>
-                </VStack>
-            </SimpleGrid>
         </HStack>
     )
 }
