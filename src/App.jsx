@@ -6,6 +6,7 @@ import PatronEditingProvider from './providers/PatronEditingProvider';
 import CurrentPatronProvider from './providers/CurrentPatron';
 import ItemEditingProvider from './providers/ItemEditingProvider';
 import ModalProvider from './providers/ModalProvider';
+import SubFieldModalProvider from './providers/SubFieldModalProvider';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Router>
         <CurrentPageProvider>
           <ModalProvider>
+          <SubFieldModalProvider>
             <PatronEditingProvider>
             <ItemEditingProvider>
               <CurrentPatronProvider>
@@ -20,6 +22,7 @@ function App() {
               </CurrentPatronProvider>
             </ItemEditingProvider>
             </PatronEditingProvider>
+          </SubFieldModalProvider>
           </ModalProvider>
         </CurrentPageProvider>
       </Router>

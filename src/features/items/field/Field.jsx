@@ -14,6 +14,7 @@ import { Show } from "solid-js";
                 <Show when={props.hasIndicators}>
                     <Input size={"xs"} w={"25px"} px={"$1"} justifyContent={"center"} display={"flex"}></Input>
                     <Input size={"xs"} w={"25px"} px={"$1"} justifyContent={"center"} display={"flex"}></Input>
+        
                 </Show>
                 
                 <Heading color={"$accent11"}>
@@ -25,6 +26,7 @@ import { Show } from "solid-js";
                 <IconButton display={props.removable ? "block" : "none"} size={"xs"} variant={"ghost"}>
                     <TbCopyOff />
                 </IconButton>
+                
             </HStack>
             {props.children}
         </VStack>

@@ -2,8 +2,12 @@ import { HStack, Heading, IconButton, Input, Stack, Text, VStack } from "@hope-u
 import { BiRegularDetail } from 'solid-icons/bi';
 import Field from "../field/Field";
 import SubField from "../field/SubField";
+import { For } from "solid-js";
+import useFieldsConfig from "../../../config/FieldsConfig";
 
 export default function Zero() {
+
+    const { zeroFields } = useFieldsConfig();
 
     return (
         <VStack w={"$full"} flexGrow={"1"} bgColor={"white"} fontSize={"14px"}  px={"$7"} py={"$5"} gap={"$3"}>
@@ -12,16 +16,25 @@ export default function Zero() {
                     Section 0
                 </Heading>
                 <VStack w={"$full"}>
-                    <Field number="001" name="Control Number" removable >
-                        <SubField number="00" name="contol field"></SubField>
-                    </Field>
-                    <Field number="015" name="National Bibliography Number" hasIndicators copiable removable>
-                        <SubField number="2" name="Source" ></SubField>
-                        <SubField number="a" name="National bibliography number"  repeatable></SubField>
-                        <SubField number="q" name="Qualifying information" repeatable></SubField>
-                        
-                    </Field>
-                    <Field number="016" name="National Bibliography Number"></Field>
+                    <For each={zeroFields}>{(field) => 
+                        <Field 
+                            number={field.number} 
+                            name={field.name} 
+                            removable={field.removable}
+                            copiable={field.copiable}
+                            hasIndicators={field.hasIndicators}
+                        >
+                            <For each={field.subfields}>{(subfield) => 
+                                <SubField 
+                                    number={subfield.number} 
+                                    name={subfield.name}
+                                    required={subfield.required}
+                                    editable={subfield.editable}
+                                    repeatable={subfield.repeatable}
+                                />
+                            }</For>
+                        </Field>
+                    }</For>
                 </VStack>
             </VStack>
         </VStack>
