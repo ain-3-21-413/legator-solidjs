@@ -4,12 +4,15 @@ import { Switch } from "solid-js";
 import { PatronEditingContext } from "../../providers/PatronEditingProvider";
 import { FaSolidLock, FaSolidLockOpen, FaSolidPlus } from "solid-icons/fa";
 import useOpen from "../../hooks/useOpen";
+import { CurrentPatronContext } from "../../providers/CurrentPatron";
 
 export default function Header() {
 
     const [state, { setLocked, setPatronSelected, setEditing }] = useContext(PatronEditingContext);
 
     const { open, openPatronTab } = useOpen();
+
+    const [ currentPatronState, { handleSave }] = useContext(CurrentPatronContext);
 
     return (
         <HStack justifyContent={"space-between"} w={"$full"}>
@@ -35,10 +38,10 @@ export default function Header() {
                         <Button colorScheme={"danger"}>
                             Revert
                         </Button>
-                        <Button colorScheme={"success"} disabled={!state.isReadyToSave}>
+                        <Button colorScheme={"success"} disabled={!state.isReadyToSave} onClick={handleSave}>
                             Save
                         </Button>
-                        <Button disabled>
+                        <Button disabled={!state.isReadyToSave}>
                             Actions
                         </Button>
                     </HStack>

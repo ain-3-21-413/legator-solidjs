@@ -80,24 +80,18 @@ export default function Contact() {
                 <HStack w={"$full"} justifyContent={"start"} gap={"$1"} alignItems={"start"} h={"$full"}>
                     <VStack alignItems={"start"} flexBasis={"calc(100%/3)"}>
                         <VStack alignItems={"start"} w={"$full"}>
-                            <label for="address">
-                                Address
+                            <label for="address1">
+                                Address 1
                             </label>
-                            <VStack w={"$full"} gap={"$1"}>
-                                <Input id="address" placeholder="Address 1" />
-                                <Input placeholder="Address 2" />
-                                <Input placeholder="City" />
-                                <Input placeholder="Postal Code" />
-                                <Input placeholder="Country" />
-                            </VStack>
+                            <Input id="address1" />
                         </VStack>
                     </VStack>
                     <VStack alignItems={"start"} flexBasis={"calc(100%/3)"}>
                         <VStack alignItems={"start"} w={"$full"}>
-                            <label for="parentGuardian">
-                                Parent/Guardian
+                            <label for="address2">
+                                Address 2
                             </label>
-                            <Input id="parentGuardian" />
+                            <Input id="address2" />
                         </VStack>
                     </VStack>
                     <VStack alignItems={"start"} flexBasis={"calc(100%/3)"} h={"$full"}>

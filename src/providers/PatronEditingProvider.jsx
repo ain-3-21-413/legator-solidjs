@@ -8,7 +8,7 @@ export default function PatronEditingProvider(props) {
     const [state, setState] = createStore({
         isLocked: true,
         isEditing: false,
-        isReadyToSave: false,
+        isReadyToSave: true,
         isASC: true, 
         isPatronSelected: false, 
     });

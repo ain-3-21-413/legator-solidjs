@@ -16,12 +16,6 @@ export default function Notes() {
                 </label>
                 <Textarea id="alertNotes" flexGrow={"1"} />
             </VStack>
-            <VStack alignItems={"start"} w={"$full"} flexGrow={"1"}>
-                <label for="categories">
-                    Categories
-                </label>
-                <Textarea id="categories" flexGrow={"1"} />
-            </VStack>
         </VStack>
     )
 }

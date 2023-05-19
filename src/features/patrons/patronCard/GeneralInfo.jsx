@@ -5,12 +5,12 @@ import inputmask from "inputmask";
 
 export default function GeneralInfo() {
 
-    const [state] = useContext(CurrentPatronContext);
+    const [state, { handleInput }] = useContext(CurrentPatronContext);
 
     onMount(() => {
         const barcodeInput = document.getElementById("patron-barcode");
         inputmask("9999-9999-9999").mask(barcodeInput);
-    })
+    });
 
     return (
         <HStack w={"$full"} justifyContent={"space-between"} gap={"$3"} backgroundColor={"white"} p={"$3"}>
@@ -20,9 +20,9 @@ export default function GeneralInfo() {
                     First | Middle | Last Name
                 </Text>
                 <HStack w={"$full"} gap={"$1"}>
-                    <Input backgroundColor={"$blackAlpha5"} />
-                    <Input backgroundColor={"$blackAlpha5"} />
-                    <Input backgroundColor={"$blackAlpha5"} />
+                    <Input name="firstName" onInput={(e) => handleInput(e)} backgroundColor={"$blackAlpha5"} value={state.currentPatron.firstName} />
+                    <Input name="middleName" onInput={(e) => handleInput(e)} backgroundColor={"$blackAlpha5"} value={state.currentPatron.middleName} />
+                    <Input name="lastName" onInput={(e) => handleInput(e)} backgroundColor={"$blackAlpha5"} value={state.currentPatron.lastName} />
                 </HStack>
                 <HStack w={"$full"} gap={"$1"}>
                     <VStack alignItems={"start"} flex={"1"}>

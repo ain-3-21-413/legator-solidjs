@@ -7,19 +7,52 @@ export default function CurrentPatronProvider(props) {
 
     const [state, setState] = createStore({
         currentPatron: {
-            stats: {
-                outs: 2,
-                holds: 1,
-                suggestions: 1,
-                lastUse: "01/01/2023",
-            }
+            firstName: "", 
+            middleName: "", 
+            lastName: "", 
+            barcode: "", 
+            site: "", 
+            status: "", 
+            policy: "", 
+            studentNumber: "", 
+            birthDate: "", 
+            sex: "", 
+            nickname: "", 
+            homeroom: "", 
+            secondLocation: "", 
+            group: "", 
+            graduationDate: "", 
+            accountExpiration: "", 
+            suspensionDate: "", 
+            primaryEmail: "", 
+            instituteEmail: "", 
+            primaryPhone: "", 
+            mobile: "", 
+            messengers: "", 
+            address1: "", 
+            address2: "", 
+            contactNotes: "", 
+            username: "", 
+            password: "", 
+            confirmPassword: "", 
+            generalNotes: "", 
+            alertNotes: "", 
         }
     });
+
+    const handleInput = (e) => {
+        setState([e.currentTarget.name], e.currentTarget.value);
+    }
+
+    const handleSave = () => {
+        console.log(state);
+    }
 
     const currentPatron = [
         state, 
         {
-
+            handleInput, 
+            handleSave, 
         }
     ]
     
