@@ -1,10 +1,16 @@
 import { HStack, Image, Input, SimpleGrid, SimpleOption, SimpleSelect, Text, VStack } from "@hope-ui/solid";
 import { CurrentPatronContext } from "../../../providers/CurrentPatron";
-import { useContext } from "solid-js";
+import { onMount, useContext } from "solid-js";
+import inputmask from "inputmask";
 
 export default function GeneralInfo() {
 
     const [state] = useContext(CurrentPatronContext);
+
+    onMount(() => {
+        const barcodeInput = document.getElementById("patron-barcode");
+        inputmask("9999-9999-9999").mask(barcodeInput);
+    })
 
     return (
         <HStack w={"$full"} justifyContent={"space-between"} gap={"$3"} backgroundColor={"white"} p={"$3"}>
@@ -20,10 +26,10 @@ export default function GeneralInfo() {
                 </HStack>
                 <HStack w={"$full"} gap={"$1"}>
                     <VStack alignItems={"start"} flex={"1"}>
-                        <label for="barcode">
+                        <label for="patron-barcode">
                             Barcode
                         </label>
-                        <Input id="barcode" backgroundColor={"$blackAlpha5"} />
+                        <Input type="text" id="patron-barcode" backgroundColor={"$blackAlpha5"} />
                     </VStack>
                     <VStack alignItems={"start"} flex={"1"}>
                         <label for="site">

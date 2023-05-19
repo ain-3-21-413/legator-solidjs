@@ -1,6 +1,13 @@
 import { HStack, Heading, Input, SimpleOption, SimpleSelect, VStack } from "@hope-ui/solid";
+import { onMount } from "solid-js";
+import inputmask from "inputmask";
 
 export default function Personal() {
+
+    onMount(() => {
+        const studentIdInput = document.getElementById("patron-student-id");
+        inputmask("AAA-9-99-999").mask(studentIdInput);
+    })
 
     return (
         <VStack w={"$full"} flexGrow={"1"} bgColor={"white"} fontSize={"14px"}  px={"$7"} py={"$5"} gap={"$3"}>
@@ -13,7 +20,7 @@ export default function Personal() {
                         <label for="studentId">
                             Student #
                         </label>
-                        <Input id="studentId" />
+                        <Input id="patron-student-id" />
                     </VStack>
                     <VStack alignItems={"start"} flexBasis={"calc(100%/3)"}>
                         <label for="birthDate">
@@ -36,12 +43,12 @@ export default function Personal() {
                     </VStack>
                 </HStack>
                 <HStack w={"$full"} justifyContent={"start"} gap={"$1"}>
-                    <VStack alignItems={"start"} flexBasis={"calc(100%/3)"}>
+                    {/* <VStack alignItems={"start"} flexBasis={"calc(100%/3)"}>
                         <label for="ssn">
                             SSN
                         </label>
                         <Input id="ssn" />
-                    </VStack>
+                    </VStack> */}
                     <VStack alignItems={"start"} flexBasis={"calc(100%/3)"}>
                         <label for="nickname">
                             Nickname

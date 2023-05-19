@@ -22,7 +22,7 @@ export default function PatronCard(props) {
                 overflowY={"auto"}
             >
                 <HStack justifyContent={"start"} w={"$full"}>
-                    <Button
+                    <Button tabIndex={"-1"}
                         onClick={() => openPatronTab("personal")} 
                         px={"$8"} py={"$2"} _hover={{backgroundColor: "$accent11", color: "white"}} 
                         borderRadius={"0"} 
@@ -31,7 +31,7 @@ export default function PatronCard(props) {
                     >
                         Personal
                     </Button>
-                    <Button
+                    <Button tabIndex={"-1"}
                         onClick={() => openPatronTab("contact")} 
                         px={"$8"} py={"$2"} _hover={{backgroundColor: "$accent11", color: "white"}} 
                         borderRadius={"0"} 
@@ -40,7 +40,7 @@ export default function PatronCard(props) {
                     >
                         Contact
                     </Button>
-                    <Button
+                    <Button tabIndex={"-1"}
                         onClick={() => openPatronTab("access")} 
                         px={"$8"} py={"$2"} _hover={{backgroundColor: "$accent11", color: "white"}} 
                         borderRadius={"0"} 
@@ -49,7 +49,7 @@ export default function PatronCard(props) {
                     >
                         Access
                     </Button>
-                    <Button
+                    <Button tabIndex={"-1"}
                         onClick={() => openPatronTab("notes")} 
                         px={"$8"} py={"$2"} _hover={{backgroundColor: "$accent11", color: "white"}} 
                         borderRadius={"0"} 
@@ -58,7 +58,7 @@ export default function PatronCard(props) {
                     >
                         Notes
                     </Button>
-                    <Button
+                    <Button tabIndex={"-1"}
                         onClick={() => openPatronTab("statistics")} 
                         px={"$8"} py={"$2"} _hover={{backgroundColor: "$accent11", color: "white"}} 
                         borderRadius={"0"} 

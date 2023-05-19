@@ -1,6 +1,16 @@
-import { HStack, Heading, Input, Textarea, VStack } from "@hope-ui/solid";
+import { HStack, Heading, Input, InputGroup, InputLeftAddon, Textarea, VStack } from "@hope-ui/solid";
+import { onMount } from "solid-js";
+import inputmask from "inputmask";
 
 export default function Contact() {
+
+    onMount(() => {
+        const phoneInputs = document.getElementsByClassName("patron-phone");
+        for (var i = 0; i < phoneInputs.length; i++) {
+            inputmask("(999) 99-99-99").mask(phoneInputs[i]);
+        }
+        console.log(phoneInputs);
+    })
 
     return (
         <VStack w={"$full"} flexGrow={"1"} bgColor={"white"} fontSize={"14px"}  px={"$7"} py={"$5"} gap={"$3"}>
@@ -13,13 +23,13 @@ export default function Contact() {
                         <label for="primaryEmail">
                             Primary Email
                         </label>
-                        <Input id="primaryEmail" />
+                        <Input id="primaryEmail" placeholder="email@example.com" />
                     </VStack>
                     <VStack alignItems={"start"} flexBasis={"calc(100%/3)"}>
                         <label for="otherEmails">
-                            Other emails
+                            Institute email
                         </label>
-                        <Input id="otherEmails" />
+                        <Input id="otherEmails" placeholder="email@inai.kg" />
                     </VStack>
                 </HStack>
             </VStack>
@@ -32,19 +42,34 @@ export default function Contact() {
                         <label for="primaryPhone">
                             Primary Phone
                         </label>
-                        <Input id="primaryPhone" />
+                        <InputGroup>
+                            <InputLeftAddon>
+                                +996
+                            </InputLeftAddon>
+                            <Input id="primaryPhone" type="tel" class="patron-phone" />
+                        </InputGroup>
                     </VStack>
                     <VStack alignItems={"start"} flexBasis={"calc(100%/3)"}>
                         <label for="mobile">
                             Mobile
                         </label>
-                        <Input id="mobile" />
+                        <InputGroup>
+                            <InputLeftAddon>
+                                +996
+                            </InputLeftAddon>
+                            <Input id="mobile" type="tel" class="patron-phone" />
+                        </InputGroup>
                     </VStack>
                     <VStack alignItems={"start"} flexBasis={"calc(100%/3)"}>
-                        <label for="sms">
+                        <label for="messengers">
                             Messengers
                         </label>
-                        <Input id="sms" />
+                        <InputGroup>
+                            <InputLeftAddon>
+                                +996
+                            </InputLeftAddon>
+                            <Input id="messengers" type="tel" class="patron-phone" />
+                        </InputGroup>
                     </VStack>
                 </HStack>
             </VStack>
