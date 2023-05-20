@@ -33,7 +33,7 @@ export default function InputValidationProvider(props) {
             }, 
             isInputValid (name) {
                 return state.patron[name];
-            }
+            }, 
         }
     ];
 

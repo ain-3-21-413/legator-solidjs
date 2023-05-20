@@ -1,18 +1,41 @@
-import { createContext, onMount, useContext } from "solid-js";
+import { createContext, createEffect, useContext } from "solid-js";
 import { createStore } from "solid-js/store";
 import { InputValidationContext } from "./InputValidationProvider";
+import { PatronEditingContext } from "./PatronEditingProvider";
 
 export const CurrentPatronContext = createContext();
 
 export default function CurrentPatronProvider(props) {
 
-    const [inputValidationState, { validateInput }] = useContext(InputValidationContext);
+    const [inputValidationState, { isInputValid, validateInput }] = useContext(InputValidationContext);
+    const [patronEditingState, { setEditing, setReadyToSave, setPatronSelected }] = useContext(PatronEditingContext);
 
-    onMount(() => {
+    createEffect(() => {
         validateInput("firstName", state.newPatron.firstName);
         validateInput("lastName", state.newPatron.lastName);
         validateInput("studentNumber", state.newPatron.studentNumber);
-    })
+        setReadyToSave(
+            isInputValid("firstName") && 
+            isInputValid("lastName") && 
+            isInputValid("studentNumber") &&
+            checkIfReadyToSave()
+        );
+    });
+
+    const checkIfReadyToSave = () => {
+        for (let prop in state.currentPatron) {
+            if (state.currentPatron.hasOwnProperty(prop)) {
+                if (state.currentPatron[prop] !== state.newPatron[prop]) {
+                    return true;
+                }
+            }
+        } 
+        return false;
+    }
+
+    createEffect(() => {
+        // setReadyToSave(checkIfReadyToSave());
+    });
 
     const [state, setState] = createStore({
         currentPatron: {
@@ -45,11 +68,35 @@ export default function CurrentPatronProvider(props) {
             alertNotes: "", 
         }, 
         newPatron: {
-            firstName: "firstName", 
-            middleName: "middleName", 
-            lastName: "lastName", 
-            studentNumber: "studentNumber", 
+            firstName: "", 
+            middleName: "", 
+            lastName: "", 
+            studentNumber: "", 
+            library: "", 
+            status: "", 
+            policy: "", 
+            birthDate: "", 
+            sex: "", 
+            homeroom: "", 
+            secondLocation: "", 
+            group: "", 
+            graduationDate: "", 
+            accountExpiration: "", 
+            primaryEmail: "", 
+            instituteEmail: "", 
+            primaryPhone: "", 
+            mobile: "", 
+            messengers: "", 
+            address1: "", 
+            address2: "", 
+            contactNotes: "", 
+            username: "", 
+            password: "", 
+            confirmPassword: "", 
+            generalNotes: "", 
+            alertNotes: "", 
         }, 
+        patrons: [], 
     });
 
     const handleInput = (e) => {
@@ -73,6 +120,16 @@ export default function CurrentPatronProvider(props) {
         }
     }
 
+    const addPatron = (patron) => {
+        setState("patrons", [...state.patrons, patron]);
+    }
+
+    const selectPatron = (patron) => {
+        setPatronSelected(true);
+        setState("currentPatron", patron);
+        setState("newPatron", patron);
+    }
+
     const currentPatron = [
         state, 
         {
@@ -80,6 +137,8 @@ export default function CurrentPatronProvider(props) {
             handleSave, 
             handleSelect, 
             revert, 
+            addPatron, 
+            selectPatron, 
         }
     ]
     

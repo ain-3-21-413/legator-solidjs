@@ -1,10 +1,12 @@
 import { HStack, Heading, Input, VStack } from "@hope-ui/solid";
 import { useContext } from "solid-js";
 import { CurrentPatronContext } from "../../../providers/CurrentPatron";
+import { PatronEditingContext } from "../../../providers/PatronEditingProvider";
 
 export default function Access() {
 
     const [state, { handleInput }] = useContext(CurrentPatronContext);
+    const [patronEditingState, { setEditing }] = useContext(PatronEditingContext);
 
     return (
         <VStack w={"$full"} flexGrow={"1"} bgColor={"white"} fontSize={"14px"}  px={"$7"} py={"$5"} gap={"$3"}>
@@ -18,19 +20,19 @@ export default function Access() {
                             <label for="username">
                                 Username
                             </label>
-                            <Input name="username" onInput={(e) => handleInput(e)} id="username" value={state.newPatron.username} />
+                            <Input onClick={() => setEditing(true)} disabled={patronEditingState.isLocked} name="username" onInput={(e) => handleInput(e)} id="username" value={state.newPatron.username} />
                         </VStack>
                         <VStack alignItems={"start"} w={"$full"}>
                             <label for="password">
                                 Password
                             </label>
-                            <Input name="password" onInput={(e) => handleInput(e)} id="password" value={state.newPatron.password} />
+                            <Input onClick={() => setEditing(true)} disabled={patronEditingState.isLocked} name="password" onInput={(e) => handleInput(e)} id="password" value={state.newPatron.password} />
                         </VStack>
                         <VStack alignItems={"start"} w={"$full"}>
                             <label for="confirmPassword">
                                 Confirm Password
                             </label>
-                            <Input name="confirmPassword" onInput={(e) => handleInput(e)} id="confirmPassword" value={state.newPatron.confirmPassword} />
+                            <Input onClick={() => setEditing(true)} disabled={patronEditingState.isLocked} name="confirmPassword" onInput={(e) => handleInput(e)} id="confirmPassword" value={state.newPatron.confirmPassword} />
                         </VStack>
                     </VStack>
                 </VStack>

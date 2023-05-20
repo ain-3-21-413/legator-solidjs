@@ -1,10 +1,12 @@
 import { HStack, Heading, Input, InputGroup, InputLeftAddon, Textarea, VStack } from "@hope-ui/solid";
 import { onMount, useContext } from "solid-js";
 import { CurrentPatronContext } from "../../../providers/CurrentPatron";
+import { PatronEditingContext } from "../../../providers/PatronEditingProvider";
 
 export default function Contact() {
 
     const [state, { handleInput }] = useContext(CurrentPatronContext);
+    const [patronEditingState, { setEditing }] = useContext(PatronEditingContext);
 
     onMount(() => {
     })
@@ -20,13 +22,13 @@ export default function Contact() {
                         <label for="primaryEmail">
                             Primary Email
                         </label>
-                        <Input name="primaryEmail" onInput={(e) => handleInput(e)} id="primaryEmail" placeholder="email@example.com" value={state.newPatron.primaryEmail} />
+                        <Input onClick={() => setEditing(true)} disabled={patronEditingState.isLocked} name="primaryEmail" onInput={(e) => handleInput(e)} id="primaryEmail" placeholder="email@example.com" value={state.newPatron.primaryEmail} />
                     </VStack>
                     <VStack alignItems={"start"} flexBasis={"calc(100%/3)"}>
                         <label for="instituteEmail">
                             Institute email
                         </label>
-                        <Input name="instituteEmail" onInput={(e) => handleInput(e)} id="instituteEmail" placeholder="email@inai.kg" value={state.newPatron.instituteEmail} />
+                        <Input onClick={() => setEditing(true)} disabled={patronEditingState.isLocked} name="instituteEmail" onInput={(e) => handleInput(e)} id="instituteEmail" placeholder="email@inai.kg" value={state.newPatron.instituteEmail} />
                     </VStack>
                 </HStack>
             </VStack>
@@ -43,7 +45,7 @@ export default function Contact() {
                             <InputLeftAddon>
                                 +996
                             </InputLeftAddon>
-                            <Input name="primaryPhone" onInput={(e) => handleInput(e)} id="primaryPhone" type="tel" class="patron-phone" value={state.newPatron.primaryPhone} />
+                            <Input onClick={() => setEditing(true)} disabled={patronEditingState.isLocked} name="primaryPhone" onInput={(e) => handleInput(e)} id="primaryPhone" type="tel" class="patron-phone" value={state.newPatron.primaryPhone} />
                         </InputGroup>
                     </VStack>
                     <VStack alignItems={"start"} flexBasis={"calc(100%/3)"}>
@@ -54,7 +56,7 @@ export default function Contact() {
                             <InputLeftAddon>
                                 +996
                             </InputLeftAddon>
-                            <Input name="mobile" onInput={(e) => handleInput(e)} id="mobile" type="tel" class="patron-phone" value={state.newPatron.mobile} />
+                            <Input onClick={() => setEditing(true)} disabled={patronEditingState.isLocked} name="mobile" onInput={(e) => handleInput(e)} id="mobile" type="tel" class="patron-phone" value={state.newPatron.mobile} />
                         </InputGroup>
                     </VStack>
                     <VStack alignItems={"start"} flexBasis={"calc(100%/3)"}>
@@ -65,7 +67,7 @@ export default function Contact() {
                             <InputLeftAddon>
                                 +996
                             </InputLeftAddon>
-                            <Input name="messengers" onInput={(e) => handleInput(e)} id="messengers" type="tel" class="patron-phone" value={state.newPatron.messengers} />
+                            <Input onClick={() => setEditing(true)} disabled={patronEditingState.isLocked} name="messengers" onInput={(e) => handleInput(e)} id="messengers" type="tel" class="patron-phone" value={state.newPatron.messengers} />
                         </InputGroup>
                     </VStack>
                 </HStack>
@@ -80,7 +82,7 @@ export default function Contact() {
                             <label for="address1">
                                 Address 1
                             </label>
-                            <Input name="address1" onInput={(e) => handleInput(e)} id="address1" value={state.newPatron.address1} />
+                            <Input onClick={() => setEditing(true)} disabled={patronEditingState.isLocked} name="address1" onInput={(e) => handleInput(e)} id="address1" value={state.newPatron.address1} />
                         </VStack>
                     </VStack>
                     <VStack alignItems={"start"} flexBasis={"calc(100%/3)"}>
@@ -88,7 +90,7 @@ export default function Contact() {
                             <label for="address2">
                                 Address 2
                             </label>
-                            <Input name="address2" onInput={(e) => handleInput(e)} id="address2" value={state.newPatron.address2} />
+                            <Input onClick={() => setEditing(true)} disabled={patronEditingState.isLocked} name="address2" onInput={(e) => handleInput(e)} id="address2" value={state.newPatron.address2} />
                         </VStack>
                     </VStack>
                     <VStack alignItems={"start"} flexBasis={"calc(100%/3)"} h={"$full"}>
@@ -96,7 +98,7 @@ export default function Contact() {
                             <label for="contactNotes">
                                 Contact Notes
                             </label>
-                            <Textarea name="contactNotes" onInput={(e) => handleInput(e)} id="contactNotes" h={"$full"} value={state.newPatron.contactNotes} />
+                            <Textarea disabled={patronEditingState.isLocked} name="contactNotes" onInput={(e) => handleInput(e)} id="contactNotes" h={"$full"} value={state.newPatron.contactNotes} />
                         </VStack>
                     </VStack>
                 </HStack>

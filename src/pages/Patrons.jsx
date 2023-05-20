@@ -2,13 +2,110 @@ import { HStack, VStack } from "@hope-ui/solid";
 import Header from "../features/patrons/Header";
 import Sidebar from "../features/patrons/Sidebar";
 import PatronCard from "../features/patrons/PatronCard";
-import { Match, Switch, useContext } from "solid-js";
+import { Match, Switch, onMount, useContext } from "solid-js";
 import { PatronEditingContext } from "../providers/PatronEditingProvider";
 import PatronPageIntro from "../features/patrons/patronPageIntro/PatronPageIntro";
+import { CurrentPatronContext } from "../providers/CurrentPatron";
 
 export default function Patrons() {
 
     const [state] = useContext(PatronEditingContext);
+    const [currentPatronState, { addPatron }] = useContext(CurrentPatronContext);
+
+    onMount(() => {
+        const newPatrons = [
+            {
+                firstName: "leo", 
+                middleName: "", 
+                lastName: "messi", 
+                studentNumber: "10", 
+                library: "", 
+                status: "", 
+                policy: "", 
+                birthDate: "", 
+                sex: "", 
+                homeroom: "", 
+                secondLocation: "", 
+                group: "", 
+                graduationDate: "", 
+                accountExpiration: "", 
+                primaryEmail: "", 
+                instituteEmail: "", 
+                primaryPhone: "", 
+                mobile: "", 
+                messengers: "", 
+                address1: "", 
+                address2: "", 
+                contactNotes: "", 
+                username: "", 
+                password: "", 
+                confirmPassword: "", 
+                generalNotes: "", 
+                alertNotes: "", 
+            }, 
+            {
+                firstName: "luis", 
+                middleName: "", 
+                lastName: "suarez", 
+                studentNumber: "9", 
+                library: "", 
+                status: "", 
+                policy: "", 
+                birthDate: "", 
+                sex: "", 
+                homeroom: "", 
+                secondLocation: "", 
+                group: "", 
+                graduationDate: "", 
+                accountExpiration: "", 
+                primaryEmail: "", 
+                instituteEmail: "", 
+                primaryPhone: "", 
+                mobile: "", 
+                messengers: "", 
+                address1: "", 
+                address2: "", 
+                contactNotes: "", 
+                username: "", 
+                password: "", 
+                confirmPassword: "", 
+                generalNotes: "", 
+                alertNotes: "", 
+            }, 
+            {
+                firstName: "neymar", 
+                middleName: "", 
+                lastName: "jr", 
+                studentNumber: "11", 
+                library: "", 
+                status: "", 
+                policy: "", 
+                birthDate: "", 
+                sex: "", 
+                homeroom: "", 
+                secondLocation: "", 
+                group: "", 
+                graduationDate: "", 
+                accountExpiration: "", 
+                primaryEmail: "", 
+                instituteEmail: "", 
+                primaryPhone: "", 
+                mobile: "", 
+                messengers: "", 
+                address1: "", 
+                address2: "", 
+                contactNotes: "", 
+                username: "", 
+                password: "", 
+                confirmPassword: "", 
+                generalNotes: "", 
+                alertNotes: "", 
+            }, 
+        ]
+        for (let i in newPatrons) {
+            addPatron(newPatrons[i]);
+        }
+    })
 
     return (
         <VStack alignItems={"start"} p={"$3"} h={"$full"} gap={"$3"}>

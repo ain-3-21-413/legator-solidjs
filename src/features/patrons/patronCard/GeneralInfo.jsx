@@ -2,11 +2,12 @@ import { HStack, Image, Input, SimpleGrid, SimpleOption, SimpleSelect, Text, VSt
 import { CurrentPatronContext } from "../../../providers/CurrentPatron";
 import { onMount, useContext } from "solid-js";
 import { InputValidationContext } from "../../../providers/InputValidationProvider";
+import { PatronEditingContext } from "../../../providers/PatronEditingProvider";
 
 export default function GeneralInfo() {
 
     const [state, { handleInput, handleSelect }] = useContext(CurrentPatronContext);
-
+    const [patronEditingState, { setEditing }] = useContext(PatronEditingContext);
     const [inputValidateState, { isInputValid }] = useContext(InputValidationContext);
        
 
@@ -18,22 +19,22 @@ export default function GeneralInfo() {
                     First | Middle | Last Name
                 </Text>
                 <HStack w={"$full"} gap={"$1"}>
-                    <Input invalid={!isInputValid("firstName")} name="firstName" onInput={(e) => handleInput(e)} backgroundColor={"$blackAlpha5"} value={state.newPatron.firstName} />
-                    <Input name="middleName" onInput={(e) => handleInput(e)} backgroundColor={"$blackAlpha5"} value={state.newPatron.middleName} />
-                    <Input invalid={!isInputValid("lastName")} name="lastName" onInput={(e) => handleInput(e)} backgroundColor={"$blackAlpha5"} value={state.newPatron.lastName} />
+                    <Input onClick={() => setEditing(true)} disabled={patronEditingState.isLocked} invalid={!isInputValid("firstName")} name="firstName" onInput={(e) => handleInput(e)} backgroundColor={"$blackAlpha5"} value={state.newPatron.firstName} />
+                    <Input onClick={() => setEditing(true)} disabled={patronEditingState.isLocked} name="middleName" onInput={(e) => handleInput(e)} backgroundColor={"$blackAlpha5"} value={state.newPatron.middleName} />
+                    <Input onClick={() => setEditing(true)} disabled={patronEditingState.isLocked} invalid={!isInputValid("lastName")} name="lastName" onInput={(e) => handleInput(e)} backgroundColor={"$blackAlpha5"} value={state.newPatron.lastName} />
                 </HStack>
                 <HStack w={"$full"} gap={"$1"}>
                     <VStack alignItems={"start"} flex={"1"}>
                         <label for="studentNumber">
                             Student #
                         </label>
-                        <Input invalid={!isInputValid("studentNumber")} name="studentNumber" onInput={(e) => handleInput(e)} type="text" id="studentNumber" backgroundColor={"$blackAlpha5"} value={state.newPatron.studentNumber} />
+                        <Input onClick={() => setEditing(true)} disabled={patronEditingState.isLocked} invalid={!isInputValid("studentNumber")} name="studentNumber" onInput={(e) => handleInput(e)} type="text" id="studentNumber" backgroundColor={"$blackAlpha5"} value={state.newPatron.studentNumber} />
                     </VStack>
                     <VStack alignItems={"start"} flex={"1"}>
                         <label for="library">
                             Library
                         </label>
-                        <SimpleSelect placeholder="Select" onChange={(value) => handleSelect("library", value)} id="library" backgroundColor={"$blackAlpha5"} value={state.newPatron.library}>
+                        <SimpleSelect onClick={() => setEditing(true)} disabled={patronEditingState.isLocked} placeholder="Select" onChange={(value) => handleSelect("library", value)} id="library" backgroundColor={"$blackAlpha5"} value={state.newPatron.library}>
                             <SimpleOption value={"INAI_KG"}>
                                 INAI.KG
                             </SimpleOption>
@@ -45,7 +46,7 @@ export default function GeneralInfo() {
                         <label for="status">
                             Status
                         </label>
-                        <SimpleSelect placeholder="Select" onChange={(value) => handleSelect("status", value)} id="status" backgroundColor={"$blackAlpha5"} value={state.newPatron.status}>
+                        <SimpleSelect onClick={() => setEditing(true)} disabled={patronEditingState.isLocked} placeholder="Select" onChange={(value) => handleSelect("status", value)} id="status" backgroundColor={"$blackAlpha5"} value={state.newPatron.status}>
                             <SimpleOption value={"ACTIVE"}>
                                 Active
                             </SimpleOption>
@@ -55,7 +56,7 @@ export default function GeneralInfo() {
                         <label for="policy">
                             Policy
                         </label>
-                        <SimpleSelect placeholder="Select" onChange={(value) => handleSelect("policy", value)} id="policy" backgroundColor={"$blackAlpha5"} value={state.newPatron.policy}>
+                        <SimpleSelect onClick={() => setEditing(true)} disabled={patronEditingState.isLocked} placeholder="Select" onChange={(value) => handleSelect("policy", value)} id="policy" backgroundColor={"$blackAlpha5"} value={state.newPatron.policy}>
                             <SimpleOption value={"BASIC_STUDENT"}>
                                 Basic Student
                             </SimpleOption>

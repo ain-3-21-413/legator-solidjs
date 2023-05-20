@@ -41,7 +41,7 @@ export default function Header() {
                         <Button colorScheme={"success"} disabled={!state.isReadyToSave} onClick={handleSave}>
                             Save
                         </Button>
-                        <Button disabled={!state.isReadyToSave}>
+                        <Button>
                             Actions
                         </Button>
                     </HStack>
