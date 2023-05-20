@@ -7,24 +7,27 @@ import CurrentPatronProvider from './providers/CurrentPatron';
 import ItemEditingProvider from './providers/ItemEditingProvider';
 import ModalProvider from './providers/ModalProvider';
 import SubFieldModalProvider from './providers/SubFieldModalProvider';
+import InputValidationProvider from './providers/InputValidationProvider';
 
 function App() {
   return (
     <HopeProvider>
       <Router>
-        <CurrentPageProvider>
-          <ModalProvider>
-          <SubFieldModalProvider>
-            <PatronEditingProvider>
-            <ItemEditingProvider>
-              <CurrentPatronProvider>
-                <ELibApp />
-              </CurrentPatronProvider>
-            </ItemEditingProvider>
-            </PatronEditingProvider>
-          </SubFieldModalProvider>
-          </ModalProvider>
-        </CurrentPageProvider>
+        <InputValidationProvider>
+          <CurrentPageProvider>
+            <ModalProvider>
+            <SubFieldModalProvider>
+              <PatronEditingProvider>
+              <ItemEditingProvider>
+                <CurrentPatronProvider>
+                  <ELibApp />
+                </CurrentPatronProvider>
+              </ItemEditingProvider>
+              </PatronEditingProvider>
+            </SubFieldModalProvider>
+            </ModalProvider>
+          </CurrentPageProvider>
+        </InputValidationProvider>
       </Router>
     </HopeProvider>
   );

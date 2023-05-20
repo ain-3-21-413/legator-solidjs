@@ -1,9 +1,18 @@
-import { createContext } from "solid-js";
+import { createContext, onMount, useContext } from "solid-js";
 import { createStore } from "solid-js/store";
+import { InputValidationContext } from "./InputValidationProvider";
 
 export const CurrentPatronContext = createContext();
 
 export default function CurrentPatronProvider(props) {
+
+    const [inputValidationState, { validateInput }] = useContext(InputValidationContext);
+
+    onMount(() => {
+        validateInput("firstName", state.newPatron.firstName);
+        validateInput("lastName", state.newPatron.lastName);
+        validateInput("studentNumber", state.newPatron.studentNumber);
+    })
 
     const [state, setState] = createStore({
         currentPatron: {
@@ -35,10 +44,16 @@ export default function CurrentPatronProvider(props) {
             generalNotes: "", 
             alertNotes: "", 
         }, 
-        newPatron: {}, 
+        newPatron: {
+            firstName: "firstName", 
+            middleName: "middleName", 
+            lastName: "lastName", 
+            studentNumber: "studentNumber", 
+        }, 
     });
 
     const handleInput = (e) => {
+        validateInput(e.currentTarget.name, e.currentTarget.value);
         setState("newPatron", e.currentTarget.name, e.currentTarget.value);
     }
 
@@ -52,12 +67,19 @@ export default function CurrentPatronProvider(props) {
         });
     }
 
+    const revert = () => {
+        for (let prop in state.currentPatron) {
+            setState("newPatron", prop, state.currentPatron[prop]);
+        }
+    }
+
     const currentPatron = [
         state, 
         {
             handleInput, 
             handleSave, 
             handleSelect, 
+            revert, 
         }
     ]
     

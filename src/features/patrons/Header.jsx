@@ -12,7 +12,7 @@ export default function Header() {
 
     const { open, openPatronTab } = useOpen();
 
-    const [ currentPatronState, { handleSave }] = useContext(CurrentPatronContext);
+    const [ currentPatronState, { handleSave, revert }] = useContext(CurrentPatronContext);
 
     return (
         <HStack justifyContent={"space-between"} w={"$full"}>
@@ -35,7 +35,7 @@ export default function Header() {
                 </Match>
                 <Match when={state.isEditing}>
                     <HStack gap={"$3"}>
-                        <Button colorScheme={"danger"}>
+                        <Button colorScheme={"danger"} onClick={revert}>
                             Revert
                         </Button>
                         <Button colorScheme={"success"} disabled={!state.isReadyToSave} onClick={handleSave}>

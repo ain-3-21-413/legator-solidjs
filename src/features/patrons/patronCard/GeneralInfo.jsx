@@ -1,10 +1,14 @@
 import { HStack, Image, Input, SimpleGrid, SimpleOption, SimpleSelect, Text, VStack } from "@hope-ui/solid";
 import { CurrentPatronContext } from "../../../providers/CurrentPatron";
 import { onMount, useContext } from "solid-js";
+import { InputValidationContext } from "../../../providers/InputValidationProvider";
 
 export default function GeneralInfo() {
 
     const [state, { handleInput, handleSelect }] = useContext(CurrentPatronContext);
+
+    const [inputValidateState, { isInputValid }] = useContext(InputValidationContext);
+       
 
     return (
         <HStack w={"$full"} justifyContent={"space-between"} gap={"$3"} backgroundColor={"white"} p={"$3"}>
@@ -14,16 +18,16 @@ export default function GeneralInfo() {
                     First | Middle | Last Name
                 </Text>
                 <HStack w={"$full"} gap={"$1"}>
-                    <Input name="firstName" onInput={(e) => handleInput(e)} backgroundColor={"$blackAlpha5"} value={state.newPatron.firstName} />
+                    <Input invalid={!isInputValid("firstName")} name="firstName" onInput={(e) => handleInput(e)} backgroundColor={"$blackAlpha5"} value={state.newPatron.firstName} />
                     <Input name="middleName" onInput={(e) => handleInput(e)} backgroundColor={"$blackAlpha5"} value={state.newPatron.middleName} />
-                    <Input name="lastName" onInput={(e) => handleInput(e)} backgroundColor={"$blackAlpha5"} value={state.newPatron.lastName} />
+                    <Input invalid={!isInputValid("lastName")} name="lastName" onInput={(e) => handleInput(e)} backgroundColor={"$blackAlpha5"} value={state.newPatron.lastName} />
                 </HStack>
                 <HStack w={"$full"} gap={"$1"}>
                     <VStack alignItems={"start"} flex={"1"}>
                         <label for="studentNumber">
                             Student #
                         </label>
-                        <Input name="studentNumber" onInput={(e) => handleInput(e)} type="text" id="studentNumber" backgroundColor={"$blackAlpha5"} value={state.newPatron.barcode} />
+                        <Input invalid={!isInputValid("studentNumber")} name="studentNumber" onInput={(e) => handleInput(e)} type="text" id="studentNumber" backgroundColor={"$blackAlpha5"} value={state.newPatron.studentNumber} />
                     </VStack>
                     <VStack alignItems={"start"} flex={"1"}>
                         <label for="library">
