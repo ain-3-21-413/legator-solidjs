@@ -1,6 +1,10 @@
 import { HStack, Heading, Input, VStack } from "@hope-ui/solid";
+import { useContext } from "solid-js";
+import { CurrentPatronContext } from "../../../providers/CurrentPatron";
 
 export default function Access() {
+
+    const [state, { handleInput }] = useContext(CurrentPatronContext);
 
     return (
         <VStack w={"$full"} flexGrow={"1"} bgColor={"white"} fontSize={"14px"}  px={"$7"} py={"$5"} gap={"$3"}>
@@ -14,19 +18,19 @@ export default function Access() {
                             <label for="username">
                                 Username
                             </label>
-                            <Input id="username" />
+                            <Input name="username" onInput={(e) => handleInput(e)} id="username" />
                         </VStack>
                         <VStack alignItems={"start"} w={"$full"}>
                             <label for="password">
                                 Password
                             </label>
-                            <Input id="password" />
+                            <Input name="password" onInput={(e) => handleInput(e)} id="password" />
                         </VStack>
                         <VStack alignItems={"start"} w={"$full"}>
                             <label for="confirmPassword">
                                 Confirm Password
                             </label>
-                            <Input id="confirmPassword" />
+                            <Input name="confirmPassword" onInput={(e) => handleInput(e)} id="confirmPassword" />
                         </VStack>
                     </VStack>
                 </VStack>

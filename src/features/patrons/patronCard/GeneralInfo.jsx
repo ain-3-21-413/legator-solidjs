@@ -5,7 +5,7 @@ import inputmask from "inputmask";
 
 export default function GeneralInfo() {
 
-    const [state, { handleInput }] = useContext(CurrentPatronContext);
+    const [state, { handleInput, handleSelect }] = useContext(CurrentPatronContext);
 
     onMount(() => {
         const barcodeInput = document.getElementById("patron-barcode");
@@ -29,26 +29,26 @@ export default function GeneralInfo() {
                         <label for="patron-barcode">
                             Barcode
                         </label>
-                        <Input type="text" id="patron-barcode" backgroundColor={"$blackAlpha5"} />
+                        <Input name="barcode" onInput={(e) => handleInput(e)} type="text" id="patron-barcode" backgroundColor={"$blackAlpha5"} />
                     </VStack>
                     <VStack alignItems={"start"} flex={"1"}>
-                        <label for="site">
-                            Site
+                        <label for="library">
+                            Library
                         </label>
-                        <SimpleSelect id="site" backgroundColor={"$blackAlpha5"} defaultValue={"one"}>
-                            <SimpleOption value={"one"}>
-                                One
+                        <SimpleSelect placeholder="Select" onChange={(value) => handleSelect("library", value)} id="library" backgroundColor={"$blackAlpha5"}>
+                            <SimpleOption value={"INAI_KG"}>
+                                INAI.KG
                             </SimpleOption>
                         </SimpleSelect>
                     </VStack>
                 </HStack>
                 <HStack w={"$full"} gap={"$1"}>
                     <VStack alignItems={"start"} flex={"1"}>
-                        <label for="site">
+                        <label for="status">
                             Status
                         </label>
-                        <SimpleSelect id="status" backgroundColor={"$blackAlpha5"} defaultValue={"active"}>
-                            <SimpleOption value={"active"}>
+                        <SimpleSelect placeholder="Select" onChange={(value) => handleSelect("status", value)} id="status" backgroundColor={"$blackAlpha5"}>
+                            <SimpleOption value={"ACTIVE"}>
                                 Active
                             </SimpleOption>
                         </SimpleSelect>
@@ -57,8 +57,8 @@ export default function GeneralInfo() {
                         <label for="policy">
                             Policy
                         </label>
-                        <SimpleSelect id="policy" backgroundColor={"$blackAlpha5"} defaultValue={"basicStudent"}>
-                            <SimpleOption value={"basicStudent"}>
+                        <SimpleSelect placeholder="Select" onChange={(value) => handleSelect("policy", value)} id="policy" backgroundColor={"$blackAlpha5"}>
+                            <SimpleOption value={"BASIC_STUDENT"}>
                                 Basic Student
                             </SimpleOption>
                         </SimpleSelect>
