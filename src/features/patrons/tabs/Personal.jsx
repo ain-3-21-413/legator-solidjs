@@ -1,6 +1,5 @@
 import { HStack, Heading, Input, SimpleOption, SimpleSelect, VStack } from "@hope-ui/solid";
 import { onMount, useContext } from "solid-js";
-import inputmask from "inputmask";
 import { CurrentPatronContext } from "../../../providers/CurrentPatron";
 
 export default function Personal() {
@@ -8,8 +7,6 @@ export default function Personal() {
     const [state, { handleInput, handleSelect }] = useContext(CurrentPatronContext);
 
     onMount(() => {
-        const studentIdInput = document.getElementById("patron-student-id");
-        inputmask("AAA-9-99-999").mask(studentIdInput);
     })
 
     return (
@@ -20,22 +17,22 @@ export default function Personal() {
                 </Heading>
                 <HStack w={"$full"} justifyContent={"start"} gap={"$1"}>
                     <VStack alignItems={"start"} flexBasis={"calc(100%/3)"}>
-                        <label for="studentId">
+                        <label for="studentNumber">
                             Student #
                         </label>
-                        <Input name="studentNumber" onInput={(e) => handleInput(e)} id="patron-student-id" />
+                        <Input name="studentNumber" onInput={(e) => handleInput(e)} id="studentNumber" value={state.newPatron.studentNumber} />
                     </VStack>
                     <VStack alignItems={"start"} flexBasis={"calc(100%/3)"}>
                         <label for="birthDate">
                             Birth Date
                         </label>
-                        <Input name="birthDate" onInput={(e) => handleInput(e)} type="date" id="birthDate" />
+                        <Input name="birthDate" onInput={(e) => handleInput(e)} type="date" id="birthDate" value={state.newPatron.birthDate} />
                     </VStack>
                     <VStack alignItems={"start"} flexBasis={"calc(100%/3)"}>
                         <label>
                             Sex
                         </label>
-                        <SimpleSelect onChange={(value) => handleSelect("sex", value)} placeholder="Select">
+                        <SimpleSelect onChange={(value) => handleSelect("sex", value)} placeholder="Select" value={state.newPatron.sex}>
                             <SimpleOption value={"MALE"}>
                                 Male
                             </SimpleOption>
@@ -50,7 +47,7 @@ export default function Personal() {
                         <label for="nickname">
                             Nickname
                         </label>
-                        <Input name="nickname" onInput={(e) => handleInput(e)} id="nickname" />
+                        <Input name="nickname" onInput={(e) => handleInput(e)} id="nickname" value={state.newPatron.nickname} />
                     </VStack>
                 </HStack>
             </VStack>
@@ -63,7 +60,7 @@ export default function Personal() {
                         <label>
                             Homeroom
                         </label>
-                        <SimpleSelect placeholder="Select" onChange={(value) => handleSelect("homeroom", value)}>
+                        <SimpleSelect placeholder="Select" onChange={(value) => handleSelect("homeroom", value)} value={state.newPatron.homeroom}>
                             <SimpleOption value={"201"}>
                                 201
                             </SimpleOption>
@@ -73,7 +70,7 @@ export default function Personal() {
                         <label>
                             2nd Location
                         </label>
-                        <SimpleSelect placeholder="Select" onChange={(value) => handleSelect("secondLocation", value)}>
+                        <SimpleSelect placeholder="Select" onChange={(value) => handleSelect("secondLocation", value)} value={state.newPatron.secondLocation}>
                             <SimpleOption value={"201"}>
                                 201
                             </SimpleOption>
@@ -83,7 +80,7 @@ export default function Personal() {
                         <label>
                             Group
                         </label>
-                        <SimpleSelect placeholder="Select" onChange={(value) => handleSelect("group", value)}>
+                        <SimpleSelect placeholder="Select" onChange={(value) => handleSelect("group", value)} value={state.newPatron.group}>
                             <SimpleOption value={"AIN-1-21"}>
                                 AIN-1-21
                             </SimpleOption>
@@ -100,13 +97,13 @@ export default function Personal() {
                         <label for="graduationDate">
                             Graduation Date
                         </label>
-                        <Input name="graduationDate" onInput={(e) => handleInput(e)} type="date" id="graduationDate" />
+                        <Input name="graduationDate" onInput={(e) => handleInput(e)} type="date" id="graduationDate" value={state.newPatron.graduationDate} />
                     </VStack>
                     <VStack alignItems={"start"} flexBasis={"calc(100%/3)"}>
                         <label for="accountExpiration">
                             Account Expiration
                         </label>
-                        <Input name="accountExpiration" onInput={(e) => handleInput(e)} type="date" id="accountExpiration" />
+                        <Input name="accountExpiration" onInput={(e) => handleInput(e)} type="date" id="accountExpiration" value={state.newPatron.accountExpiration} />
                     </VStack>
                 </HStack>
             </VStack>

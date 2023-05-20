@@ -12,13 +12,13 @@ export default function Notes() {
                 <label for="generalNotes">
                     General Notes
                 </label>
-                <Textarea name="generalNotes" onInput={(e) => handleInput(e)} id="generalNotes" flexGrow={"1"} />
+                <Textarea name="generalNotes" onInput={(e) => handleInput(e)} id="generalNotes" flexGrow={"1"} value={state.newPatron.generalNotes} />
             </VStack>
             <VStack alignItems={"start"} w={"$full"} flexGrow={"1"}>
                 <label for="alertNotes">
                     Alert Notes
                 </label>
-                <Textarea name="alertNotes" onInput={(e) => handleInput(e)} id="alertNotes" flexGrow={"1"} />
+                <Textarea name="alertNotes" onInput={(e) => handleInput(e)} id="alertNotes" flexGrow={"1"} value={state.newPatron.alertNotes} />
             </VStack>
         </VStack>
     )
