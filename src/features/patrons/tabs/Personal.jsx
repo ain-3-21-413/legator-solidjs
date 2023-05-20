@@ -17,12 +17,6 @@ export default function Personal() {
                 </Heading>
                 <HStack w={"$full"} justifyContent={"start"} gap={"$1"}>
                     <VStack alignItems={"start"} flexBasis={"calc(100%/3)"}>
-                        <label for="studentNumber">
-                            Student #
-                        </label>
-                        <Input name="studentNumber" onInput={(e) => handleInput(e)} id="studentNumber" value={state.newPatron.studentNumber} />
-                    </VStack>
-                    <VStack alignItems={"start"} flexBasis={"calc(100%/3)"}>
                         <label for="birthDate">
                             Birth Date
                         </label>
@@ -43,12 +37,6 @@ export default function Personal() {
                     </VStack>
                 </HStack>
                 <HStack w={"$full"} justifyContent={"start"} gap={"$1"}>
-                    <VStack alignItems={"start"} flexBasis={"calc(100%/3)"}>
-                        <label for="nickname">
-                            Nickname
-                        </label>
-                        <Input name="nickname" onInput={(e) => handleInput(e)} id="nickname" value={state.newPatron.nickname} />
-                    </VStack>
                 </HStack>
             </VStack>
             <VStack w={"$full"} alignItems={"start"} gap={"$3"}>

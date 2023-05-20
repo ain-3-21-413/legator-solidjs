@@ -20,10 +20,10 @@ export default function GeneralInfo() {
                 </HStack>
                 <HStack w={"$full"} gap={"$1"}>
                     <VStack alignItems={"start"} flex={"1"}>
-                        <label for="patron-barcode">
-                            Barcode
+                        <label for="studentNumber">
+                            Student #
                         </label>
-                        <Input name="barcode" onInput={(e) => handleInput(e)} type="text" id="patron-barcode" backgroundColor={"$blackAlpha5"} value={state.newPatron.barcode} />
+                        <Input name="studentNumber" onInput={(e) => handleInput(e)} type="text" id="studentNumber" backgroundColor={"$blackAlpha5"} value={state.newPatron.barcode} />
                     </VStack>
                     <VStack alignItems={"start"} flex={"1"}>
                         <label for="library">
