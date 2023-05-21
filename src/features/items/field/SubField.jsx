@@ -7,20 +7,18 @@ import { SubFieldModalContext } from "../../../providers/SubFieldModalProvider";
 
  function SubField(props) {
 
-    const { isOpen, onOpen, onClose } = useContext(SubFieldModalContext)
-
     return (
         <HStack w={"$full"} gap={"$1_5"}>
             <SubFieldModal></SubFieldModal>
             <Text>{props.number}</Text>
             <Heading fontWeight={"$normal"} flexShrink={"0"}>{props.name}</Heading>
             <Input size={"xs"}></Input>
-            <IconButton onClick={onOpen} display={props.editable ? "block":"none"} size={"xs"} variant={"ghost"}>
-                <FiEdit />
-            </IconButton>
             <Show when={props.required}>
                 <Text color={"$danger11 "}>Required</Text>
             </Show>
+            {/* <IconButton onClick={onOpen} display={props.editable ? "block":"none"} size={"xs"} variant={"ghost"}>
+                <FiEdit />
+            </IconButton> */}
             <Show when={props.repeatable}>
                 <HStack gap={"$1_5"}>
                     <IconButton size={"xs"} variant={"ghost"}>

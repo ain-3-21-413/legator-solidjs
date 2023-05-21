@@ -6,7 +6,6 @@ import PatronEditingProvider from './providers/PatronEditingProvider';
 import CurrentPatronProvider from './providers/CurrentPatron';
 import ItemEditingProvider from './providers/ItemEditingProvider';
 import ModalProvider from './providers/ModalProvider';
-import SubFieldModalProvider from './providers/SubFieldModalProvider';
 import InputValidationProvider from './providers/InputValidationProvider';
 
 function App() {
@@ -17,7 +16,6 @@ function App() {
         <InputValidationProvider>
           <CurrentPageProvider>
             <ModalProvider>
-            <SubFieldModalProvider>
               <PatronEditingProvider>
               <ItemEditingProvider>
                 <CurrentPatronProvider>
@@ -25,7 +23,6 @@ function App() {
                 </CurrentPatronProvider>
               </ItemEditingProvider>
               </PatronEditingProvider>
-            </SubFieldModalProvider>
             </ModalProvider>
           </CurrentPageProvider>
         </InputValidationProvider>
