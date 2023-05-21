@@ -11,7 +11,7 @@ import axios from "axios";
 export default function Patrons() {
 
     const [state] = useContext(PatronEditingContext);
-    const [currentPatronState, { addPatron, setPatrons }] = useContext(CurrentPatronContext);
+    const [currentPatronState, { addPatron, fetchPatrons }] = useContext(CurrentPatronContext);
 
     onMount(() => {
         // const newPatrons = [
@@ -106,13 +106,7 @@ export default function Patrons() {
         // for (let i in newPatrons) {
         //     addPatron(newPatrons[i]);
         // }
-        axios.get("http://localhost:8080/api/patrons")
-        .then(response => {
-            setPatrons(response.data);
-        })
-        .catch(error => {
-            console.log(error);
-        });
+        fetchPatrons();
     })
 
     return (

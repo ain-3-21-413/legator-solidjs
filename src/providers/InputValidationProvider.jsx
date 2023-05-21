@@ -30,14 +30,6 @@ export default function InputValidationProvider(props) {
                 }
                 if (name == "studentNumber") {
                     const isNotEmpty = value.trim() == "" ? false : true;
-                    const [exists, setExits] = createSignal(false);
-                    // axios.get("http://localhost:8080/api/patrons/exists?student-number=" + value)
-                    // .then(response => {
-                    //     setExits(response.data);
-                    //     console.log(response.data);
-                    // }).catch(error => {
-                    //     console.log(error);
-                    // });
                     setState("patron", "studentNumber", isNotEmpty);
                 }
             }, 

@@ -7,15 +7,6 @@ import { ModalContext } from "../../providers/ModalProvider";
 import PatronSearchModal from "./patronSearch/PatronSearchModal";
 import { CurrentPatronContext } from "../../providers/CurrentPatron";
 
-const data = {
-    results: [
-        // {
-        //     date: "01/01/2023",
-        //     name: "Amir Asanov",
-        // },
-    ]
-}
-
 export default function Sidebar() {
 
     const [state, { setASC }] = useContext(PatronEditingContext);

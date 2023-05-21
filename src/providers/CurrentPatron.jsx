@@ -112,25 +112,47 @@ export default function CurrentPatronProvider(props) {
     }
 
     const handleSave = () => {
-        axios.post("http://localhost:8080/api/patrons", {...state.newPatron})
-        .then(response => {
-            console.log(response);
-            notificationService.show({
-                status: "success", 
-                title: "Patron updated!"
-            });
-            setState("currentPatron", state.newPatron);
-        })
-        .catch(error => {
-            console.log(error);
-            notificationService.show({
-                status: "danger", 
-                title: "Error!"
+        console.log(state.isCurrentPatronNew);
+        if (state.isCurrentPatronNew) {
+            axios.post("http://localhost:8080/api/patrons", { ...state.newPatron })
+            .then(response => {
+                console.log(response);
+                notificationService.show({
+                    status: "success", 
+                    title: "Patron created!"
+                });
+                setState("currentPatron", state.newPatron);
+                fetchPatrons();
+                createNewPatron();
             })
-        });
-        console.log({
-            ...state.newPatron
-        });
+            .catch(error => {
+                notificationService.show({
+                    status: "danger", 
+                    title: error.response.data.message, 
+                });
+            });
+        } else if (!state.isCurrentPatronNew) {
+            const { studentNumber, ...patronToBeUpdated } = state.newPatron;
+            axios.put("http://localhost:8080/api/patrons/" + state.newPatron.studentNumber, patronToBeUpdated)
+            .then(response => {
+                console.log(response);
+                notificationService.show({
+                    status: "success", 
+                    title: "Patron updated!"
+                });
+                setState("currentPatron", state.newPatron);
+                fetchPatrons();
+                selectPatron(patronToBeUpdated);
+                
+            })
+            .catch(error => {
+                console.log(error);
+                notificationService.show({
+                    status: "danger", 
+                    title: "Error!"
+                });
+            });
+        }
     }
 
     const revert = () => {
@@ -143,8 +165,14 @@ export default function CurrentPatronProvider(props) {
         setState("patrons", [...state.patrons, patron]);
     }
 
-    const setPatrons = (patrons) => {
-        setState("patrons", patrons);
+    const fetchPatrons = () => {
+        axios.get("http://localhost:8080/api/patrons")
+        .then(response => {
+            setState("patrons", response.data);
+        })
+        .catch(error => {
+            console.log(error);
+        });
     }
 
     const createNewPatron = () => {
@@ -171,7 +199,7 @@ export default function CurrentPatronProvider(props) {
             handleSelect, 
             revert, 
             addPatron,
-            setPatrons,  
+            fetchPatrons,  
             createNewPatron, 
             selectPatron, 
         }
