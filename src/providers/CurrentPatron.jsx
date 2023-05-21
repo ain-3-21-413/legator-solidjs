@@ -148,11 +148,11 @@ export default function CurrentPatronProvider(props) {
     }
 
     const createNewPatron = () => {
-        // setPatronSelected(true); 
-        // setEditing(true);
-        // setState("isCurrentPatronNew", true);
-        // setState("currentPatron", {});
-        // setState("newPatron", {});
+        setState("isCurrentPatronNew", true);
+        for (let prop in state.currentPatron) {
+            setState("currentPatron", prop, null);
+            setState("newPatron", prop, null);
+        }
     }
 
     const selectPatron = (patron) => {
