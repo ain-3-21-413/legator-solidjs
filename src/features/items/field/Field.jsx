@@ -5,7 +5,7 @@ import { CurrentBookContext } from "../../../providers/CurrentBook";
 
  function Field(props) {
 
-    const { handleInput } = useContext(CurrentBookContext);
+    const { handleInput, newBook } = useContext(CurrentBookContext);
 
     return (
         <VStack w={"$full"} gap={"$2"} borderBottomWidth={"1px"}borderBottomColor={"$blackAlpha5"} py={"$3"}>
@@ -15,8 +15,8 @@ import { CurrentBookContext } from "../../../providers/CurrentBook";
                 </Heading>
                 <Text color={"$accent11"}> ?</Text>
                 <Show when={props.hasIndicators}>
-                    <Input id={"ind1-" + props.number} maxLength={"1"} textAlign={"center"} onInput={(event) => handleInput(event)} name={"ind1-" + props.number} size={"xs"} w={"25px"} px={"$1"} justifyContent={"center"} display={"flex"}></Input>
-                    <Input id={"ind2-" + props.number} maxLength={"1"} textAlign={"center"} onInput={(event) => handleInput(event)} name={"ind2-" + props.number} size={"xs"} w={"25px"} px={"$1"} justifyContent={"center"} display={"flex"}></Input>
+                    <Input value={newBook["fields"]["ind1-" + props.number]} id={"ind1-" + props.number} maxLength={"1"} textAlign={"center"} onInput={(event) => handleInput(event)} name={"ind1-" + props.number} size={"xs"} w={"25px"} px={"$1"} justifyContent={"center"} display={"flex"}></Input>
+                    <Input value={newBook["fields"]["ind2-" + props.number]} id={"ind2-" + props.number} maxLength={"1"} textAlign={"center"} onInput={(event) => handleInput(event)} name={"ind2-" + props.number} size={"xs"} w={"25px"} px={"$1"} justifyContent={"center"} display={"flex"}></Input>
                 </Show>
                 
                 <Heading color={"$accent11"}>

@@ -11,41 +11,43 @@ export default function CurrentBookProvider(props) {
 
     const [currentBook, setCurrentBook] = createStore({
         fields: {
-            "010-a": "", 
+            "100-a": "", 
         }
     });
 
+    const [newBook, setNewBook] = createStore({
+        fields: {
+            "100-a": "", 
+        }
+    })
+
     const [signals, setSignals] = createSignal({});
     const [fieldsValidation, setFieldsValidation] = createStore({
+        "000-00": true, 
+        "001-00": true, 
+        "ind1-100": true, 
+        "ind2-100": true, 
+        "100-a": true, 
         "ind1-245": true, 
         "ind2-245": true, 
-        "ind1-010": true, 
-        "ind2-010": true, 
-        "000-00": true, 
-        "003-00": true, 
-        "005-00": true, 
-        "008-00": true, 
-        "010-a": true, 
         "245-a": true, 
     });
 
     const validateInput = (name, value) => {
-        if (["ind1-245", "ind2-245", "000-00", "003-00", "005-00", "008-00", "010-a", "ind1-010", "ind2-010", "245-a"].includes(name)) {
+        if (["000-00", "001-00", "ind1-100", "ind2-100", "100-a", "ind1-245", "ind2-245", "245-a"].includes(name)) {
             setFieldsValidation(name, value.trim() == "");
         }
     }
     
     const areFieldsValid = () => {
         return (
-            fieldsValidation["ind1-245"] || 
-            fieldsValidation["ind2-245"] || 
-            fieldsValidation["ind1-010"] || 
-            fieldsValidation["ind2-010"] || 
             fieldsValidation["000-00"] ||
-            fieldsValidation["003-00"] ||
-            fieldsValidation["005-00"] ||
-            fieldsValidation["008-00"] ||
-            fieldsValidation["010-a"] ||
+            fieldsValidation["001-00"] ||
+            fieldsValidation["ind1-100"] ||
+            fieldsValidation["ind2-100"] ||
+            fieldsValidation["100-a"] ||
+            fieldsValidation["ind1-245"] ||
+            fieldsValidation["ind2-245"] ||
             fieldsValidation["245-a"]
         )
     }
@@ -54,7 +56,8 @@ export default function CurrentBookProvider(props) {
         const { name, value } = event.target;
         
         validateInput(name, value);
-        
+        setNewBook("fields", name, value);
+
         setSignals((prevSignals) => ({
             ...prevSignals, 
             [name]: value, 
@@ -66,7 +69,15 @@ export default function CurrentBookProvider(props) {
     }
 
     const selectBook = (book) => {
-        setCurrentBook(book);
+        setFieldsValidation("000-00", false);
+        setFieldsValidation("001-00", false);
+        setFieldsValidation("ind1-100", false);
+        setFieldsValidation("ind2-100", false);
+        setFieldsValidation("100-a", false);
+        setFieldsValidation("ind1-245", false);
+        setFieldsValidation("ind2-245", false);
+        setFieldsValidation("245-a", false);
+        setNewBook(book);
     }
 
     const fetchBooks = () => {
@@ -234,6 +245,7 @@ export default function CurrentBookProvider(props) {
         selectBook, 
         store, 
         currentBook, 
+        newBook, 
     }
 
     return (

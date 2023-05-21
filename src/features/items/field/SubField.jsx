@@ -6,7 +6,7 @@ import { CurrentBookContext } from "../../../providers/CurrentBook";
 
  function SubField(props) {
 
-    const { handleInput, currentBook } = useContext(CurrentBookContext);
+    const { handleInput, newBook } = useContext(CurrentBookContext);
 
     return (
         <HStack w={"$full"} gap={"$1_5"}>
@@ -17,7 +17,7 @@ import { CurrentBookContext } from "../../../providers/CurrentBook";
                     <Textarea id={props.fullName} onInput={(event) => handleInput(event)} name={props.fullName} />
                 </Match>
                 <Match when={!props.isTextarea}>
-                    <Input id={props.fullName} value={currentBook["fields"]?.[props.fullName] ?? ""} onInput={(event) => handleInput(event)} name={props.fullName} size={"xs"}></Input>
+                    <Input id={props.fullName} value={newBook["fields"]?.[props.fullName] ?? ""} onInput={(event) => handleInput(event)} name={props.fullName} size={"xs"}></Input>
                 </Match>
             </Switch>
             <Show when={props.required}>

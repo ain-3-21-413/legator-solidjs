@@ -28,7 +28,7 @@ export default function useFieldsConfig(){
                 {
                     number:"00",
                     name:"control field",
-                    required:false,
+                    required:true,
                     editable:false,
                     repeatable:false
                 }
@@ -44,7 +44,7 @@ export default function useFieldsConfig(){
                 {
                     number:"00",
                     name:"control field",
-                    required:true,
+                    required:false,
                     editable:true,
                     repeatable:false
                 }
@@ -60,7 +60,7 @@ export default function useFieldsConfig(){
                 {
                     number:"00",
                     name:"control field",
-                    required:true,
+                    required:false,
                     editable:true,
                     repeatable:false
                 }
@@ -108,7 +108,7 @@ export default function useFieldsConfig(){
                 {
                     number:"00",
                     name:"fixed length control field",
-                    required:true,
+                    required:false,
                     editable:true,
                     repeatable:false
                 }
@@ -124,7 +124,7 @@ export default function useFieldsConfig(){
                 {
                     number:"a",
                     name:"LC control number",
-                    required:true,
+                    required:false,
                     editable:false,
                     repeatable:false
                 }
@@ -339,7 +339,7 @@ export default function useFieldsConfig(){
                 {
                     number: "a",
                     name: "Personal name",
-                    required: false,
+                    required: true,
                     editable: true,
                     repeatable: false, 
                 }, 
