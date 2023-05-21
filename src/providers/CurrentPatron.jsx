@@ -124,6 +124,10 @@ export default function CurrentPatronProvider(props) {
         setState("patrons", [...state.patrons, patron]);
     }
 
+    const setPatrons = (patrons) => {
+        setState("patrons", patrons);
+    }
+
     const selectPatron = (patron) => {
         setPatronSelected(true);
         setState("currentPatron", patron);
@@ -137,7 +141,8 @@ export default function CurrentPatronProvider(props) {
             handleSave, 
             handleSelect, 
             revert, 
-            addPatron, 
+            addPatron,
+            setPatrons,  
             selectPatron, 
         }
     ]
