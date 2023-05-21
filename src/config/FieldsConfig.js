@@ -233,7 +233,8 @@ export default function useFieldsConfig(){
                     repeatable:false
                 }
             ]
-        },{
+        },
+        {
             number:"024",
             name:"Other Standard Identifier",
             removable:true,
@@ -637,16 +638,2687 @@ export default function useFieldsConfig(){
             ]
         },
     ]
+
+    const oneFields = [
+        {
+            number:"100",
+            name:"Main Entry-Personal Name",
+            removable:true,
+            copiable:false,
+            hasIndicators:true,
+            subfields:[
+                {
+                    number:"a",
+                    name:"Personal name",
+                    required:false,
+                    editable:true,
+                    repeatable:false
+                },
+                {
+                    number:"d",
+                    name:"Dates associated with a name",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"e",
+                    name:"Relator term",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"q",
+                    name:"Fuller form of name",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                }
+            
+            ]
+        },
+        {
+            number:"110",
+            name:"Main Entry-Corporate Name",
+            removable:true,
+            copiable:false,
+            hasIndicators:true,
+            subfields:[
+                {
+                    number:"a",
+                    name:"Corporate name or jurisdiction name as entry element ",
+                    required:false,
+                    editable:true,
+                    repeatable:false
+                },
+                {
+                    number:"b",
+                    name:"Subordinate unit",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"e",
+                    name:"Relator term",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                }
+            ]
+        },
+        {
+            number:"111",
+            name:"Main Entry-Meeting Name",
+            removable:true,
+            copiable:false,
+            hasIndicators:true,
+            subfields:[
+                {
+                    number:"a",
+                    name:"Meeting name or jurisdiction name as entry element",
+                    required:false,
+                    editable:true,
+                    repeatable:false
+                },
+                {
+                    number:"c",
+                    name:"Location of meeting",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"e",
+                    name:"Subordinate unit",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"j",
+                    name:"Relator term",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                }
+            
+            ]
+        },
+        {
+            number:"130",
+            name:"Main Entry-Uniform Title",
+            removable:true,
+            copiable:false,
+            hasIndicators:true,
+            subfields:[
+                {
+                    number:"9",
+                    name:" 9(RLIN)",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"a",
+                    name:"Uniform title",
+                    required:false,
+                    editable:true,
+                    repeatable:false
+                },
+                {
+                    number:"l",
+                    name:"Language of a work",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"r",
+                    name:"Key for music",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                }
+            
+            ]
+        }
+    ]
     
     const twoFields = [
-    
+        {
+            number:"210",
+            name:"Abbreviated Title",
+            removable:true,
+            copiable:true,
+            hasIndicators:true,
+            subfields:[
+                {
+                    number:"2",
+                    name:"Source",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"a",
+                    name:"Abbreviated title",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"b",
+                    name:" Qualifying information",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                }
+            ]
+        },
+        {
+            number:"222",
+            name:"Key Title",
+            removable:true,
+            copiable:true,
+            hasIndicators:true,
+            subfields:[
+                {
+                    number:"a",
+                    name:"Key title",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"b",
+                    name:"Qualifying information",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                }
+            ]
+        },
+        {
+            number:"240",
+            name:"Uniform Title",
+            removable:true,
+            copiable:false,
+            hasIndicators:true,
+            subfields:[
+                {
+                    number:"a",
+                    name:"Uniform title",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"h",
+                    name:"Medium",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"l",
+                    name:"Language of a work",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"r",
+                    name:"Key for music",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"s",
+                    name:"Version",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                }
+            
+            ]
+        },
+        {
+            number:"243",
+            name:"Collective Uniform Title",
+            removable:true,
+            copiable:false,
+            hasIndicators:true,
+            subfields:[
+                {
+                    number:"a",
+                    name:"Uniform title",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"h",
+                    name:"Medium",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"l",
+                    name:"Language of a work",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"s",
+                    name:"Version",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                }
+            
+            ]
+        },
+        {
+            number:"245",
+            name:"Title Statement",
+            removable:true,
+            copiable:false,
+            hasIndicators:true,
+            subfields:[
+                {
+                    number:"a",
+                    name:"Title",
+                    required:true,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"b",
+                    name:"Remainder of title",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"c",
+                    name:"Statement of responsibility, etc.",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"h",
+                    name:"Medium",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                }
+            
+            ]
+        },
+        {
+            number:"246",
+            name:"Varying Form of Title",
+            removable:true,
+            copiable:true,
+            hasIndicators:true,
+            subfields:[
+                {
+                    number:"a",
+                    name:"Title proper/short title",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"b",
+                    name:"Remainder of title",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"h",
+                    name:"Medium",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"i",
+                    name:"Display tex",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                }
+            
+            ]
+        },
+        {
+            number:"247",
+            name:"Former Title",
+            removable:true,
+            copiable:true,
+            hasIndicators:true,
+            subfields:[
+                {
+                    number:"a",
+                    name:"Title",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"b",
+                    name:"Remainder of title",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"h",
+                    name:"Medium",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                }
+            ]
+        },
+        {
+            number:"250",
+            name:"Edition Statement",
+            removable:true,
+            copiable:true,
+            hasIndicators:true,
+            subfields:[
+                {
+                    number:"a",
+                    name:"Edition statement",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"b",
+                    name:"Remainder of edition statement",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                }
+            ]
+        },
+        {
+            number:"260",
+            name:"Publication, Distribution, etc.",
+            removable:true,
+            copiable:true,
+            hasIndicators:true,
+            subfields:[
+                {
+                    number:"a",
+                    name:"Place of publication, distribution, etc.",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"b",
+                    name:"Name of publisher, distributor, etc.",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"c",
+                    name:"Date of publication, distribution, etc.",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                }
+            ]
+        },
+        {
+            number:"270",
+            name:"Address",
+            removable:true,
+            copiable:true,
+            hasIndicators:true,
+            subfields:[
+                {
+                    number:"a",
+                    name:"Address",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"b",
+                    name:"City",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"c",
+                    name:"State or province",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"d",
+                    name:"Country",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"e",
+                    name:"Postal code",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"f",
+                    name:"Terms preceding attention name",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"g",
+                    name:"Attention name",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"h",
+                    name:"Attention position",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"i",
+                    name:"Type of address",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"j",
+                    name:"Specialized telephone number ",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"k",
+                    name:"Telephone number",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"l",
+                    name:"Fax number",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"m",
+                    name:"Electronic mail address ",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"n",
+                    name:"TDD or TTY number",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"p",
+                    name:"Contact person",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"q",
+                    name:"Title of contact person",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"r",
+                    name:"Hours",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"z",
+                    name:"Public note",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                }
+            
+            ]
+        }
     ]
 
-
-    const fiveFields=[
-        
+    const threeFields = [
+        {
+            number:"300",
+            name:"Physical Description",
+            removable:true,
+            copiable:true,
+            hasIndicators:true,
+            subfields:[
+                {
+                    number:"a",
+                    name:"Extent",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"b",
+                    name:"Other physical details",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"c",
+                    name:"Dimensions",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"e",
+                    name:"Accompanying material",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"f",
+                    name:"Type of unit",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"g",
+                    name:"Size of unit",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                }
+            ]
+        },
+        {
+            number:"306",
+            name:"Playing Time",
+            removable:true,
+            copiable:false,
+            hasIndicators:true,
+            subfields:[
+                {
+                    number:"a",
+                    name:"Playing time",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                }
+            ]
+        },
+        {
+            number:"310",
+            name:"Current Publication Frequency",
+            removable:true,
+            copiable:true,
+            hasIndicators:true,
+            subfields:[
+                {
+                    number:"a",
+                    name:"Current publication frequency",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                }
+            
+            ]
+        },
+        {
+            number:"362",
+            name:"Dates of Publication and/or Sequential Designation",
+            removable:true,
+            copiable:true,
+            hasIndicators:true,
+            subfields:[
+                {
+                    number:"a",
+                    name:"Dates of publication and/or sequential designation",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                }
+            ]
+        },
+        {
+            number:"365",
+            name:"Trade Price",
+            removable:true,
+            copiable:true,
+            hasIndicators:true,
+            subfields:[
+                {
+                    number:"2",
+                    name:"Source of price type code",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"a",
+                    name:"Price type code",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"b",
+                    name:"Price amount",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"c",
+                    name:"Currency code",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"d",
+                    name:"Unit of pricing",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"e",
+                    name:"Price note",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"f",
+                    name:"Price effective from",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"g",
+                    name:"Price effective until",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"h",
+                    name:"Tax rate 1",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"i",
+                    name:"Tax rate 2",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"j",
+                    name:"ISO country code",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"k",
+                    name:"MARC country code",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"m",
+                    name:"Identification of pricing entity",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                }
+            ]
+        },
+        {
+            number:"366",
+            name:"Trade Availability Information",
+            removable:true,
+            copiable:true,
+            hasIndicators:true,
+            subfields:[
+                {
+                    number:"2",
+                    name:"Source of availability status code",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"a",
+                    name:"Publishers' compressed title identification",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"b",
+                    name:"Detailed date of publication",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"c",
+                    name:"Availability status code",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"d",
+                    name:"Expected next availability date",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"e",
+                    name:"Note",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"f",
+                    name:"Publisher's discount category",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"g",
+                    name:"Date made out of print",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"j",
+                    name:"ISO country code",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"k",
+                    name:"MARC country code",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"m",
+                    name:"Identification of agency",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                }
+            ]
+        }
     ]
-    return {zeroFields}
+
+    const fourFields = [
+        {
+            number:"490",
+            name:"Series Statement",
+            removable:true,
+            copiable:true,
+            hasIndicators:true,
+            subfields:[
+                {
+                    number:"3",
+                    name:"Materials specified",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"a",
+                    name:"Series statement",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"v",
+                    name:"Volume/sequential designation",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"x",
+                    name:"International Standard Serial Number",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                }
+            ]
+        }
+    ]
+
+    const fiveFields = [ 
+        {
+            number:"500",
+            name:"General Note",
+            removable:true,
+            copiable:true,
+            hasIndicators:true,
+            subfields:[
+                {
+                    number:"a",
+                    name:"General note",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                }
+            ]
+        },
+
+        {
+            number:"501",
+            name:"Control number",
+            removable:true,
+            copiable:true,
+            hasIndicators:true,
+            subfields:[
+                {
+                    number:"a",
+                    name:"With note",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                }
+            ]
+        },
+        {
+            number:"504",
+            name:"Bibliography, Etc. Note",
+            removable:true,
+            copiable:true,
+            hasIndicators:true,
+            subfields:[
+                {
+                    number:"a",
+                    name:"Bibliography, etc. note",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                }
+            ]
+        },
+        {
+            number:"505",
+            name:"Formatted Contents Note",
+            removable:true,
+            copiable:true,
+            hasIndicators:true,
+            subfields:[
+                {
+                    number:"a",
+                    name:"Formatted contents note",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"g",
+                    name:"Miscellaneous information",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"r",
+                    name:"Statement of responsibility",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"t",
+                    name:"Title",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"u",
+                    name:"Uniform Resource Identifier",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                }
+            ]
+        },
+        {
+            number:"508",
+            name:"Creation/Production Credits Note",
+            removable:true,
+            copiable:true,
+            hasIndicators:true,
+            subfields:[
+                {
+                    number:"a",
+                    name:"Creation/production credits note",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                }
+            ]
+        },
+        {
+            number:"511",
+            name:"Participant or Performer Note",
+            removable:true,
+            copiable:true,
+            hasIndicators:true,
+            subfields:[
+                {
+                    number:"a",
+                    name:"Participant or performer note",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                }
+            ]
+        },
+        {
+            number:"518",
+            name:"Date/Time and Place of an Event Note",
+            removable:true,
+            copiable:true,
+            hasIndicators:true,
+            subfields:[
+                {
+                    number:"a",
+                    name:"Date/time and place of an event note",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                }
+            ]
+        },
+        {
+            number:"520",
+            name:"Summary, Etc.",
+            removable:true,
+            copiable:true,
+            hasIndicators:true,
+            subfields:[
+                {
+                    number:"a",
+                    name:"Summary, etc.",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"b",
+                    name:"Expansion of summary note",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"u",
+                    name:"Uniform Resource Identifier",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                }
+            ]
+        },
+        {
+            number:"521",
+            name:"Target Audience Note",
+            removable:true,
+            copiable:true,
+            hasIndicators:true,
+            subfields:[
+                {
+                    number:"a",
+                    name:"Target audience note",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"b",
+                    name:"Source",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                }
+            ]
+        },
+        {
+            number:"522",
+            name:"Geographic Coverage Note",
+            removable:true,
+            copiable:true,
+            hasIndicators:true,
+            subfields:[
+                {
+                    number:"a",
+                    name:"Geographic coverage note",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                }
+            ]
+        },
+        {
+            number:"524",
+            name:"Preferred Citation of Described Materials Note",
+            removable:true,
+            copiable:true,
+            hasIndicators:true,
+            subfields:[
+                {
+                    number:"a",
+                    name:"Preferred citation of described materials note",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                }
+            ]
+        },
+        {
+            number:"526",
+            name:"Study Program Information Note",
+            removable:true,
+            copiable:true,
+            hasIndicators:true,
+            subfields:[
+                {
+                    number:"a",
+                    name:"Program name",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"b",
+                    name:"Interest level",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"c",
+                    name:"Reading level",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"d",
+                    name:"Title point value",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                }
+            ]
+        },
+        {
+            number:"530",
+            name:"Additional Physical Form Available Note",
+            removable:true,
+            copiable:true,
+            hasIndicators:true,
+            subfields:[
+                {
+                    number:"a",
+                    name:"Additional physical form available note",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"b",
+                    name:"Availability source",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"c",
+                    name:"Availability conditions",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"d",
+                    name:"Order number",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"u",
+                    name:"Uniform Resource Identifier",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                }
+            ]
+        },{
+            number:"533",
+            name:"Reproduction Note",
+            removable:true,
+            copiable:true,
+            hasIndicators:true,
+            subfields:[
+                {
+                    number:"a",
+                    name:"Type of reproduction",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"b",
+                    name:"Place of reproduction",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"c",
+                    name:"Agency responsible for reproduction",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"d",
+                    name:"Date of reproduction",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"e",
+                    name:"Physical description of reproduction",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"f",
+                    name:"Series statement of reproduction",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"m",
+                    name:"Dates and/or sequential designation of issues reproduced",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"n",
+                    name:"Note about reproduction",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                }
+            ]
+        },
+        {
+            number:"538",
+            name:"System Details Note",
+            removable:true,
+            copiable:true,
+            hasIndicators:true,
+            subfields:[
+                {
+                    number:"a",
+                    name:"System details note",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"i",
+                    name:"Display text",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"u",
+                    name:"Uniform Resource Identifier",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                }
+            ]
+        },{
+            number:"541",
+            name:"Immediate Source of Acquisition Note",
+            removable:true,
+            copiable:true,
+            hasIndicators:true,
+            subfields:[
+                {
+                    number:"a",
+                    name:"Source of acquisition",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"b",
+                    name:"Address",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"c",
+                    name:"Method of acquisition",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"d",
+                    name:"Date of acquisition",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"e",
+                    name:"Accession number",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"f",
+                    name:"Owner",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"h",
+                    name:"Purchase price",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"n",
+                    name:"Extent",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"o",
+                    name:"Type of unit",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                }
+            ]
+        },
+        {
+            number:"546",
+            name:"Language Note",
+            removable:true,
+            copiable:true,
+            hasIndicators:true,
+            subfields:[
+                {
+                    number:"a",
+                    name:"Language note",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"b",
+                    name:"Information code or alphabet",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                }
+            ]
+        },
+        {
+            number:"555",
+            name:"Cumulative Index/Finding Aids Note",
+            removable:true,
+            copiable:true,
+            hasIndicators:true,
+            subfields:[
+                {
+                    number:"a",
+                    name:"Cumulative index/finding aids note",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"b",
+                    name:"Availability source",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"c",
+                    name:"Degree of control",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"d",
+                    name:"Bibliographic reference",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"u",
+                    name:"Uniform Resource Identifier",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                }
+            ]
+        },
+        {
+            number:"556",
+            name:"Information About Documentation Note",
+            removable:true,
+            copiable:true,
+            hasIndicators:true,
+            subfields:[
+                {
+                    number:"a",
+                    name:"Information about documentation note",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"z",
+                    name:"International Standard Book Number",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                }
+            ]
+        },
+        {
+            number:"562",
+            name:"Copy and Version Identification Note",
+            removable:true,
+            copiable:true,
+            hasIndicators:true,
+            subfields:[
+                {
+                    number:"a",
+                    name:"Identifying markings",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"b",
+                    name:"Copy identification",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"c",
+                    name:"Version identification",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"d",
+                    name:"Presentation format",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"e",
+                    name:"Number of copies",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                }
+            ]
+        },
+        {
+            number:"563",
+            name:"Binding Information",
+            removable:true,
+            copiable:true,
+            hasIndicators:true,
+            subfields:[
+                {
+                    number:"a",
+                    name:"Binding note",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"u",
+                    name:"Uniform Resource Identifier",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                }
+            ]
+        },
+        {
+            number:"583",
+            name:"Action Note",
+            removable:true,
+            copiable:true,
+            hasIndicators:true,
+            subfields:[
+                {
+                    number:"x",
+                    name:"Nonpublic note",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                }
+            ]
+        },{
+            number:"585",
+            name:"Exhibitions Note",
+            removable:true,
+            copiable:true,
+            hasIndicators:true,
+            subfields:[
+                {
+                    number:"3",
+                    name:"Materials specified",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"a",
+                    name:"Exhibitions note",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                }
+            ]
+        },
+        {
+            number:"586",
+            name:"Awards Note",
+            removable:true,
+            copiable:true,
+            hasIndicators:true,
+            subfields:[
+                {
+                    number:"a",
+                    name:"Awards note",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                }
+            ]
+        }
+    ]
+
+    const sixFields = [
+        {
+            number:"600",
+            name:"Subject Added Entry-Personal Name",
+            removable:true,
+            copiable:true,
+            hasIndicators:true,
+            subfields:[
+                {
+                    number:"2",
+                    name:"Source of heading or term",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"a",
+                    name:"Personal name",
+                    required:false,
+                    editable:true,
+                    repeatable:false
+                },
+                {
+                    number:"d",
+                    name:"Dates associated with a name",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"q",
+                    name:"Fuller form of name",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"t",
+                    name:"Title of a work",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"v",
+                    name:"Form subdivision",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"x",
+                    name:"General subdivision",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"y",
+                    name:"Chronological subdivision",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"z",
+                    name:"Geographic subdivision",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                }
+            ]
+        },
+        {
+            number:"610",
+            name:"Subject Added Entry-Corporate Name",
+            removable:true,
+            copiable:true,
+            hasIndicators:true,
+            subfields:[
+                {
+                    number:"2",
+                    name:"Source of heading or term",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"a",
+                    name:"Corporate name or jurisdiction name as entry element",
+                    required:false,
+                    editable:true,
+                    repeatable:false
+                },
+                {
+                    number:"b",
+                    name:"Subordinate unit",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"t",
+                    name:"Title of a work",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"v",
+                    name:"Form subdivision",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"x",
+                    name:"General subdivision",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"y",
+                    name:"Chronological subdivision",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"z",
+                    name:"Geographic subdivision",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                }
+            ]
+        },
+        {
+            number:"611",
+            name:"Subject Added Entry-Meeting Name",
+            removable:true,
+            copiable:true,
+            hasIndicators:true,
+            subfields:[
+                {
+                    number:"2",
+                    name:"Source of heading or term",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"9",
+                    name:"9(RLIN)",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"a",
+                    name:"Meeting name or jurisdiction name as entry element",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"c",
+                    name:"Location of meeting",
+                    required:false,
+                    editable:true,
+                    repeatable:false
+                },
+                {
+                    number:"e",
+                    name:"Subordinate unit",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"t",
+                    name:"Title of a work",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"v",
+                    name:"Form subdivision",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"x",
+                    name:"General subdivision",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"y",
+                    name:"Chronological subdivision",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"z",
+                    name:"Geographic subdivision",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                }
+            
+            ]
+        },
+        {
+            number:"630",
+            name:"Collective Uniform Title",
+            removable:true,
+            copiable:true,
+            hasIndicators:true,
+            subfields:[
+                {
+                    number:"a",
+                    name:"Uniform title",
+                    required:false,
+                    editable:true,
+                    repeatable:false
+                },
+                {
+                    number:"l",
+                    name:"Medium",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"t",
+                    name:"Title of a work",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"v",
+                    name:"Form subdivision",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"x",
+                    name:"General subdivision",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"y",
+                    name:"Chronological subdivision",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"z",
+                    name:"Geographic subdivision",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                }
+            
+            ]
+        },
+        {
+            number:"648",
+            name:"Subject Added Entry-Chronological Term",
+            removable:true,
+            copiable:true,
+            hasIndicators:true,
+            subfields:[
+                {
+                    number:"2",
+                    name:"Source of heading or term",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"a",
+                    name:"Chronological term",
+                    required:false,
+                    editable:true,
+                    repeatable:false
+                },
+                {
+                    number:"v",
+                    name:"Form subdivision",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"x",
+                    name:"General subdivision",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"y",
+                    name:"Chronological subdivision",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"z",
+                    name:"Geographic subdivision",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                }
+            
+            ]
+        },
+        {
+            number:"650",
+            name:"Subject Added Entry-Topical Term",
+            removable:true,
+            copiable:true,
+            hasIndicators:true,
+            subfields:[
+                {
+                    number:"2",
+                    name:"Source of heading or term",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"a",
+                    name:"Topical term or geographic name entry element",
+                    required:false,
+                    editable:true,
+                    repeatable:false
+                },
+                {
+                    number:"v",
+                    name:"Form subdivision",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"x",
+                    name:"General subdivision",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"y",
+                    name:"Chronological subdivision",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"z",
+                    name:"Geographic subdivision",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                }
+            
+            ]
+        },
+        {
+            number:"651",
+            name:"Subject Added Entry-Geographic Name",
+            removable:true,
+            copiable:true,
+            hasIndicators:true,
+            subfields:[
+                {
+                    number:"2",
+                    name:"Source of heading or term",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"a",
+                    name:"Geographic name",
+                    required:false,
+                    editable:true,
+                    repeatable:false
+                },
+                {
+                    number:"v",
+                    name:"Form subdivision",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"x",
+                    name:"General subdivision",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"y",
+                    name:"Chronological subdivision",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"z",
+                    name:"Geographic subdivision",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                }
+            ]
+        },
+        {
+            number:"653",
+            name:"Index Term-Uncontrolled",
+            removable:true,
+            copiable:true,
+            hasIndicators:true,
+            subfields:[
+                {
+                    number:"a",
+                    name:"Uncontrolled term",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                }
+            ]
+        },
+        {
+            number:"654",
+            name:"Subject Added Entry-Faceted Topical Terms",
+            removable:true,
+            copiable:true,
+            hasIndicators:true,
+            subfields:[
+                {
+                    number:"2",
+                    name:"Source of heading or term",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"a",
+                    name:"Focus term",
+                    required:false,
+                    editable:true,
+                    repeatable:true
+                },
+                {
+                    number:"b",
+                    name:"Non-focus term",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"c",
+                    name:"Facet/hierarchy designation",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"v",
+                    name:"Form subdivision",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"x",
+                    name:"General subdivision",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"y",
+                    name:"Chronological subdivision",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"z",
+                    name:"Geographic subdivision",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                }
+            ]
+        },
+        {
+            number:"655",
+            name:"Index Term-Genre/Form",
+            removable:true,
+            copiable:true,
+            hasIndicators:true,
+            subfields:[
+                {
+                    number:"2",
+                    name:"Source of term",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"a",
+                    name:"Genre/form data or focus term",
+                    required:false,
+                    editable:true,
+                    repeatable:false
+                },
+                {
+                    number:"b",
+                    name:"Non-focus term",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"c",
+                    name:"Facet/hierarchy designation",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"v",
+                    name:"Form subdivision",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"x",
+                    name:"General subdivision",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"y",
+                    name:"Chronological subdivision",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"z",
+                    name:"Geographic subdivision",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                }
+            ]
+        },
+        {
+            number:"658",
+            name:"Index Term-Curriculum Objective",
+            removable:true,
+            copiable:true,
+            hasIndicators:true,
+            subfields:[
+                {
+                    number:"a",
+                    name:"Main curriculum objective",
+                    required:false,
+                    editable:true,
+                    repeatable:false
+                },
+                {
+                    number:"b",
+                    name:"Subordinate curriculum objective",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"c",
+                    name:"Curriculum code",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                }
+            ]
+        },
+        {
+            number:"662",
+            name:"Subject Added Entry-Hierarchical Place Name",
+            removable:true,
+            copiable:true,
+            hasIndicators:true,
+            subfields:[
+                {
+                    number:"2",
+                    name:"Source of heading or term",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"a",
+                    name:"Country or larger entity",
+                    required:false,
+                    editable:true,
+                    repeatable:true
+                },
+                {
+                    number:"b",
+                    name:"First-order political jurisdiction",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"c",
+                    name:"Intermediate political jurisdiction",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"d",
+                    name:"City",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"f",
+                    name:"City subsection",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"g",
+                    name:"Other nonjurisdictional geographic region and feature",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"h",
+                    name:"Extraterrestrial area",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                }
+            ]
+        },
+        {
+            number:"690",
+            name:"Local Subject Added Entry - Topical Term",
+            removable:true,
+            copiable:true,
+            hasIndicators:true,
+            subfields:[
+                {
+                    number:"2",
+                    name:"Source of heading or term",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"a",
+                    name:"Topical term or geographic name as entry element",
+                    required:false,
+                    editable:true,
+                    repeatable:false
+                },
+                {
+                    number:"v",
+                    name:"Form subdivision",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"x",
+                    name:"General subdivision",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"y",
+                    name:"Chronological subdivision",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"z",
+                    name:"Geographic subdivision",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                }
+            ]
+        }
+    ]
+
+    const sevenFields = [
+        {
+            number:"700",
+            name:"Physical Description",
+            removable:true,
+            copiable:true,
+            hasIndicators:true,
+            subfields:[
+                {
+                    number:"a",
+                    name:"Extent",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"b",
+                    name:"Other physical details",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"c",
+                    name:"Dimensions",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"e",
+                    name:"Accompanying material",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"f",
+                    name:"Type of unit",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"g",
+                    name:"Size of unit",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                }
+            ]
+        },
+        {
+            number:"306",
+            name:"Playing Time",
+            removable:true,
+            copiable:false,
+            hasIndicators:true,
+            subfields:[
+                {
+                    number:"a",
+                    name:"Playing time",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                }
+            ]
+        },
+        {
+            number:"310",
+            name:"Current Publication Frequency",
+            removable:true,
+            copiable:true,
+            hasIndicators:true,
+            subfields:[
+                {
+                    number:"a",
+                    name:"Current publication frequency",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                }
+            
+            ]
+        },
+        {
+            number:"362",
+            name:"Dates of Publication and/or Sequential Designation",
+            removable:true,
+            copiable:true,
+            hasIndicators:true,
+            subfields:[
+                {
+                    number:"a",
+                    name:"Dates of publication and/or sequential designation",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                }
+            ]
+        },
+        {
+            number:"365",
+            name:"Trade Price",
+            removable:true,
+            copiable:true,
+            hasIndicators:true,
+            subfields:[
+                {
+                    number:"2",
+                    name:"Source of price type code",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"a",
+                    name:"Price type code",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"b",
+                    name:"Price amount",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"c",
+                    name:"Currency code",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"d",
+                    name:"Unit of pricing",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"e",
+                    name:"Price note",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"f",
+                    name:"Price effective from",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"g",
+                    name:"Price effective until",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"h",
+                    name:"Tax rate 1",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"i",
+                    name:"Tax rate 2",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"j",
+                    name:"ISO country code",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"k",
+                    name:"MARC country code",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"m",
+                    name:"Identification of pricing entity",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                }
+            ]
+        },
+        {
+            number:"366",
+            name:"Trade Availability Information",
+            removable:true,
+            copiable:true,
+            hasIndicators:true,
+            subfields:[
+                {
+                    number:"2",
+                    name:"Source of availability status code",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"a",
+                    name:"Publishers' compressed title identification",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"b",
+                    name:"Detailed date of publication",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"c",
+                    name:"Availability status code",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"d",
+                    name:"Expected next availability date",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"e",
+                    name:"Note",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"f",
+                    name:"Publisher's discount category",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"g",
+                    name:"Date made out of print",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"j",
+                    name:"ISO country code",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"k",
+                    name:"MARC country code",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"m",
+                    name:"Identification of agency",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                }
+            ]
+        }
+    ]
+
+    const nineFields = [
+        {
+            number:"942",
+            name:"Added Entry Elements",
+            removable:true,
+            copiable:false,
+            hasIndicators:true,
+            subfields:[
+                {
+                    number:"2",
+                    name:"Source of classification or shelving scheme",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"c",
+                    name:"Koha item type",
+                    required:true,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"e",
+                    name:"Edition",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"h",
+                    name:"Classification part",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"i",
+                    name:"Item part",
+                    required:false,
+                    editable:false,
+                    repeatable:true
+                },
+                {
+                    number:"k",
+                    name:"Call number prefix",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"m",
+                    name:"Call number suffix",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                },
+                {
+                    number:"n",
+                    name:"Suppress in OPAC",
+                    required:false,
+                    editable:false,
+                    repeatable:false
+                }
+            ]
+        }
+    ]
+
+    return {zeroFields,oneFields,twoFields, threeFields, fourFields, fiveFields, sixFields, nineFields}
 
 
 }
