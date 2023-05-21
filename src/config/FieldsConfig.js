@@ -27,7 +27,7 @@ export default function useFieldsConfig(){
             subfields:[
                 {
                     number:"00",
-                    name:"contol field",
+                    name:"control field",
                     required:false,
                     editable:false,
                     repeatable:false
@@ -124,7 +124,7 @@ export default function useFieldsConfig(){
                 {
                     number:"a",
                     name:"LC control number",
-                    required:false,
+                    required:true,
                     editable:false,
                     repeatable:false
                 }
@@ -161,29 +161,6 @@ export default function useFieldsConfig(){
             ]
         },
         {
-            number:"016",
-            name:"National Bibliographic Agency Control Number ",
-            removable:true,
-            copiable:true,
-            hasIndicators:true,
-            subfields:[
-                {
-                    number:"2",
-                    name:"Source",
-                    required:false,
-                    editable:false,
-                    repeatable:false
-                },
-                {
-                    number:"a",
-                    name:"Record control number",
-                    required:false,
-                    editable:false,
-                    repeatable:false
-                }
-            ]
-        },
-        {
             number:"020",
             name:"International Standard Book Number",
             removable:true,
@@ -212,7 +189,8 @@ export default function useFieldsConfig(){
                     repeatable:true
                 }
             ]
-        },{
+        },
+        {
             number:"022",
             name:"International Standard Serial Number",
             removable:true,
@@ -234,65 +212,8 @@ export default function useFieldsConfig(){
                     repeatable:false
                 }
             ]
-        },{
-            number:"024",
-            name:"Other Standard Identifier",
-            removable:true,
-            copiable:true,
-            hasIndicators:true,
-            subfields:[
-                {
-                    number:"2",
-                    name:"Source of number or code",
-                    required:false,
-                    editable:false,
-                    repeatable:false
-                },
-                {
-                    number:"a",
-                    name:"Standard number or code",
-                    required:false,
-                    editable:false,
-                    repeatable:false
-                },
-                {
-                    number:"c",
-                    name:"Terms of availability",
-                    required:false,
-                    editable:false,
-                    repeatable:false
-                },
-                {
-                    number:"d",
-                    name:"Additional codes following the standard number or code",
-                    required:false,
-                    editable:false,
-                    repeatable:false
-                },
-                {
-                    number:"q",
-                    name:"Qualifying information",
-                    required:false,
-                    editable:false,
-                    repeatable:true
-                }
-            ]
-        },{
-            number:"027",
-            name:"Standard Technical Report Number",
-            removable:true,
-            copiable:true,
-            hasIndicators:true,
-            subfields:[
-                {
-                    number:"q",
-                    name:"Qualifying information",
-                    required:false,
-                    editable:false,
-                    repeatable:true
-                }
-            ]
-        },{
+        },
+        {
             number:"028",
             name:"Publisher or Distributor Number",
             removable:true,
@@ -307,117 +228,8 @@ export default function useFieldsConfig(){
                     repeatable:false
                 }
             ]
-        },{
-            number:"035",
-            name:"System Control Number",
-            removable:true,
-            copiable:true,
-            hasIndicators:true,
-            subfields:[
-                {
-                    number:"a",
-                    name:"System control number",
-                    required:false,
-                    editable:false,
-                    repeatable:false
-                }
-            ]
         },
         {
-            number:"037",
-            name:"Source of Acquisition",
-            removable:true,
-            copiable:true,
-            hasIndicators:true,
-            subfields:[
-                {
-                    number:"a",
-                    name:"Stock number",
-                    required:false,
-                    editable:false,
-                    repeatable:false
-                },
-                {
-                    number:"b",
-                    name:"Source of stock number/acquisition",
-                    required:false,
-                    editable:false,
-                    repeatable:false
-                },
-                {
-                    number:"c",
-                    name:"Terms of availability",
-                    required:false,
-                    editable:false,
-                    repeatable:true
-                },
-                {
-                    number:"f",
-                    name:"Form of issue",
-                    required:false,
-                    editable:false,
-                    repeatable:true
-                },
-                {
-                    number:"g",
-                    name:"Additional format characteristics",
-                    required:false,
-                    editable:false,
-                    repeatable:true
-                },
-                {
-                    number:"n",
-                    name:"Note",
-                    required:false,
-                    editable:false,
-                    repeatable:true
-                }
-            ]
-        },
-        {
-            number:"040",
-            name:"Cataloging Source",
-            removable:true,
-            copiable:false,
-            hasIndicators:true,
-            subfields:[
-                {
-                    number:"a",
-                    name:"Original cataloging agency ",
-                    required:false,
-                    editable:false,
-                    repeatable:false
-                },
-                {
-                    number:"b",
-                    name:"Language of cataloging",
-                    required:false,
-                    editable:false,
-                    repeatable:false
-                },
-                {
-                    number:"c",
-                    name:"Transcribing agency ",
-                    required:false,
-                    editable:false,
-                    repeatable:true
-                },
-                {
-                    number:"d",
-                    name:"Modifying agency",
-                    required:false,
-                    editable:false,
-                    repeatable:true
-                },
-                {
-                    number:"e",
-                    name:"Description conventions ",
-                    required:false,
-                    editable:false,
-                    repeatable:true
-                }
-            ]
-        },{
             number:"041",
             name:"Language Code",
             removable:true,
@@ -460,80 +272,8 @@ export default function useFieldsConfig(){
                     repeatable:true
                 }
             ]
-        },{
-            number:"045",
-            name:"Time Period of Content ",
-            removable:true,
-            copiable:false,
-            hasIndicators:true,
-            subfields:[
-                {
-                    number:"a",
-                    name:"Time period code",
-                    required:false,
-                    editable:false,
-                    repeatable:true
-                },
-                {
-                    number:"b",
-                    name:"Formatted 9999 B.C. through C.E. time period",
-                    required:false,
-                    editable:false,
-                    repeatable:true
-                }
-            ]
-        },{
-            number:"047",
-            name:"Form of Musical Composition Code",
-            removable:true,
-            copiable:true,
-            hasIndicators:true,
-            subfields:[
-                {
-                    number:"2",
-                    name:"Source of code",
-                    required:false,
-                    editable:false,
-                    repeatable:false
-                },
-                {
-                    number:"a",
-                    name:"Form of musical composition code",
-                    required:false,
-                    editable:false,
-                    repeatable:true
-                }
-            ]
-        },{
-            number:"048",
-            name:"Number of Musical Instruments or Voices Code",
-            removable:true,
-            copiable:true,
-            hasIndicators:true,
-            subfields:[
-                {
-                    number:"2",
-                    name:"Source of code",
-                    required:false,
-                    editable:false,
-                    repeatable:false
-                },
-                {
-                    number:"a",
-                    name:"Performer or ensemble",
-                    required:false,
-                    editable:false,
-                    repeatable:true
-                },
-                {
-                    number:"b",
-                    name:"Soloist",
-                    required:false,
-                    editable:false,
-                    repeatable:true
-                }
-            ]
-        },{
+        },
+        {
             number:"050",
             name:"Library of Congress Call Number",
             removable:true,
@@ -553,28 +293,6 @@ export default function useFieldsConfig(){
                     required:false,
                     editable:false,
                     repeatable:false
-                }
-            ]
-        },{
-            number:"074",
-            name:"GPO Item Number",
-            removable:true,
-            copiable:true,
-            hasIndicators:true,
-            subfields:[
-                {
-                    number:"a",
-                    name:"GPO item number",
-                    required:false,
-                    editable:false,
-                    repeatable:false
-                },
-                {
-                    number:"z",
-                    name:"Canceled/invalid GPO item number",
-                    required:false,
-                    editable:false,
-                    repeatable:true
                 }
             ]
         },
@@ -605,35 +323,6 @@ export default function useFieldsConfig(){
                     required:false,
                     editable:false,
                     repeatable:false
-                }
-            ]
-        },{
-            number:"086",
-            name:"Government Document Classification Number",
-            removable:true,
-            copiable:true,
-            hasIndicators:true,
-            subfields:[
-                {
-                    number:"2",
-                    name:"Number source",
-                    required:false,
-                    editable:false,
-                    repeatable:false
-                },
-                {
-                    number:"a",
-                    name:"Classification number",
-                    required:false,
-                    editable:false,
-                    repeatable:false
-                },
-                {
-                    number:"z",
-                    name:"Canceled/invalid classification number",
-                    required:false,
-                    editable:false,
-                    repeatable:true
                 }
             ]
         },
@@ -707,82 +396,6 @@ export default function useFieldsConfig(){
                 }, 
             ]
         }, 
-        {
-            number: "111",
-            name: "Main Entry-Meeting Name",
-            removable: true,
-            copiable: false,
-            hasIndicators: true,
-            subfields: [
-                {
-                    number: "a",
-                    name: "Meeting name or jurisditction name as entry element",
-                    required: false,
-                    editable: true,
-                    repeatable: false, 
-                }, 
-
-                {
-                    number: "c",
-                    name: "Location of unit",
-                    required: false,
-                    editable: false,
-                    repeatable: true, 
-                }, 
-                {
-                    number: "e",
-                    name: "Subordinate unit",
-                    required: false,
-                    editable: false,
-                    repeatable: true, 
-                }, 
-                {
-                    number: "j",
-                    name: "Relator term",
-                    required: false,
-                    editable: false,
-                    repeatable: true, 
-                }, 
-            ]
-        }, 
-        {
-            number: "111",
-            name: "Main Entry-Uniform Title",
-            removable: true,
-            copiable: false,
-            hasIndicators: true,
-            subfields: [
-                {
-                    number: "9",
-                    name: "9 (RLIN)",
-                    required: false,
-                    editable: false,
-                    repeatable: false, 
-                }, 
-
-                {
-                    number: "a",
-                    name: "Uniform title",
-                    required: false,
-                    editable: true,
-                    repeatable: false, 
-                }, 
-                {
-                    number: "l",
-                    name: "Language of a work",
-                    required: false,
-                    editable: false,
-                    repeatable: false, 
-                }, 
-                {
-                    number: "r",
-                    name: "Key for music",
-                    required: false,
-                    editable: false,
-                    repeatable: false, 
-                }, 
-            ]
-        }, 
     ]
     
     const twoFields = [
@@ -836,87 +449,6 @@ export default function useFieldsConfig(){
                     required: false,
                     editable: false,
                     repeatable: false, 
-                }, 
-            ]
-        }, 
-        {
-            number: "240",
-            name: "Uniform Title",
-            removable: true,
-            copiable: false,
-            hasIndicators: true,
-            subfields: [
-                {
-                    number: "a",
-                    name: "Uniform title",
-                    required: false,
-                    editable: false,
-                    repeatable: false, 
-                }, 
-                {
-                    number: "h",
-                    name: "Medium",
-                    required: false,
-                    editable: false,
-                    repeatable: false, 
-                }, 
-                {
-                    number: "l",
-                    name: "Language of a form",
-                    required: false,
-                    editable: false,
-                    repeatable: false, 
-                }, 
-                {
-                    number: "r",
-                    name: "Key for music",
-                    required: false,
-                    editable: false,
-                    repeatable: false, 
-                }, 
-                {
-                    number: "s",
-                    name: "Version",
-                    required: false,
-                    editable: false,
-                    repeatable: true, 
-                }, 
-            ]
-        }, 
-        {
-            number: "243",
-            name: "Collective Uniform Title",
-            removable: true,
-            copiable: false,
-            hasIndicators: true,
-            subfields: [
-                {
-                    number: "a",
-                    name: "Uniform title",
-                    required: false,
-                    editable: false,
-                    repeatable: false, 
-                }, 
-                {
-                    number: "h",
-                    name: "Medium",
-                    required: false,
-                    editable: false,
-                    repeatable: false, 
-                }, 
-                {
-                    number: "l",
-                    name: "Language of a form",
-                    required: false,
-                    editable: false,
-                    repeatable: false, 
-                }, 
-                {
-                    number: "s",
-                    name: "Version",
-                    required: false,
-                    editable: false,
-                    repeatable: true, 
                 }, 
             ]
         }, 
@@ -988,36 +520,6 @@ export default function useFieldsConfig(){
                 {
                     number: "i",
                     name: "Display text",
-                    required: false,
-                    editable: false,
-                    repeatable: false, 
-                }, 
-            ]
-        }, 
-        {
-            number: "247",
-            name: "Former Title",
-            removable: true,
-            copiable: true,
-            hasIndicators: true,
-            subfields: [
-                {
-                    number: "a",
-                    name: "Title",
-                    required: false,
-                    editable: false,
-                    repeatable: false, 
-                }, 
-                {
-                    number: "b",
-                    name: "Remainder of title",
-                    required: false,
-                    editable: false,
-                    repeatable: false, 
-                }, 
-                {
-                    number: "h",
-                    name: "Medium",
                     required: false,
                     editable: false,
                     repeatable: false, 
@@ -1256,54 +758,6 @@ export default function useFieldsConfig(){
                     required: false,
                     editable: false,
                     repeatable: true, 
-                }, 
-            ]
-        }, 
-        {
-            number: "306",
-            name: "Playing Time",
-            removable: true,
-            copiable: false,
-            hasIndicators: true,
-            subfields: [
-                {
-                    number: "a",
-                    name: "Playing time",
-                    required: false,
-                    editable: false,
-                    repeatable: true, 
-                }, 
-            ]
-        }, 
-        {
-            number: "310",
-            name: "Current Publication Frequency",
-            removable: true,
-            copiable: true,
-            hasIndicators: true,
-            subfields: [
-                {
-                    number: "a",
-                    name: "Current publication frequency",
-                    required: false,
-                    editable: false,
-                    repeatable: false, 
-                }, 
-            ]
-        }, 
-        {
-            number: "362",
-            name: "Dates of Publication and/or Sequential Designation",
-            removable: true,
-            copiable: true,
-            hasIndicators: true,
-            subfields: [
-                {
-                    number: "a",
-                    name: "Dates of publication and/or sequential designation",
-                    required: false,
-                    editable: false,
-                    repeatable: false, 
                 }, 
             ]
         }, 
@@ -1668,189 +1122,6 @@ export default function useFieldsConfig(){
                 },
             ]
         }, 
-        {
-            number: "611",
-            name: "Subject Added Entry-Meeting Name",
-            removable: true,
-            copiable: true,
-            hasIndicators: true,
-            subfields: [
-                {
-                    number: "2", 
-                    name: "Source of heading or term ",
-                    required: false, 
-                    editable: false, 
-                    repeatable: false, 
-                },
-                {
-                    number: "a", 
-                    name: "Meeting name or jurisdiction name as entry element ",
-                    required: false, 
-                    editable: true, 
-                    repeatable: false, 
-                },
-                {
-                    number: "c", 
-                    name: "Location of meeting",
-                    required: false, 
-                    editable: false, 
-                    repeatable: true, 
-                },
-                {
-                    number: "t", 
-                    name: "Title of a work ",
-                    required: false, 
-                    editable: false, 
-                    repeatable: false, 
-                },
-                {
-                    number: "v", 
-                    name: "Form subdivision",
-                    required: false, 
-                    editable: false, 
-                    repeatable: true, 
-                },
-                {
-                    number: "x", 
-                    name: "General subdivision",
-                    required: false, 
-                    editable: false, 
-                    repeatable: true, 
-                },
-                {
-                    number: "y", 
-                    name: "Chronological subdivision",
-                    required: false, 
-                    editable: false, 
-                    repeatable: true, 
-                },
-                {
-                    number: "z", 
-                    name: "Geographic subdivision",
-                    required: false, 
-                    editable: false, 
-                    repeatable: true, 
-                },
-                {
-                    number: "2", 
-                    name: "Source of heading or term ",
-                    required: false, 
-                    editable: false, 
-                    repeatable: false, 
-                },
-            ]
-        }, 
-        {
-            number: "630",
-            name: "Subject Added Entry-Uniform Title",
-            removable: true,
-            copiable: true,
-            hasIndicators: true,
-            subfields: [
-                {
-                    number: "a", 
-                    name: "Uniform title ", 
-                    required: false, 
-                    editable: true, 
-                    repeatable: false, 
-                },
-                {
-                    number: "l", 
-                    name: "Language of a work ", 
-                    required: false, 
-                    editable: false, 
-                    repeatable: false, 
-                },
-                {
-                    number: "t", 
-                    name: "Title of a work ", 
-                    required: false, 
-                    editable: false, 
-                    repeatable: false, 
-                },
-                {
-                    number: "v", 
-                    name: "Form subdivision", 
-                    required: false, 
-                    editable: false, 
-                    repeatable: true, 
-                },
-                {
-                    number: "x", 
-                    name: "General subdivision", 
-                    required: false, 
-                    editable: false, 
-                    repeatable: true, 
-                },
-                {
-                    number: "y", 
-                    name: "Chronological subdivision", 
-                    required: false, 
-                    editable: false, 
-                    repeatable: true, 
-                },
-                {
-                    number: "z", 
-                    name: "Geographic subdivision", 
-                    required: false, 
-                    editable: false, 
-                    repeatable: true, 
-                },
-
-            ]
-        }, 
-        {
-            number: "648",
-            name: "Subject Added Entry-Chronological Term",
-            removable: true,
-            copiable: true,
-            hasIndicators: true,
-            subfields: [
-                {
-                    number: "2", 
-                    name: "Source of heading or term ", 
-                    required: false, 
-                    editable: false, 
-                    repeatable: false, 
-                },
-                {
-                    number: "a", 
-                    name: "Chronological term ", 
-                    required: false, 
-                    editable: false, 
-                    repeatable: false, 
-                },
-                {
-                    number: "v", 
-                    name: "Form subdivision", 
-                    required: false, 
-                    editable: false, 
-                    repeatable: true, 
-                },
-                {
-                    number: "x", 
-                    name: "General subdivision", 
-                    required: false, 
-                    editable: false, 
-                    repeatable: true, 
-                },
-                {
-                    number: "y", 
-                    name: "Chronological subdivision", 
-                    required: false, 
-                    editable: false, 
-                    repeatable: true, 
-                },
-                {
-                    number: "z", 
-                    name: "Geographic subdivision", 
-                    required: false, 
-                    editable: false, 
-                    repeatable: true, 
-                },
-
-            ]
-        }, 
     ]
 
     const sevenFields = [
@@ -1918,59 +1189,6 @@ export default function useFieldsConfig(){
                     required: false, 
                     editable: false, 
                     repeatable: true, 
-                }, 
-            ]
-        }, 
-        {
-            number: "730",
-            name: "Added Entry-Uniform Title",
-            removable: true,
-            copiable: true,
-            hasIndicators: true,
-            subfields: [
-                {
-                    number: "a", 
-                    name: "Uniform title", 
-                    required: false, 
-                    editable: true, 
-                    repeatable: false, 
-                }, 
-                {
-                    number: "l", 
-                    name: "Language of a work", 
-                    required: false, 
-                    editable: false, 
-                    repeatable: false, 
-                }, 
-                {
-                    number: "m", 
-                    name: "Medium of performance for musi", 
-                    required: false, 
-                    editable: false, 
-                    repeatable: true, 
-                }, 
-                {
-                    number: "r", 
-                    name: "Key for music", 
-                    required: false, 
-                    editable: false, 
-                    repeatable: false, 
-                }, 
-            ]
-        }, 
-        {
-            number: "760",
-            name: "Main Series Entry",
-            removable: true,
-            copiable: true,
-            hasIndicators: true,
-            subfields: [
-                {
-                    number: "b",
-                    name: "Edition",
-                    required: false,
-                    editable: false,
-                    repeatable: false, 
                 }, 
             ]
         }, 

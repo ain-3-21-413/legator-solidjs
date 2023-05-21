@@ -26,10 +26,10 @@ export default function Header() {
                 </Match>
                 <Match when={state.isEditing}>
                     <HStack gap={"$3"}>
-                        <Button colorScheme={"danger"} onClick={handleSave}>
+                        <Button colorScheme={"danger"}>
                             Revert
                         </Button>
-                        <Button colorScheme={"success"} disabled={areFieldsValid()}>
+                        <Button colorScheme={"success"} onClick={handleSave} disabled={areFieldsValid()}>
                             Save
                         </Button>
                         <Button disabled>

@@ -6,7 +6,7 @@ import { CurrentBookContext } from "../../../providers/CurrentBook";
 
  function SubField(props) {
 
-    const { handleInput, fieldsValidation } = useContext(CurrentBookContext);
+    const { handleInput, currentBook } = useContext(CurrentBookContext);
 
     return (
         <HStack w={"$full"} gap={"$1_5"}>
@@ -14,10 +14,10 @@ import { CurrentBookContext } from "../../../providers/CurrentBook";
             <Heading fontWeight={"$normal"} flexShrink={"0"}>{props.name}</Heading>
             <Switch>
                 <Match when={props.isTextarea}>
-                    <Textarea onInput={(event) => handleInput(event)} name={props.fullName} />
+                    <Textarea id={props.fullName} onInput={(event) => handleInput(event)} name={props.fullName} />
                 </Match>
                 <Match when={!props.isTextarea}>
-                    <Input invalid={fieldsValidation[props.fullName]} onInput={(event) => handleInput(event)} name={props.fullName} size={"xs"}></Input>
+                    <Input id={props.fullName} value={currentBook["fields"]?.[props.fullName] ?? ""} onInput={(event) => handleInput(event)} name={props.fullName} size={"xs"}></Input>
                 </Match>
             </Switch>
             <Show when={props.required}>

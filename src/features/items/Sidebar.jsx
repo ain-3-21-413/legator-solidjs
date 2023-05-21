@@ -3,95 +3,12 @@ import { AiOutlineSortAscending, AiOutlineSortDescending } from "solid-icons/ai"
 import { For, useContext } from "solid-js";
 import { ItemEditingContext } from "../../providers/ItemEditingProvider";
 import SearchResult from "./SearchResult";
-
-const data = {
-    results: [
-        {
-            date: "01/01/2016", 
-            title: "Clean Code", 
-        }, 
-        {
-            date: "01/01/2016", 
-            title: "Clean Code", 
-        }, 
-        {
-            date: "01/01/2016", 
-            title: "Clean Code", 
-        }, 
-        {
-            date: "01/01/2016", 
-            title: "Clean Code", 
-        }, 
-        {
-            date: "01/01/2016", 
-            title: "Clean Code", 
-        }, 
-        {
-            date: "01/01/2016", 
-            title: "Clean Code", 
-        }, 
-        {
-            date: "01/01/2016", 
-            title: "Clean Code", 
-        }, 
-        {
-            date: "01/01/2016", 
-            title: "Clean Code", 
-        }, 
-        {
-            date: "01/01/2016", 
-            title: "Clean Code", 
-        }, 
-        {
-            date: "01/01/2016", 
-            title: "Clean Code", 
-        }, 
-        {
-            date: "01/01/2016", 
-            title: "Clean Code", 
-        }, 
-        {
-            date: "01/01/2016", 
-            title: "Clean Code", 
-        }, 
-        {
-            date: "01/01/2016", 
-            title: "Clean Code", 
-        }, 
-        {
-            date: "01/01/2016", 
-            title: "Clean Code", 
-        }, 
-        {
-            date: "01/01/2016", 
-            title: "Clean Code", 
-        }, 
-        {
-            date: "01/01/2016", 
-            title: "Clean Code", 
-        }, 
-        {
-            date: "01/01/2016", 
-            title: "Clean Code", 
-        }, 
-        {
-            date: "01/01/2016", 
-            title: "Clean Code", 
-        }, 
-        {
-            date: "01/01/2016", 
-            title: "Clean Code", 
-        }, 
-        {
-            date: "01/01/2016", 
-            title: "Clean Code", 
-        }, 
-    ]
-}
+import { CurrentBookContext } from "../../providers/CurrentBook";
 
 export default function Sidebar() {
 
     const [state, { setASC }] = useContext(ItemEditingContext);
+    const { store } = useContext(CurrentBookContext);
 
     return (
         <VStack w="300px" h="$full" gap={"$3"}>
@@ -124,8 +41,8 @@ export default function Sidebar() {
                     overflow={"auto"} 
                     h="calc(100vh - 32px - 40px * 3 - 0.75rem * 6)"
                 >
-                <For each={data.results}>{(result) =>
-                    <SearchResult result={result} />
+                <For each={store.books}>{(book) =>
+                    <SearchResult book={book} />
                 }</For>
                 </VStack>
             </VStack>
