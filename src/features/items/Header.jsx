@@ -2,10 +2,12 @@ import { Button, HStack, Heading, IconButton } from "@hope-ui/solid";
 import { FaSolidLock, FaSolidLockOpen, FaSolidPlus } from "solid-icons/fa";
 import { Match, Switch, useContext } from "solid-js";
 import { ItemEditingContext } from "../../providers/ItemEditingProvider";
+import { CurrentBookContext } from "../../providers/CurrentBook";
 
 export default function Header() {
 
     const [state] = useContext(ItemEditingContext);
+    const { handleSave, areFieldsValid } = useContext(CurrentBookContext);
 
     return (
         <HStack justifyContent={"space-between"} w={"$full"}>
@@ -24,10 +26,10 @@ export default function Header() {
                 </Match>
                 <Match when={state.isEditing}>
                     <HStack gap={"$3"}>
-                        <Button colorScheme={"danger"}>
+                        <Button colorScheme={"danger"} onClick={handleSave}>
                             Revert
                         </Button>
-                        <Button colorScheme={"success"} disabled={!state.isReadyToSave}>
+                        <Button colorScheme={"success"} disabled={areFieldsValid()}>
                             Save
                         </Button>
                         <Button disabled>

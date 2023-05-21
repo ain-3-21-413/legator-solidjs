@@ -7,6 +7,7 @@ import CurrentPatronProvider from './providers/CurrentPatron';
 import ItemEditingProvider from './providers/ItemEditingProvider';
 import ModalProvider from './providers/ModalProvider';
 import InputValidationProvider from './providers/InputValidationProvider';
+import CurrentBookProvider from './providers/CurrentBook';
 
 function App() {
   return (
@@ -19,7 +20,9 @@ function App() {
               <PatronEditingProvider>
               <ItemEditingProvider>
                 <CurrentPatronProvider>
+                <CurrentBookProvider>
                   <ELibApp />
+                </CurrentBookProvider>
                 </CurrentPatronProvider>
               </ItemEditingProvider>
               </PatronEditingProvider>

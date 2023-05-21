@@ -30,6 +30,7 @@ export default function Six() {
                                     required={subfield.required}
                                     editable={subfield.editable}
                                     repeatable={subfield.repeatable}
+                                    fullName={field.number + "-" + subfield.number}
                                 />
                             }</For>
                         </Field>

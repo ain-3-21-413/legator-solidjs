@@ -1,8 +1,11 @@
 import { HStack, Heading, IconButton, Input, Text, VStack } from "@hope-ui/solid";
 import { TbCopy, TbCopyOff } from 'solid-icons/tb'
-import { Show } from "solid-js";
+import { Show, useContext } from "solid-js";
+import { CurrentBookContext } from "../../../providers/CurrentBook";
 
  function Field(props) {
+
+    const { handleInput } = useContext(CurrentBookContext);
 
     return (
         <VStack w={"$full"} gap={"$2"} borderBottomWidth={"1px"}borderBottomColor={"$blackAlpha5"} py={"$3"}>
@@ -12,18 +15,17 @@ import { Show } from "solid-js";
                 </Heading>
                 <Text color={"$accent11"}> ?</Text>
                 <Show when={props.hasIndicators}>
-                    <Input size={"xs"} w={"25px"} px={"$1"} justifyContent={"center"} display={"flex"}></Input>
-                    <Input size={"xs"} w={"25px"} px={"$1"} justifyContent={"center"} display={"flex"}></Input>
-        
+                    <Input maxLength={"1"} textAlign={"center"} onInput={(event) => handleInput(event)} name={"ind1_" + props.number} size={"xs"} w={"25px"} px={"$1"} justifyContent={"center"} display={"flex"}></Input>
+                    <Input maxLength={"1"} textAlign={"center"} onInput={(event) => handleInput(event)} name={"ind2_" + props.number} size={"xs"} w={"25px"} px={"$1"} justifyContent={"center"} display={"flex"}></Input>
                 </Show>
                 
                 <Heading color={"$accent11"}>
                     {props.name}
                 </Heading>
-                <IconButton display={props.copiable ? "block" : "none"} size={"xs"} variant={"ghost"}>
+                <IconButton tabIndex={"-1"} display={props.copiable ? "block" : "none"} size={"xs"} variant={"ghost"}>
                     <TbCopy />
                 </IconButton>
-                <IconButton display={props.removable ? "block" : "none"} size={"xs"} variant={"ghost"}>
+                <IconButton tabIndex={"-1"} display={props.removable ? "block" : "none"} size={"xs"} variant={"ghost"}>
                     <TbCopyOff />
                 </IconButton>
                 
