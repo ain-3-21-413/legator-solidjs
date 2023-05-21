@@ -22,7 +22,7 @@ export default function PatronPageIntro() {
                 What would you like to do?
             </Heading>
             <HStack w={"$full"} gap={"$6"} justifyContent={"center"}>
-                <ActionCard disabled={state.isLocked} title="Add patrons" onClick={() => {open("/patrons"); openPatronTab("personal"); setPatronSelected(true); setEditing(true)}}/>
+                <ActionCard title="Add patrons" onClick={() => {open("/patrons"); openPatronTab("personal"); setPatronSelected(true); setEditing(true)}}/>
                 <ActionCard title="Search for patrons" onClick={() => {onOpen()}}/>
                 <ActionCard title="View recently added" onClick={() => {}}/>
                 <ActionCard title="View recently modified" onClick={() => {}}/>

@@ -28,7 +28,7 @@ export default function GeneralInfo() {
                         <label for="studentNumber">
                             Student #
                         </label>
-                        <Input onClick={() => setEditing(true)} disabled={patronEditingState.isLocked} invalid={!isInputValid("studentNumber")} name="studentNumber" onInput={(e) => handleInput(e)} type="text" id="studentNumber" backgroundColor={"$blackAlpha5"} value={state.newPatron.studentNumber} />
+                        <Input onClick={() => setEditing(true)} disabled={!state.isCurrentPatronNew} invalid={!isInputValid("studentNumber")} name="studentNumber" onInput={(e) => handleInput(e)} type="text" id="studentNumber" backgroundColor={"$blackAlpha5"} value={state.newPatron.studentNumber} />
                     </VStack>
                     <VStack alignItems={"start"} flex={"1"}>
                         <label for="library">

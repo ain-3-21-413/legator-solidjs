@@ -2,6 +2,8 @@ import { createContext, createEffect, useContext } from "solid-js";
 import { createStore } from "solid-js/store";
 import { InputValidationContext } from "./InputValidationProvider";
 import { PatronEditingContext } from "./PatronEditingProvider";
+import axios from "axios";
+import { notificationService } from "@hope-ui/solid";
 
 export const CurrentPatronContext = createContext();
 
@@ -39,63 +41,64 @@ export default function CurrentPatronProvider(props) {
 
     const [state, setState] = createStore({
         currentPatron: {
-            firstName: "", 
-            middleName: "", 
-            lastName: "", 
-            studentNumber: "", 
-            library: "", 
-            status: "", 
-            policy: "", 
-            birthDate: "", 
-            sex: "", 
-            homeroom: "", 
-            secondLocation: "", 
-            group: "", 
-            graduationDate: "", 
-            accountExpiration: "", 
-            primaryEmail: "", 
-            instituteEmail: "", 
-            primaryPhone: "", 
-            mobile: "", 
-            messengers: "", 
-            address1: "", 
-            address2: "", 
-            contactNotes: "", 
-            username: "", 
-            password: "", 
-            confirmPassword: "", 
-            generalNotes: "", 
-            alertNotes: "", 
+            firstName: null, 
+            middleName: null, 
+            lastName: null, 
+            studentNumber: null, 
+            library: null, 
+            status: null, 
+            policy: null, 
+            birthDate: null, 
+            sex: null, 
+            homeroom: null, 
+            secondLocation: null, 
+            group: null, 
+            graduationDate: null, 
+            accountExpiration: null, 
+            primaryEmail: null, 
+            instituteEmail: null, 
+            primaryPhone: null, 
+            mobile: null, 
+            messengers: null, 
+            address1: null, 
+            address2: null, 
+            contactNotes: null, 
+            username: null, 
+            password: null, 
+            confirmPassword: null, 
+            generalNotes: null, 
+            alertNotes: null, 
         }, 
         newPatron: {
-            firstName: "", 
-            middleName: "", 
-            lastName: "", 
-            studentNumber: "", 
-            library: "", 
-            status: "", 
-            policy: "", 
-            birthDate: "", 
-            sex: "", 
-            homeroom: "", 
-            secondLocation: "", 
-            group: "", 
-            graduationDate: "", 
-            accountExpiration: "", 
-            primaryEmail: "", 
-            instituteEmail: "", 
-            primaryPhone: "", 
-            mobile: "", 
-            messengers: "", 
-            address1: "", 
-            address2: "", 
-            contactNotes: "", 
-            username: "", 
-            password: "", 
-            confirmPassword: "", 
-            generalNotes: "", 
-            alertNotes: "", 
+            firstName: null, 
+            middleName: null, 
+            lastName: null, 
+            studentNumber: null, 
+            library: null, 
+            status: null, 
+            policy: null, 
+            birthDate: null, 
+            sex: null, 
+            homeroom: null, 
+            secondLocation: null, 
+            group: null, 
+            graduationDate: null, 
+            accountExpiration: null, 
+            primaryEmail: null, 
+            instituteEmail: null, 
+            primaryPhone: null, 
+            mobile: null, 
+            messengers: null, 
+            address1: null, 
+            address2: null, 
+            contactNotes: null, 
+            username: null, 
+            password: null, 
+            confirmPassword: null, 
+            generalNotes: null, 
+            alertNotes: null, 
         }, 
+        isCurrentPatronNew: true, 
         patrons: [], 
     });
 
@@ -109,6 +112,22 @@ export default function CurrentPatronProvider(props) {
     }
 
     const handleSave = () => {
+        axios.post("http://localhost:8080/api/patrons", {...state.newPatron})
+        .then(response => {
+            console.log(response);
+            notificationService.show({
+                status: "success", 
+                title: "Patron updated!"
+            });
+            setState("currentPatron", state.newPatron);
+        })
+        .catch(error => {
+            console.log(error);
+            notificationService.show({
+                status: "danger", 
+                title: "Error!"
+            })
+        });
         console.log({
             ...state.newPatron
         });
@@ -128,8 +147,18 @@ export default function CurrentPatronProvider(props) {
         setState("patrons", patrons);
     }
 
+    const createNewPatron = () => {
+        // setPatronSelected(true); 
+        // setEditing(true);
+        // setState("isCurrentPatronNew", true);
+        // setState("currentPatron", {});
+        // setState("newPatron", {});
+    }
+
     const selectPatron = (patron) => {
         setPatronSelected(true);
+        setEditing(true); 
+        setState("isCurrentPatronNew", false); 
         setState("currentPatron", patron);
         setState("newPatron", patron);
     }
@@ -143,6 +172,7 @@ export default function CurrentPatronProvider(props) {
             revert, 
             addPatron,
             setPatrons,  
+            createNewPatron, 
             selectPatron, 
         }
     ]

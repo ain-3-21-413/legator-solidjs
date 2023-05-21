@@ -1,6 +1,5 @@
 import { Button, HStack, Heading, IconButton } from "@hope-ui/solid";
-import { Match, useContext } from "solid-js";
-import { Switch } from "solid-js";
+import { useContext } from "solid-js";
 import { PatronEditingContext } from "../../providers/PatronEditingProvider";
 import { FaSolidLock, FaSolidLockOpen, FaSolidPlus } from "solid-icons/fa";
 import useOpen from "../../hooks/useOpen";
@@ -12,41 +11,27 @@ export default function Header() {
 
     const { open, openPatronTab } = useOpen();
 
-    const [ currentPatronState, { handleSave, revert }] = useContext(CurrentPatronContext);
+    const [ currentPatronState, { handleSave, revert, createNewPatron }] = useContext(CurrentPatronContext);
 
     return (
         <HStack justifyContent={"space-between"} w={"$full"}>
             <Heading size={"2xl"}>
                 Patrons Management
             </Heading>
-            <Switch>
-                <Match when={!state.isEditing}>
-                    <HStack gap={"$3"}>
-                        <IconButton onClick={() => setLocked(!state.isLocked)} backgroundColor={"$accent11"} icon={ state.isLocked ?  <FaSolidLock /> : <FaSolidLockOpen /> } />
-                        <IconButton 
-                            backgroundColor={"$accent11"} 
-                            disabled={state.isLocked} icon={<FaSolidPlus />} 
-                            onClick={() => {open("/patrons"); openPatronTab("personal"); setPatronSelected(true); setEditing(true)}}
-                        />
-                        <Button backgroundColor={"$accent11"}>
-                            Actions
-                        </Button>
-                    </HStack>
-                </Match>
-                <Match when={state.isEditing}>
-                    <HStack gap={"$3"}>
-                        <Button colorScheme={"danger"} onClick={revert}>
+            <HStack gap={"$3"}>
+                <Button display={state.isEditing ? "block" : "none"} colorScheme={"danger"} onClick={revert}>
                             Revert
-                        </Button>
-                        <Button colorScheme={"success"} disabled={!state.isReadyToSave} onClick={handleSave}>
-                            Save
-                        </Button>
-                        <Button>
-                            Actions
-                        </Button>
-                    </HStack>
-                </Match>
-            </Switch>
+                </Button>
+                <Button display={state.isEditing ? "block" : "none"} colorScheme={"success"} disabled={!state.isReadyToSave} onClick={handleSave}>
+                    Save
+                </Button>
+                <IconButton onClick={() => setLocked(!state.isLocked)} backgroundColor={"$accent11"} icon={ state.isLocked ?  <FaSolidLock /> : <FaSolidLockOpen /> } />
+                <IconButton 
+                    backgroundColor={"$accent11"} 
+                    icon={<FaSolidPlus />} 
+                    onClick={() => {open("/patrons"); openPatronTab("personal"); createNewPatron();}}
+                />
+            </HStack>
         </HStack>
     )
 }

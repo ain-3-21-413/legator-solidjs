@@ -1,4 +1,5 @@
-import { createContext } from "solid-js";
+import axios from "axios";
+import { createContext, createSignal } from "solid-js";
 import { createStore } from "solid-js/store";
 
 export const InputValidationContext = createContext();
@@ -28,7 +29,16 @@ export default function InputValidationProvider(props) {
                     setState("patron", "lastName", value.trim() == "" ? false : true);
                 }
                 if (name == "studentNumber") {
-                    setState("patron", "studentNumber", value.trim() == "" ? false : true);
+                    const isNotEmpty = value.trim() == "" ? false : true;
+                    const [exists, setExits] = createSignal(false);
+                    // axios.get("http://localhost:8080/api/patrons/exists?student-number=" + value)
+                    // .then(response => {
+                    //     setExits(response.data);
+                    //     console.log(response.data);
+                    // }).catch(error => {
+                    //     console.log(error);
+                    // });
+                    setState("patron", "studentNumber", isNotEmpty);
                 }
             }, 
             isInputValid (name) {

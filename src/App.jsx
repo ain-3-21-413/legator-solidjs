@@ -1,4 +1,4 @@
-import { HopeProvider } from '@hope-ui/solid';
+import { HopeProvider, NotificationsProvider } from '@hope-ui/solid';
 import { Router } from '@solidjs/router';
 import ELibApp from './ELibApp';
 import CurrentPageProvider from './providers/CurrentPageProvider';
@@ -13,6 +13,7 @@ function App() {
   return (
     <HopeProvider>
       <Router>
+      <NotificationsProvider placement={"bottom-end"}>
         <InputValidationProvider>
           <CurrentPageProvider>
             <ModalProvider>
@@ -28,6 +29,7 @@ function App() {
             </ModalProvider>
           </CurrentPageProvider>
         </InputValidationProvider>
+      </NotificationsProvider>
       </Router>
     </HopeProvider>
   );
