@@ -95,15 +95,6 @@ export default function ItemCard() {
                     >
                         8
                     </Button>
-                    <Button
-                        onClick={() => openItemTab("9")} 
-                        px={"$8"} py={"$2"} _hover={{backgroundColor: "$accent11", color: "white"}} 
-                        borderRadius={"0"} 
-                        color={state.currentItemTab == "9" ? "white" : "$blackAlpha11"} 
-                        backgroundColor={state.currentItemTab == "9" ? "$accent11" : "transparent"}
-                    >
-                        9
-                    </Button>
                 </HStack>
             </VStack>
             <VStack 

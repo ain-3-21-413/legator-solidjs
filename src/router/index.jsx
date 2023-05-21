@@ -16,7 +16,6 @@ import Five from "../features/items/tabs/Five";
 import Six from "../features/items/tabs/Six";
 import Seven from "../features/items/tabs/Seven";
 import Eight from "../features/items/tabs/Eight";
-import Nine from "../features/items/tabs/Nine";
 import Zero from "../features/items/tabs/Zero";
 
 export default function AppRouter() {
@@ -40,7 +39,6 @@ export default function AppRouter() {
                 <Route path="6" element={<Six />} />
                 <Route path="7" element={<Seven />} />
                 <Route path="8" element={<Eight />} />
-                <Route path="9" element={<Nine />} />
             </Route>
             <Route path="/patrons" element={<Patrons />}>
                 <Route path="" element={<Personal />} />
