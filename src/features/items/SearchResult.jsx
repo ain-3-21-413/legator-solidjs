@@ -4,10 +4,10 @@ import { CurrentBookContext } from "../../providers/CurrentBook";
 
 export default function SearchResult(props) {
 
-    const { selectBook, newBook } = useContext(CurrentBookContext);
+    const { selectBook, currentBook } = useContext(CurrentBookContext);
 
     return (
-        <VStack backgroundColor={newBook["fields"]["001-00"] == props.book["fields"]["001-00"] ? "$blackAlpha5" : "transparent"} onClick={() => selectBook(props.book)} w="$full" alignItems={"start"} p="$3" _hover={{backgroundColor: "$blackAlpha5"}}>
+        <VStack backgroundColor={currentBook["updated"]["id"] == props.book["id"] ? "$blackAlpha5" : "transparent"} onClick={() => selectBook(props.book)} w="$full" alignItems={"start"} p="$3" _hover={{backgroundColor: "$blackAlpha5"}}>
             <Text fontSize={"12px"}>
                 {props.book[["fields"]["100-a"]]}
             </Text>

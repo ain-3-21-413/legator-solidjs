@@ -6,7 +6,7 @@ import { CurrentBookContext } from "../../../providers/CurrentBook";
 
  function SubField(props) {
 
-    const { editingStore, handleInput, newBook } = useContext(CurrentBookContext);
+    const { editingStore, handleInput, currentBook } = useContext(CurrentBookContext);
 
     return (
         <HStack w={"$full"} gap={"$1_5"}>
@@ -14,10 +14,10 @@ import { CurrentBookContext } from "../../../providers/CurrentBook";
             <Heading fontWeight={"$normal"} flexShrink={"0"}>{props.name}</Heading>
             <Switch>
                 <Match when={props.isTextarea}>
-                    <Textarea id={props.fullName} onInput={(event) => handleInput(event)} name={props.fullName} />
+                    <Textarea id={props.fullName} onInput={(event) => handleInput(event)} name={props.fullName} value={currentBook["updated"]["fields"]?.[props.fullName] ?? ""} />
                 </Match>
                 <Match when={!props.isTextarea}>
-                    <Input disabled={editingStore.isLocked || (props.fullName == "001-000" ? editingStore.isCurrentNew : false)} id={props.fullName} value={newBook["fields"]?.[props.fullName] ?? ""} onInput={(event) => handleInput(event)} name={props.fullName} size={"xs"}></Input>
+                    <Input disabled={editingStore.isLocked || (props.fullName == "001-000" ? editingStore.isCurrentNew : false)} id={props.fullName} value={currentBook["updated"]["fields"]?.[props.fullName] ?? ""} onInput={(event) => handleInput(event)} name={props.fullName} size={"xs"}></Input>
                 </Match>
             </Switch>
             <Show when={props.required}>

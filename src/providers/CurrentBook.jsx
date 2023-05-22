@@ -26,15 +26,14 @@ export default function CurrentBookProvider(props) {
     }
 
     const [currentBook, setCurrentBook] = createStore({
-        fields: {
-            "100-a": "", 
-        }
-    });
-
-    const [newBook, setNewBook] = createStore({
-        fields: {
-            "100-a": "", 
-        }
+        origin: {
+            id: "", 
+            fields: {}
+        }, 
+        updated: {
+            id: "", 
+            fields: {}
+        }, 
     })
 
     const [signals, setSignals] = createSignal({});
@@ -72,20 +71,16 @@ export default function CurrentBookProvider(props) {
         const { name, value } = event.target;
         
         validateInput(name, value);
-        setNewBook("fields", name, value);
+        setCurrentBook("updated", "fields", name, value);
 
-        setSignals((prevSignals) => ({
-            ...prevSignals, 
-            [name]: value, 
-        }));
-
-        setNewBook("fields", name, value);
+        console.log({...currentBook["origin"]["fields"]});
+        console.log({...currentBook["updated"]["fields"]});
     }
 
     const handleSave = () => {
         if (editingStore.isCurrentNew) {
-            console.log("http://localhost:8080/api/books" + {...newBook.id});
-            axios.post("http://localhost:8080/api/books", {...newBook.fields})
+            console.log(window.HOST_ADDRESS + "/books" + {...currentBook.updated.id});
+            axios.post(window.HOST_ADDRESS + "/books", {...currentBook.updated.fields})
             .then(response => {
                 notificationService.show({
                     status: "success", 
@@ -101,7 +96,7 @@ export default function CurrentBookProvider(props) {
                 })
             })
         } else {
-            axios.put("http://localhost:8080/api/books/" + newBook.id, {...newBook.fields})
+            axios.put(window.HOST_ADDRESS + "/books/" + currentBook.updated.id, {...currentBook.updated.fields})
             .then(response => {
                 notificationService.show({
                     status: "success", 
@@ -128,19 +123,19 @@ export default function CurrentBookProvider(props) {
         setFieldsValidation("245-a", false);
         setBookSelected(true);
         setEditingStore("isCurrentNew", false);
-        setCurrentBook(book);
-        setNewBook(book);
+        // setCurrentBook(book);
+        setCurrentBook("origin", book);
+        setCurrentBook("updated", book);
     }
 
     const createNewBook = () => {
-        setCurrentBook({})
         setEditingStore("isBookSelected", true);
-        setNewBook({});
+        setEditingStore("isCurrentNew", true);
     }
 
     const fetchBooks = () => {
         setStore("books", [])
-       axios.get("http://localhost:8080/api/books")
+       axios.get(window.HOST_ADDRESS + "/books")
        .then(response => {
            const books = response.data;
            for (let i in books) {
@@ -164,9 +159,7 @@ export default function CurrentBookProvider(props) {
     }
 
     const revert = () => {
-        for (let prop in newBook) {
-            setNewBook("fields", prop, currentBook["fields"][prop])
-        }
+        
     }
 
     const currentBookState = {
@@ -179,7 +172,6 @@ export default function CurrentBookProvider(props) {
         selectBook, 
         store, 
         currentBook, 
-        newBook, 
         editingStore, 
         setBookSelected, 
         createNewBook, 

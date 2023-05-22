@@ -19,6 +19,8 @@ import Zero from "../features/items/tabs/Zero";
 
 export default function AppRouter() {
 
+    window.HOST_ADDRESS = "http://192.168.0.104:8080/api";
+
     return (
         <Routes>
             <Route path="/">

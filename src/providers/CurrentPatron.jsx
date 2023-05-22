@@ -114,7 +114,7 @@ export default function CurrentPatronProvider(props) {
     const handleSave = () => {
         console.log(state.isCurrentPatronNew);
         if (state.isCurrentPatronNew) {
-            axios.post("http://localhost:8080/api/patrons", { ...state.newPatron })
+            axios.post(window.HOST_ADDRESS + "/patrons", { ...state.newPatron })
             .then(response => {
                 console.log(response);
                 notificationService.show({
@@ -133,7 +133,7 @@ export default function CurrentPatronProvider(props) {
             });
         } else if (!state.isCurrentPatronNew) {
             const { studentNumber, ...patronToBeUpdated } = state.newPatron;
-            axios.put("http://localhost:8080/api/patrons/" + state.newPatron.studentNumber, patronToBeUpdated)
+            axios.put(window.HOST_ADDRESS + "/patrons/" + state.newPatron.studentNumber, patronToBeUpdated)
             .then(response => {
                 console.log(response);
                 notificationService.show({
@@ -166,7 +166,7 @@ export default function CurrentPatronProvider(props) {
     }
 
     const fetchPatrons = () => {
-        axios.get("http://localhost:8080/api/patrons")
+        axios.get(window.HOST_ADDRESS + "/patrons")
         .then(response => {
             setState("patrons", response.data);
         })
