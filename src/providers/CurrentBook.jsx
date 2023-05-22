@@ -1,3 +1,5 @@
+import { notificationService } from "@hope-ui/solid";
+import axios from "axios";
 import { createContext, createSignal } from "solid-js";
 import { createStore } from "solid-js/store";
 
@@ -8,6 +10,20 @@ export default function CurrentBookProvider(props) {
     const [store, setStore] = createStore({
         books: [], 
     });
+
+    const [editingStore, setEditingStore] = createStore({
+        isBookSelected: false, 
+        isLocked: true, 
+        isCurrentNew: true, 
+    });
+
+    const setBookSelected = (isSelected) => {
+        setEditingStore("isBookSelected", isSelected);
+    }
+
+    const setLocked = (isLocked) => {
+        setEditingStore("isLocked", isLocked);
+    }
 
     const [currentBook, setCurrentBook] = createStore({
         fields: {
@@ -22,8 +38,8 @@ export default function CurrentBookProvider(props) {
     })
 
     const [signals, setSignals] = createSignal({});
+
     const [fieldsValidation, setFieldsValidation] = createStore({
-        "000-00": true, 
         "001-00": true, 
         "ind1-100": true, 
         "ind2-100": true, 
@@ -62,10 +78,43 @@ export default function CurrentBookProvider(props) {
             ...prevSignals, 
             [name]: value, 
         }));
+
+        setNewBook("fields", name, value);
     }
 
     const handleSave = () => {
-        console.log(signals());
+        if (editingStore.isCurrentNew) {
+            console.log("http://localhost:8080/api/books" + {...newBook.id});
+            axios.post("http://localhost:8080/api/books", {...newBook.fields})
+            .then(response => {
+                notificationService.show({
+                    status: "success", 
+                    title: "Book saved.",
+                });
+                fetchBooks();
+                createNewBook();
+            })
+            .catch(error => {
+                notificationService.show({
+                    status: "danger", 
+                    title: error.response.data, 
+                })
+            })
+        } else {
+            axios.put("http://localhost:8080/api/books/" + newBook.id, {...newBook.fields})
+            .then(response => {
+                notificationService.show({
+                    status: "success", 
+                    title: "Book saved.",
+                })
+            })
+            .catch(error => {
+                notificationService.show({
+                    status: "danger", 
+                    title: error.response.data, 
+                })
+            })
+        }
     }
 
     const selectBook = (book) => {
@@ -77,162 +126,47 @@ export default function CurrentBookProvider(props) {
         setFieldsValidation("ind1-245", false);
         setFieldsValidation("ind2-245", false);
         setFieldsValidation("245-a", false);
+        setBookSelected(true);
+        setEditingStore("isCurrentNew", false);
+        setCurrentBook(book);
         setNewBook(book);
     }
 
+    const createNewBook = () => {
+        setCurrentBook({})
+        setEditingStore("isBookSelected", true);
+        setNewBook({});
+    }
+
     const fetchBooks = () => {
-        const books = [
-            {
-                fields: {
-                    "000-00": "fixed length control field",
-                    "001-00": "control field",
-                    "003-00": "control field",
-                    "005-00": "control field",
-                    "006-00": "fixed length control field",
-                    "007-00": "fixed length control field",
-                    "008-00": "fixed length control field",
-                    "010-a": "1",
-                    "015-2": "Source",
-                    "015-a": "National bibliography number",
-                    "015-q": "Qualifying information",
-                    "100-a": "Personal name",
-                    "100-d": "Dates associated with a name",
-                    "100-e": "Relator term",
-                    "100-q": "Fuller form of name",
-                    "210-2": "Source",
-                    "210-a": "Abbreviated title",
-                    "245-a": "Title 1",
-                    "246-a": "",
-                    "246-b": "",
-                    "246-h": " ",
-                    "246-i": " ",
-                    "ind1-010": "1",
-                    "ind1-015": "1",
-                    "ind1-100": "1",
-                    "ind1-210": "1",
-                    "ind1-245": "1",
-                    "ind1-246": " ",
-                    "ind2-010": "1",
-                    "ind2-015": "1",
-                    "ind2-100": "1",
-                    "ind2-210": "1",
-                    "ind2-245": "1",
-                }, 
-                items: [], 
-            }, {
-                fields: {
-                    "000-00": "fixed length control field",
-                    "001-00": "control field",
-                    "003-00": "control field",
-                    "005-00": "control field",
-                    "006-00": "fixed length control field",
-                    "007-00": "fixed length control field",
-                    "008-00": "fixed length control field",
-                    "010-a": "2",
-                    "015-2": "Source",
-                    "015-a": "National bibliography number",
-                    "015-q": "Qualifying information",
-                    "100-a": "Personal name",
-                    "100-d": "Dates associated with a name",
-                    "100-e": "Relator term",
-                    "100-q": "Fuller form of name",
-                    "210-2": "Source",
-                    "210-a": "Abbreviated title",
-                    "245-a": "Title 2",
-                    "246-a": "",
-                    "246-b": "",
-                    "246-h": " ",
-                    "246-i": " ",
-                    "ind1-010": "1",
-                    "ind1-015": "1",
-                    "ind1-100": "1",
-                    "ind1-210": "1",
-                    "ind1-245": "1",
-                    "ind1-246": " ",
-                    "ind2-010": "1",
-                    "ind2-015": "1",
-                    "ind2-100": "1",
-                    "ind2-210": "1",
-                    "ind2-245": "1",
-                }, 
-                items: [], 
-            }, {
-                fields: {
-                    "000-00": "fixed length control field",
-                    "001-00": "control field",
-                    "003-00": "control field",
-                    "005-00": "control field",
-                    "006-00": "fixed length control field",
-                    "007-00": "fixed length control field",
-                    "008-00": "fixed length control field",
-                    "010-a": "3",
-                    "015-2": "Source",
-                    "015-a": "National bibliography number",
-                    "015-q": "Qualifying information",
-                    "100-a": "Personal name",
-                    "100-d": "Dates associated with a name",
-                    "100-e": "Relator term",
-                    "100-q": "Fuller form of name",
-                    "210-2": "Source",
-                    "210-a": "Abbreviated title",
-                    "245-a": "Title 3",
-                    "246-a": "",
-                    "246-b": "",
-                    "246-h": " ",
-                    "246-i": " ",
-                    "ind1-010": "1",
-                    "ind1-015": "1",
-                    "ind1-100": "1",
-                    "ind1-210": "1",
-                    "ind1-245": "1",
-                    "ind1-246": " ",
-                    "ind2-010": "1",
-                    "ind2-015": "1",
-                    "ind2-100": "1",
-                    "ind2-210": "1",
-                    "ind2-245": "1",
-                }, 
-                items: [], 
-            }, {
-                fields: {
-                    "000-00": "fixed length control field",
-                    "001-00": "control field",
-                    "003-00": "control field",
-                    "005-00": "control field",
-                    "006-00": "fixed length control field",
-                    "007-00": "fixed length control field",
-                    "008-00": "fixed length control field",
-                    "010-a": "4",
-                    "015-2": "Source",
-                    "015-a": "National bibliography number",
-                    "015-q": "Qualifying information",
-                    "100-a": "Personal name",
-                    "100-d": "Dates associated with a name",
-                    "100-e": "Relator term",
-                    "100-q": "Fuller form of name",
-                    "210-2": "Source",
-                    "210-a": "Abbreviated title",
-                    "245-a": "Title 4",
-                    "246-a": "",
-                    "246-b": "",
-                    "246-h": " ",
-                    "246-i": " ",
-                    "ind1-010": "1",
-                    "ind1-015": "1",
-                    "ind1-100": "1",
-                    "ind1-210": "1",
-                    "ind1-245": "1",
-                    "ind1-246": " ",
-                    "ind2-010": "1",
-                    "ind2-015": "1",
-                    "ind2-100": "1",
-                    "ind2-210": "1",
-                    "ind2-245": "1",
-                }, 
-                items: [], 
-            }
-        ];
-        setStore("books", books);
+        setStore("books", [])
+       axios.get("http://localhost:8080/api/books")
+       .then(response => {
+           const books = response.data;
+           for (let i in books) {
+               const book = books[i];
+               const obj = {
+                   id: book.id, 
+                   fields: [], 
+                };
+                book.fields.forEach(item => {
+                    obj["id"] = book.id;
+                    obj["fields"][item.name] = item.value;
+                });
+                console.log({...obj});
+                setStore("books", [...store["books"], obj]);
+                console.log({...store.books});
+           }
+       })
+       .catch(error => {
+            console.log(error);
+       })
+    }
+
+    const revert = () => {
+        for (let prop in newBook) {
+            setNewBook("fields", prop, currentBook["fields"][prop])
+        }
     }
 
     const currentBookState = {
@@ -246,6 +180,11 @@ export default function CurrentBookProvider(props) {
         store, 
         currentBook, 
         newBook, 
+        editingStore, 
+        setBookSelected, 
+        createNewBook, 
+        revert, 
+        setLocked, 
     }
 
     return (

@@ -3,41 +3,26 @@ import { FaSolidLock, FaSolidLockOpen, FaSolidPlus } from "solid-icons/fa";
 import { Match, Switch, useContext } from "solid-js";
 import { ItemEditingContext } from "../../providers/ItemEditingProvider";
 import { CurrentBookContext } from "../../providers/CurrentBook";
+import useOpen from "../../hooks/useOpen";
 
 export default function Header() {
 
     const [state] = useContext(ItemEditingContext);
-    const { handleSave, areFieldsValid } = useContext(CurrentBookContext);
+    const { editingStore, handleSave, areFieldsValid, setLocked, setBookSelected, createNewBook } = useContext(CurrentBookContext);
+    const { open, openPatronTab } = useOpen();
 
     return (
         <HStack justifyContent={"space-between"} w={"$full"}>
             <Heading size={"2xl"}>
                 Items Management
             </Heading>
-            <Switch>
-                <Match when={!state.isEditing}>
-                    <HStack gap={"$3"}>
-                        <IconButton backgroundColor={"$accent11"} icon={ state.isLocked ?  <FaSolidLock /> : <FaSolidLockOpen /> } />
-                        <IconButton backgroundColor={"$accent11"} disabled={state.isLocked} icon={<FaSolidPlus />} />
-                        <Button backgroundColor={"$accent11"}>
-                            Actions
-                        </Button>
-                    </HStack>
-                </Match>
-                <Match when={state.isEditing}>
-                    <HStack gap={"$3"}>
-                        <Button colorScheme={"danger"}>
-                            Revert
-                        </Button>
-                        <Button colorScheme={"success"} onClick={handleSave} disabled={areFieldsValid()}>
-                            Save
-                        </Button>
-                        <Button disabled>
-                            Actions
-                        </Button>
-                    </HStack>
-                </Match>
-            </Switch>
+                <HStack gap={"$3"}>
+                <Button display={editingStore.isBookSelected ? "block" : "none"} colorScheme={"success"} onClick={handleSave} disabled={areFieldsValid()}>
+                    Save
+                </Button>
+                <IconButton onClick={() => setLocked(!editingStore.isLocked)} backgroundColor={"$accent11"} icon={ editingStore.isLocked ?  <FaSolidLock /> : <FaSolidLockOpen /> } />
+                <IconButton onClick={() => {open("/items"); openPatronTab("0"); setBookSelected(true); createNewBook()}} backgroundColor={"$accent11"} disabled={editingStore.isLocked} icon={<FaSolidPlus />} />
+            </HStack>
         </HStack>
     )
 }
