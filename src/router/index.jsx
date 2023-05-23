@@ -25,7 +25,7 @@ export default function AppRouter() {
     return (
         <Routes>
             <Route path="/">
-                <Route path="" element={<Dashboard />} />
+                <Route path="" element={<Books />} />
             </Route>
             <Route path="/circulation">
                 <Route path="" element={<Circulation />} />
