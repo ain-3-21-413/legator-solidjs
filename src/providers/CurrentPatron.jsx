@@ -1,4 +1,4 @@
-import { createContext, createEffect, useContext } from "solid-js";
+import { createContext, createEffect, createSignal, useContext } from "solid-js";
 import { createStore } from "solid-js/store";
 import { InputValidationContext } from "./InputValidationProvider";
 import { PatronEditingContext } from "./PatronEditingProvider";
@@ -191,6 +191,74 @@ export default function CurrentPatronProvider(props) {
         setState("newPatron", patron);
     }
 
+    const [items, setItems] = createSignal([]);
+    const [archivedItems, setArchiveItems] = createSignal([]);
+
+    const fetchItems = async (queryPath) => {
+        try {
+            const response = await axios.get(queryPath);
+            const list = [];
+            for (let i in response.data) {
+                const obj = {};
+                const book = response.data[i]["book"];
+                obj["id"] = response.data[i]["id"];
+                obj["issuedAt"] = response.data[i]["issuedAt"];
+                obj["returnDate"] = response.data[i]["returnDate"];
+                for (let prop in book["fields"]) {
+                    obj[book.fields[prop]["name"]] = book.fields[prop]["value"];
+                }
+                list.push(obj);
+            }
+            setItems(list);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const fetchArchivedItems = async (queryPath) => {
+        try {
+            const response = await axios.get(queryPath);
+            const list = [];
+            for (let i in response.data) {
+                const obj = {};
+                const book = response.data[i]["book"];
+                obj["id"] = response.data[i]["id"];
+                obj["issuedAt"] = response.data[i]["issuedAt"];
+                obj["dueTo"] = response.data[i]["dueTo"];
+                obj["returnDate"] = response.data[i]["returnDate"];
+                for (let prop in book["fields"]) {
+                    obj[book.fields[prop]["name"]] = book.fields[prop]["value"];
+                }
+                list.push(obj);
+            }
+            setArchiveItems(list);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const [searchPatron, setSearchPatron] = createStore({
+        firstName: "one", 
+        middleName: "", 
+        lastName: "", 
+        group: "AIN120", 
+        sex: "", 
+        homeroom: "", 
+        secondLocation: "", 
+    });
+
+    const search = () => {
+        axios.post(window.HOST_ADDRESS + "/patrons/search", {
+            ...searchPatron
+        })
+        .then(response => {
+            setState("patrons", response.data);
+        })
+        .catch(error =>
+            console.log(error)
+        );
+    }
+
     const currentPatron = [
         state, 
         {
@@ -202,6 +270,15 @@ export default function CurrentPatronProvider(props) {
             fetchPatrons,  
             createNewPatron, 
             selectPatron, 
+            items, 
+            setItems, 
+            archivedItems, 
+            setArchiveItems, 
+            fetchItems, 
+            fetchArchivedItems, 
+            searchPatron, 
+            setSearchPatron, 
+            search, 
         }
     ]
     

@@ -1,13 +1,31 @@
-import { Button, Checkbox, HStack, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, SimpleOption, SimpleSelect, Text, VStack } from "@hope-ui/solid"
-import { useContext } from "solid-js"
-import { CurrentPatronContext } from "../../../providers/CurrentPatron"
+import { Button, Checkbox, HStack, Heading, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, SimpleOption, SimpleSelect, Table, Tbody, Td, Text, Th, Thead, Tr, VStack, createDisclosure, notificationService } from "@hope-ui/solid"
+import { For, Show, createSignal, useContext } from "solid-js";
+import { CurrentBookContext } from "../../../providers/CurrentBook";
+import { CurrentPatronContext } from "../../../providers/CurrentPatron";
+import { createStore } from "solid-js/store";
+import axios from "axios";
+import useOpen from "../../../hooks/useOpen";
 
-export default function PatronSearchModal(props) {
+export default function Copies() {
 
+    const { currentBook, fetchCopies} = useContext(CurrentBookContext);
+    const [operation, setOperation] = createStore({
+        title: "", 
+        type: "", 
+        item: "", 
+        patron: "", 
+    })
+    const { open } = useOpen();
     const [state, { searchPatron, setSearchPatron, search }] = useContext(CurrentPatronContext);
+    const [patrons, setPatrons] = createSignal();
+    const { isOpen, onOpen, onClose } = createDisclosure();
+    const [showPatrons, setShowPatrons] = createSignal();
+    const [itemId, setItemId] = createSignal();
+    const [studentNumber, setStudentNumber] = createSignal();
 
     return (
-        <Modal opened={props.isOpen()} onClose={() => {props.onClose(); setSearchPatron("firstName", "");
+        <VStack w={"$full"} flexGrow={"1"} bgColor={"white"} fontSize={"14px"}  px={"$7"} py={"$5"} gap={"$3"}>
+            <Modal opened={isOpen()} onClose={() => {onClose(); setSearchPatron("firstName", "");
         setSearchPatron("middleName", "");
         setSearchPatron("lastName", "");
         setSearchPatron("sex", "");
@@ -204,6 +222,26 @@ export default function PatronSearchModal(props) {
                         </SimpleSelect>
                         </VStack>
                     </VStack>
+                    <For each={patrons()}>{(patron) =>
+                            <HStack w="$full" justifyContent={"space-between"}>
+                                {patron.firstName} {patron.lastName} { patron.group != null ? "from " + patron.group : "" }
+                                <Button onClick={() => {
+                                    axios.post(window.HOST_ADDRESS + "/circulation/check-out?item-id=" + itemId() + "&student-number=" + patron.studentNumber)
+                                    .then(response => {
+                                        setPatrons([]);
+                                        notificationService.show({
+                                            status: "success", 
+                                            title: "Checked out!",
+                                        });
+                                        fetchCopies(currentBook.origin.id);
+                                        onClose();
+                                    })
+                                    .catch(error => console.log(error));
+                                }}>
+                                    Select
+                                </Button>
+                            </HStack>
+                    }</For>
                 </ModalBody>
                 <ModalFooter justifyContent={"space-between"}>
                     <Button colorScheme={"danger"} onClick={() => {
@@ -219,8 +257,16 @@ export default function PatronSearchModal(props) {
                     </Button>
                     <HStack gap={"$3"}>
                         <Button onClick={() => {
-                            search();
-                            props.onClose();
+                            axios.post(window.HOST_ADDRESS + "/patrons/search", {
+                                ...searchPatron
+                            })
+                            .then(response => {
+                                setPatrons(response.data);
+                                setShowPatrons(true);
+                            })
+                            .catch(error =>
+                                console.log(error)
+                            );
                             setSearchPatron("firstName", "");
                             setSearchPatron("middleName", "");
                             setSearchPatron("lastName", "");
@@ -235,5 +281,92 @@ export default function PatronSearchModal(props) {
                 </ModalFooter>
             </ModalContent>
         </Modal>
+            <VStack w={"$full"} alignItems={"start"} gap={"$3"}>
+                <Heading color={"$accent11"}>
+                    Copies
+                </Heading>
+                <VStack w={"$full"}>
+                            <HStack w={"$full"} justifyContent={"end"}>
+                                <Button onClick={() => {
+                                    const id = currentBook["updated"]["id"];
+                                    axios.post(window.HOST_ADDRESS + "/items", {
+                                        bookId: id, 
+                                    })
+                                    .then(response => {
+                                        console.log(response.data);
+                                        fetchCopies(currentBook.origin.id);
+                                        notificationService.show({
+                                            status: "success", 
+                                            title: "New copy added!"
+                                        })
+                                    })
+                                    .catch(error => {
+                                        console.log(error);
+                                    })
+                                }}>
+                                    Add copy
+                                </Button>
+                            </HStack>
+                    <Table dense highlightOnHover>
+                        <Thead>
+                            <Tr>
+                                <Th>
+                                    #
+                                </Th>
+                                <Th>
+                                    Holder
+                                </Th>
+                                <Th>
+                                    Issued at
+                                </Th>
+                                <Th>
+                                    Due to
+                                </Th>
+                                <Th>
+                                    
+                                </Th>
+                            </Tr>
+                        </Thead>
+                        <Tbody>
+                            <For each={currentBook.copies}>{(copy) => 
+                                <Tr>
+                                    <Td>
+                                        { copy.id }
+                                    </Td>
+                                    <Td>
+                                        { copy.patron == null ? "In library" : copy.patron.firstName + " " + copy.patron.lastName }
+                                    </Td>
+                                    <Td>
+                                        { copy.issuedAt == null ? "-" : copy.issuedAt }
+                                    </Td>
+                                    <Td>
+                                        { copy.dueTo == null ? "-" : copy.dueTo }
+                                    </Td>
+                                    <Td>
+                                        <Button size={"sm"} fullWidth onClick={() => {
+                                            setOperation("title",  copy.status == "AVAILABLE" ? "Check out" : copy.status == "CHECKED_OUT" ? "Check in" : "Other");
+                                            setOperation("type", copy.status == "AVAILABLE" ? "check_out" : copy.status == "CHECKED_OUT" ? "check_in" : "Other");
+                                            setOperation("item", copy.id);
+                                            setItemId(copy.id);
+                                            operation.type == "check_out" ? onOpen() : axios.post(window.HOST_ADDRESS + "/circulation/check-in?item-id=" + copy.id)
+                                            .then(response => {
+                                                fetchCopies(currentBook.origin.id);
+                                                notificationService.show({
+                                                    status: "success", 
+                                                    title: "Checked in!"
+                                                })
+                                            })
+                                            .catch(error => console.log(error));
+                                        }}>
+                                            { copy.status == "AVAILABLE" ? "Check out" : copy.status == "CHECKED_OUT" ? "Check in" : "Other" }
+                                        </Button>
+                                    </Td>
+                                </Tr>
+                            }</For>
+                        </Tbody>
+                    </Table>
+                </VStack>
+            </VStack>
+        </VStack>
     )
 }

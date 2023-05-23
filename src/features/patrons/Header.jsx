@@ -16,7 +16,7 @@ export default function Header() {
     return (
         <HStack justifyContent={"space-between"} w={"$full"}>
             <Heading size={"2xl"}>
-                Patrons Management
+                Students Management
             </Heading>
             <HStack gap={"$3"}>
                 <Button display={state.isEditing ? "block" : "none"} colorScheme={"danger"} onClick={revert}>

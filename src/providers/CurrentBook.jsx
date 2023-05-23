@@ -1,6 +1,6 @@
 import { notificationService } from "@hope-ui/solid";
 import axios from "axios";
-import { createContext, createSignal } from "solid-js";
+import { createContext, createEffect, createSignal } from "solid-js";
 import { createStore } from "solid-js/store";
 
 export const CurrentBookContext = createContext()
@@ -34,6 +34,7 @@ export default function CurrentBookProvider(props) {
             id: "", 
             fields: {}
         }, 
+        copies: [], 
     })
 
     const [signals, setSignals] = createSignal({});
@@ -73,8 +74,10 @@ export default function CurrentBookProvider(props) {
         validateInput(name, value);
         setCurrentBook("updated", "fields", name, value);
 
-        console.log({...currentBook["origin"]["fields"]});
-        console.log({...currentBook["updated"]["fields"]});
+        setCurrentBook("origin", {
+            ...currentBook.origin, 
+            fields: {...currentBook.origin.fields}
+        })
     }
 
     const handleSave = () => {
@@ -131,7 +134,15 @@ export default function CurrentBookProvider(props) {
     const createNewBook = () => {
         setEditingStore("isBookSelected", true);
         setEditingStore("isCurrentNew", true);
+        for (let prop in currentBook.origin.fields) {
+            setCurrentBook("updated", "fields", prop, null);
+            setCurrentBook("origin", "fields", prop, null);
+        }
     }
+
+    createEffect(() => {
+        fetchCopies(currentBook.origin.id);
+    })
 
     const fetchBooks = () => {
         setStore("books", [])
@@ -148,9 +159,7 @@ export default function CurrentBookProvider(props) {
                     obj["id"] = book.id;
                     obj["fields"][item.name] = item.value;
                 });
-                console.log({...obj});
                 setStore("books", [...store["books"], obj]);
-                console.log({...store.books});
            }
        })
        .catch(error => {
@@ -158,8 +167,24 @@ export default function CurrentBookProvider(props) {
        })
     }
 
+
+
+    const fetchCopies = (id) => {
+        console.log("lsk;;;;;;;;;;;;;;;;;;;;;");
+        axios.get(window.HOST_ADDRESS + "/books/" + id + "/items")
+        .then(response => {
+            setCurrentBook("copies", response.data);
+            console.log({...response.data});
+        })
+        .catch(error => {
+            console.log(error);
+        })
+    }
+
     const revert = () => {
-        
+        for (let prop in currentBook.updated.fields) {
+            setCurrentBook("updated", "fields", prop, currentBook.origin.fields[prop]);
+        }
     }
 
     const currentBookState = {
@@ -177,6 +202,8 @@ export default function CurrentBookProvider(props) {
         createNewBook, 
         revert, 
         setLocked, 
+        fetchCopies, 
+        setCurrentBook, 
     }
 
     return (

@@ -8,15 +8,18 @@ import useOpen from "../../hooks/useOpen";
 export default function Header() {
 
     const [state] = useContext(ItemEditingContext);
-    const { editingStore, handleSave, areFieldsValid, setLocked, setBookSelected, createNewBook } = useContext(CurrentBookContext);
+    const { editingStore, handleSave, areFieldsValid, setLocked, setBookSelected, createNewBook, revert } = useContext(CurrentBookContext);
     const { open, openPatronTab } = useOpen();
 
     return (
         <HStack justifyContent={"space-between"} w={"$full"}>
             <Heading size={"2xl"}>
-                Items Management
+                Books Management
             </Heading>
                 <HStack gap={"$3"}>
+                <Button display={editingStore.isBookSelected ? "none" : "none"} colorScheme={"danger"} onClick={revert}>
+                    Revert
+                </Button>
                 <Button display={editingStore.isBookSelected ? "block" : "none"} colorScheme={"success"} onClick={handleSave} disabled={areFieldsValid()}>
                     Save
                 </Button>

@@ -20,8 +20,6 @@ export default function ItemPageIntro() {
             <HStack w={"$full"} gap={"$6"} justifyContent={"center"}>
                 <ActionCard title="Add books" onClick={() => {open("/items"); openPatronTab("0"); setBookSelected(true); createNewBook()}}/>
                 <ActionCard title="Search for books"/>
-                <ActionCard title="View recently added" onClick={() => {}}/>
-                <ActionCard title="View recently modified" onClick={() => {}}/>
             </HStack>
             {/* <PatronSearchModal isOpen={isOpen} onClose={onClose}/> */}
         </VStack>

@@ -15,7 +15,7 @@ export default function Navbar() {
                 E-Lib
             </Heading>
             <VStack>
-                <Button 
+                {/* <Button 
                     fullWidth 
                     borderRadius={"0"} 
                     bgColor={ state.currentPage == "/" ? "$accent11" : "transparent" } 
@@ -30,14 +30,14 @@ export default function Navbar() {
                     onClick={() => open("/circulation")}
                 >
                     Circulation
-                </Button>
+                </Button> */}
                 <Button 
                     fullWidth 
                     borderRadius={"0"} 
                     bgColor={ state.currentPage == "/items" ? "$accent11" : "transparent" } 
                     onClick={() => open("/items")}
                 >
-                    Items
+                    Books
                 </Button>
                 <Button 
                     fullWidth 
@@ -45,7 +45,7 @@ export default function Navbar() {
                     bgColor={ state.currentPage == "/patrons" ? "$accent11" : "transparent" } 
                     onClick={() => open("/patrons")}
                 >
-                    Patrons
+                    Students
                 </Button>
             </VStack>
         </Stack>

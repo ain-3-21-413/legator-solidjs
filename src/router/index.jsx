@@ -16,10 +16,11 @@ import Five from "../features/items/tabs/Five";
 import Six from "../features/items/tabs/Six";
 import Seven from "../features/items/tabs/Seven";
 import Zero from "../features/items/tabs/Zero";
+import Copies from "../features/items/tabs/Copies";
 
 export default function AppRouter() {
 
-    window.HOST_ADDRESS = "http://192.168.0.104:8080/api";
+    window.HOST_ADDRESS = "http://localhost:8080/api";
 
     return (
         <Routes>
@@ -39,6 +40,7 @@ export default function AppRouter() {
                 <Route path="5" element={<Five />} />
                 <Route path="6" element={<Six />} />
                 <Route path="7" element={<Seven />} />
+                <Route path="copies" element={<Copies />} />
             </Route>
             <Route path="/patrons" element={<Patrons />}>
                 <Route path="" element={<Personal />} />
